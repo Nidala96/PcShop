@@ -89,10 +89,6 @@ function darkTheme()
 
 
 
-
-
-
-
 <div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel">
     <div class="carousel-indicators">
         <button
@@ -140,8 +136,6 @@ function darkTheme()
 <h1 id="titolo-1">Best Pcs</h1>
 
 
-<button onclick="pcScontato()">Clicca qui</button>
-
 
 
 
@@ -166,6 +160,9 @@ function darkTheme()
               <p th:text="'Scheda Video: ' + ${pc.gpu.nome}" class="card-text"></p>
               <p th:text="'Scheda Madre: ' + ${pc.schedaMadre.nome}" class="card-text"></p>
               <p th:text="'Case: ' + ${pc.casePc.nome}" class="card-text"></p>
+                <p th:text="'Ram: ' + ${pc.ram.nome}" class="card-text"></p>
+                <p th:text="'HardDisk: ' + ${pc.hardDisk.nome}" class="card-text"></p>
+
               
 			<div style="display: flex; justify-content: center;">
               <button  th:data-id="${pc.id}"
@@ -176,6 +173,8 @@ function darkTheme()
                        th:data-schedaMadre="${pc.schedaMadre.id}"
                        th:data-casePc="${pc.casePc.id}"
                        th:data-percentualeSconto="${pc.percentualeSconto}"
+                       th:data-ram="${pc.ram.id}"
+                       th:data-hardDisk="${pc.hardDisk.id}"
                        th:onclick="modifyPc(this)"
                        type="button" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 150px; margin-bottom: 10px ">Modifica
              </button>
@@ -271,6 +270,18 @@ function darkTheme()
         <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
     </select>
     <br><br>
+
+    <label for="addRam">Ram:</label><br>
+    <select id="addRam" name="ram_id" required>
+        <option th:each="ram, iter : ${listRam}" th:value="${ram.id}" th:text="${ram.nome}"></option>
+    </select>
+    <br><br>
+
+    <label for="addHardDisk">HardDisk:</label><br>
+    <select id="addHardDisk" name="hardDisk_id" required>
+        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
+    </select>
+    <br><br>
     
     <label for="addCasePc">Case Pc:</label><br>
     <select id="addCasePc" name="casePc_id" required>
@@ -326,6 +337,18 @@ function darkTheme()
     <label for="modSchedaMadre">SchedaMadre:</label><br>
     <select id="modSchedaMadre" name="schedaMadre_id" required>
         <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
+    </select>
+    <br><br>
+
+    <label for="modRam">Ram:</label><br>
+    <select id="modRam" name="ram_id" required>
+        <option th:each="ram, iter : ${listRam}" th:value="${ram.id}" th:text="${ram.nome}"></option>
+    </select>
+    <br><br>
+
+    <label for="modHardDisk">HardDisk:</label><br>
+    <select id="modHardDisk" name="hardDisk_id" required>
+        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
     </select>
     <br><br>
     
