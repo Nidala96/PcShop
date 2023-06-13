@@ -68,7 +68,7 @@ public class Pc extends Entity {
         {
             prezzoTotale += hardDisk.getPrezzo();
         }
-        return prezzoTotale;
+        return Math.round(prezzoTotale*100.0)/100.0;
     }
 
     // Setter e getter per l'attributo "nome"

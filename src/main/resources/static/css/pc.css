@@ -19,9 +19,11 @@ body {
 }
 
 #titolo-1 {
-    text-align: center;
-    text-size: 3rem;
-    padding: 30px;
+   background-image: linear-gradient(to right, black, #86E825);
+  text-align: center;
+  padding: 30px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .wsk-cp-img {
@@ -137,6 +139,33 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+
+.buttonLogin {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.buttonLogin .nav-link {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.2;
+}
+
+.buttonLogin .nav-link small {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.buttonLogin .nav-link:hover {
+    color: #777;
+}
+
 
 a.buy-btn {
   display: block;
@@ -447,14 +476,9 @@ xbtn-shop
     }
 
 
-
-
-
-
-
-
-
-
+.navbar-nav .nav-link {
+    font-family: 'Montserrat', sans-serif;
+}
 
 .dark-mode a.buy-btn
 {
@@ -483,24 +507,29 @@ body.dark-mode
 .dark-mode .bg-body-tertiary  {
     --darkreader-bg--bs-bg-opacity: 1;
     background-color: rgb(36, 39, 41) !important;
-
 }
 
-.dark-mode .navbar-nav .nav-link.active {
+
+.dark-mode .navbar-nav .nav-link.active,
+.dark-mode .navbar-nav .nav-link.active:hover,
+.dark-mode .navbar-nav .nav-link.active:focus {
     color: white !important;
 }
 
-.dark-mode .nav-link.show {
+.dark-mode .navbar-collapse {
+    background-color: rgb(43, 47, 49) !important;
+    filter: brightness(0.8);
+}
+
+.dark-mode .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.dark-mode .navbar-light .navbar-brand {
     color: white !important;
 }
 
-.dark-mode .navbar-brand {
-    color: white !important;
-}
 
-.dark-mode .nav-type {
-    color: white !important;
-}
 
 
 
