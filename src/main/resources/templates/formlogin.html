@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="path/to/bootstrap.css">
+	<style>
+    /* Custom CSS for centering the login form */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+    }
+
+    .login-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-form form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-form label {
+      margin-bottom: 10px;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      padding: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+
+    .login-form input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="login-form">
+	<h1>LOGIN</h1>
+	<hr><br>
+	<form action="/login" method="post">
+
+		<label for="username">USERNAME</label>
+		<input type="text" name="username" id="username"><br>
+
+		<label for="password">PASSWORD</label>
+		<input type="password" name="password" id="password"><br>
+
+		<input type="submit" value="LOGIN">
+
+	</form>
+</div>
+</body>
+</html>

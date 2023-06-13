@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Videogame</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/main.js" defer></script>
+		<script src="js/videogame.js" defer></script>
+	</head>
+	<body>		
+		<div>
+			<h1>
+				<a href="/">SprinGames</a>
+			</h1>
+		</div>
+		<hr>
+		<div class="contenuto">
+			<button id = "modalNewItem" th:if="${isAdmin}"> Aggiungi gioco</button>
+			<div id="modal-add" class="modal">
+				<div id="modalNew" class="modal-content">
+					<span id="closeAdd" class="close">&times;</span>
+					<h2>Nuovo Videogame</h2>
+					<form action="/addVideogame" method="get">
+						
+						<label for="addTitolo">Titolo:</label><br>
+						<input type="text" id="addTitolo" name="titolo" placeholder="Inserisci il titolo">
+						<br>
+						
+						<label for="addSupporto">Supporto:</label><br>
+						<input type="text" id="addSupporto" name="supporto" placeholder="Inserisci il supporto">
+						<br>
+						
+						<label for="addAnno">Anno:</label><br>
+						<input type="text" id="addAnno" name="anno" placeholder="Inserisci il nuovo anno">
+						<br>
+						
+						<label for="addCompletato">Completato:</label><br>
+						<input type="checkbox" id="addCompletato" name="completato" value="true">
+						<br>
+						
+						<label for="addVoto">Voto:</label><br>
+						<input type="text" id="addVoto" name="voto" placeholder="Inserisci il nuovo voto">
+						<br>
+						
+						<label for="addConsole">Console:</label><br>
+						<select id="addConsole" name="console_id">
+							<option th:each="console, iter : ${listaConsole}" th:value="${console.id}" th:text="${console.nome}"></option>
+						</select>
+						<br><br>
+						
+						<input type="submit" value="Modifica">
+						<input type="reset" value="Pulisci">
+					</form>
+				</div>
+			</div>
+			<div id="modal-mod" class="modal">
+				<div id="modItem" class="modal-content">
+					<span id="closeMod" class="close">&times;</span>
+					<h2>Modifica Videogioco</h2>
+					<form action="/modVideogame" method="get">
+						<input type="hidden" id="modId" name="id">
+						<br>
+						
+						<label for="modTitolo">Titolo:</label><br>
+						<input type="text" id="modTitolo" name="titolo" placeholder="Inserisci il nuovo titolo">
+						<br>
+						
+						<label for="modSupporto">Supporto:</label><br>
+						<input type="text" id="modSupporto" name="supporto" placeholder="Inserisci il nuovo supporto">
+						<br>
+						
+						<label for="modAnno">Anno:</label><br>
+						<input type="text" id="modAnno" name="anno" placeholder="Inserisci il nuovo anno">
+						<br>
+						
+						<label for="modCompletato">Completato:</label><br>
+						<input type="checkbox" id="modCompletato" name="completato" value="true">
+						<br>
+						
+						<label for="modVoto">Voto:</label><br>
+						<input type="text" id="modVoto" name="voto" placeholder="Inserisci il nuovo voto">
+						<br>
+						
+						<label for="modConsole">Console:</label><br>
+						<select id="modConsole" name="console_id">
+							<option th:each="console, iter : ${listaConsole}" th:value="${console.id}" th:text="${console.nome}"></option>
+						</select>
+						<br><br>
+						
+						<input type="submit" value="Modifica">
+						<input type="reset" value="Pulisci">
+					</form>
+				</div>
+			</div>
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th hidden>ID</th>
+							<th>Titolo</th>
+							<th>Supporto</th>
+							<th>Anno</th>
+							<th>Completato</th>
+							<th>Voto</th>
+							<th>Console</th>
+						</tr>
+					</thead>
+					<tbody id="elenco">
+						<tr th:each="videogame, iter: ${listaVideogame}">
+							<td th:text="${videogame.id}" hidden></td>
+							<td th:text="${videogame.titolo}"></td>
+							<td th:text="${videogame.supporto}"></td>
+							<td th:text="${videogame.anno}"></td>
+							<td>
+								<input type="checkbox" th:checked="${videogame.completato}" disabled>
+							</td>
+							<td th:text="${videogame.voto}"></td>
+							<td th:text="${videogame.console.nome}"></td>
+							<td>
+								<button th:if="${isAdmin}"
+										th:data-id="${videogame.id}"
+										th:data-titolo="${videogame.titolo}"
+										th:data-supporto="${videogame.supporto}"
+										th:data-anno="${videogame.anno}"
+										th:data-completato="${videogame.completato}"
+										th:data-voto="${videogame.voto}"
+										th:data-console="${videogame.console.id}"
+										th:onclick="modGioco(this)">Modifica</button>
+							</td>
+							<td>
+								<form action="/delVideogame" method="get">
+									<input type="hidden" name="id" th:value="${videogame.id}">
+									<input th:if="${isAdmin}" type="submit" value="&times;">
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

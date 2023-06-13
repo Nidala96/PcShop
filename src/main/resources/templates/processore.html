@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="www">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Processore</title>
+
+</head>
+<body>
+<div>
+    <h1>
+        <a href="/">SprinGames</a>
+    </h1>
+</div>
+<hr>
+<div class="contenuto">
+    <button id="modalNewItem" th:if="${ruolo=='amministratore'}">Aggiungi processore</button>
+    <div id="modal-add" class="modal">
+        <div id="newItem" class="modal-content">
+            <span id="closeAdd" class="close">&times;</span>
+            <h2> Inserisci un nuovo processore</h2>
+            <form id="addForm" action="/addProcessore" method="get">
+                <label for="addNome">Nome:</label><br>
+                <input type="text" id="addNome" name="nome" placeholder="Inserisci il nome">
+                <br>
+
+                <label for="addMarca">Marca:</label><br>
+                <input type="text" id="addMarca" name="marca" placeholder="Inserisci la marca">
+                <br>
+
+                <label for="addPrezzo">Prezzo:</label><br>
+                <input type="number" id="addPrezzo" name="prezzo" placeholder="Inserisci il prezzo">
+                <br>
+
+                <label for="addDescrizione">Descrizione:</label><br>
+                <input type="text" id="addDescrizione" name="descrizione" placeholder="Inserisci la descrizione">
+                <br><br>
+
+                <input type="submit" value="Aggiungi">
+                <input type="reset" value="Pulisci">
+            </form>
+        </div>
+    </div>
+    <!-- gestione modifica -->
+    <div id="modal-mod" class="modal">
+        <div id="modItem" class="modal-content">
+            <span id="closeMod" class="close">&times;</span>
+            <h2> Modifica Processore</h2>
+            <form id="modForm" action="/modProcessore" method="get">
+                <input id="modId" name="id" type="hidden">
+
+                <label for="modNome">Nome:</label><br>
+                <input type="text" id="modNome" name="nome" placeholder="Inserisci il nome">
+                <br>
+
+                <label for="modMarca">Marca:</label><br>
+                <input type="text" id="modMarca" name="marca" placeholder="Inserisci la marca">
+                <br>
+
+                <label for="modPrezzo">Prezzo:</label><br>
+                <input type="number" id="modPrezzo" name="prezzo" placeholder="Inserisci il prezzo">
+                <br>
+
+                <label for="modDescrizione">Descrizione:</label><br>
+                <input type="text" id="modDescrizione" name="descrizione" placeholder="Inserisci la descrizione">
+                <br><br>
+
+                <input type="submit" value="Modifica">
+                <input type="reset" value="Pulisci">
+            </form>
+        </div>
+    </div>
+    <div>
+        <h2><em>ELENCO PROCESSORI</em></h2>
+        <table>
+            <thead>
+            <tr>
+                <th hidden>ID</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Prezzo</th>
+                <th>Descrizione</th>
+            </tr>
+            </thead>
+            <tbody id="elenco">
+            <tr th:each="processore, iter: ${listaProcessori}">
+                <td th:text="${processore.id}" hidden></td>
+                <td th:text="${processore.nome}"></td>
+                <td th:text="${processore.marca}"></td>
+                <td th:text="${processore.prezzo}"></td>
+                <td th:text="${processore.descrizione}"></td>
+                <td>
+                    <button th:if="${ruolo=='amministratore'}"
+                            th:data-id="${processore.id}"
+                            th:data-nome="${processore.nome}"
+                            th:data-marca="${processore.marca}"
+                            th:data-prezzo="${processore.prezzo}"
+                            th:data-descrizione="${processore.descrizione}"
+                            th:onclick="modProcessore(this)">Modifica</button>
+                </td>
+                <td>
+                    <form action="/delProcessore" method="get">
+                        <input type="hidden" name="id" th:value="${processore.id}">
+                        <input th:if="${ruolo=='amministratore'}" type="submit" value="Elimina">
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
