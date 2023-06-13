@@ -2,6 +2,7 @@ package com.demo.spring.games.controller;
 
 import java.util.Map;
 
+import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -119,7 +120,13 @@ public class HomeController
 		session.setAttribute("utente", null);
 		return "redirect:formlogin";
 	}
-	
+
+	//creo un metodo che consenta all'utente di loggare come ospite, quindi non può modificare o acquistare
+	@PostMapping("/guest")
+	public String guest(HttpSession session)
+	{
+		return "redirect:/pc";
+	}
 	
 	
 }
