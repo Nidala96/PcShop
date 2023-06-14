@@ -1,7 +1,11 @@
 package com.demo.spring.games.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import com.demo.spring.games.entities.Gpu;
+import com.demo.spring.games.entities.Pc;
 import com.demo.spring.games.entities.Utente;
 import com.demo.spring.games.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,28 +40,53 @@ public class PcController {
 
 	@Autowired RamService ramService;
 	
-	@RequestMapping(path = "/pc", method = RequestMethod.GET) 
-	public String listPc(Model model, HttpSession session) {
+	@RequestMapping(path = "/pc", method = RequestMethod.GET)
+	public String listPc(Model model, HttpSession session, @RequestParam(name = "filtroGpu", required = false) String filtroGpu,
+						 @RequestParam(name = "filtroCpu", required = false) String filtroCpu,
+						 @RequestParam(name = "filtroRam", required = false) String filtroRam,
+						 @RequestParam(name = "filtroHardDisk", required = false) String filtroHardDisk) {
 		boolean isAdmin = false;
 		Object utenteObj = session.getAttribute("utente");
-		if(utenteObj instanceof Utente){
+		if (utenteObj instanceof Utente) {
 			Utente utente = (Utente) utenteObj;
-			if(utente.getRuolo().equals("amministratore")){
+			if (utente.getRuolo().equals("amministratore")) {
 				isAdmin = true;
 			}
 		}
 		model.addAttribute("isAdmin", isAdmin);
-		System.out.println(pcService.getPcs());
-		model.addAttribute("listPc", pcService.getPcs());
-		model.addAttribute("listProcessori", processoreService.getProcessori());
-		model.addAttribute("listGpu", gpuService.getGpus());
-		model.addAttribute("listSchedeMadre", schedamadreService.getSchedeMadre());
-		model.addAttribute("listCasePc", casepcService.getCasePc());
-		model.addAttribute("listRam", ramService.getRams());
-		model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
-		System.out.println(ramService.getRams());
-		return "pc.html";
+		List<Pc> pcsFiltrati = new ArrayList<>();
+
+
+		if (filtroGpu == null && filtroCpu == null && filtroRam == null && filtroHardDisk == null) {
+			pcsFiltrati = pcService.getPcs();
+		} else {
+			for (Pc pc : pcService.getPcs()) {
+				if ((filtroGpu == null || filtroGpu.isEmpty() || pc.getGpu().getNome().equals(filtroGpu))
+						&& (filtroCpu == null || filtroCpu.isEmpty() || pc.getProcessore().getNome().equals(filtroCpu))
+						&& (filtroRam == null || filtroRam.isEmpty() || pc.getRam().getNome().equals(filtroRam))
+						&& (filtroHardDisk == null || filtroHardDisk.isEmpty() || pc.getHardDisk().getNome().equals(filtroHardDisk))) {
+					pcsFiltrati.add(pc);
+				}
+			}
+		}
+			System.out.println(filtroGpu);
+			System.out.println(pcsFiltrati);
+			System.out.println(pcService.getPcs());
+			model.addAttribute("listPc", pcsFiltrati);
+			model.addAttribute("listProcessori", processoreService.getProcessori());
+			model.addAttribute("listGpu", gpuService.getGpus());
+			model.addAttribute("listSchedeMadre", schedamadreService.getSchedeMadre());
+			model.addAttribute("listCasePc", casepcService.getCasePc());
+			model.addAttribute("listRam", ramService.getRams());
+			model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
+			System.out.println(ramService.getRams());
+			return "pc.html";
+
 	}
+
+
+
+
 	
 	@RequestMapping(path="/modPC", method = RequestMethod.GET)
 	public String updatePc(@RequestParam Map<String, String> params) {
@@ -76,4 +105,6 @@ public class PcController {
 		pcService.addPC(params);
 		return "redirect:/pc";
 	}
+
+
 }

@@ -197,12 +197,42 @@ function darkTheme()
 
 <h1 id="titolo-1">I nostri PC assemblati</h1>
 
+<div class="flex-container">
+    <div class="shell-filter">
+    <form action="/pc" method="GET" class="custom-form">
+        <h2>Filtro pc</h2>
 
+        <label for="filtroCpu" class="form-label">Seleziona CPU:</label>
+        <select name="filtroCpu" id="filtroCpu" class="custom-select" selected>
+            <option th:value="${null}">-----</option>
+            <option th:each="cpu, iter : ${listProcessori}" th:value="${cpu.nome}" th:text="${cpu.nome}"></option>
+        </select>
 
+        <label for="filtroGpu" class="form-label">Seleziona GPU:</label>
+        <select name="filtroGpu" id="filtroGpu" class="custom-select" selected>
+            <option th:value="${null}">-----</option>
+            <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.nome}" th:text="${gpu.nome}"></option>
+        </select>
+
+        <label for="filtroRam" class="form-label">Seleziona RAM:</label>
+        <select name="filtroRam" id="filtroRam" class="custom-select" selected>
+            <option th:value="${null}">-----</option>
+            <option th:each="ram, iter : ${listRam}" th:value="${ram.nome}" th:text="${ram.nome}"></option>
+        </select>
+
+        <label for="filtroHardDisk" class="form-label">Seleziona Hard Disk:</label>
+        <select name="filtroHardDisk" id="filtroHardDisk" class="custom-select">
+            <option th:value="${null}" selected>-----</option>
+            <option th:each="hardDisk, iter : ${listHardDisk}" th:value="${hardDisk.nome}" th:text="${hardDisk.nome}"></option>
+        </select>
+
+        <button class="btn btn-primary d-inline p-2 mr-2" id="filter-button" type="submit">Filtra</button>
+    </form>
+</div>
 <div class="shell">
   <div class="container">
     <div class="row">
-      <div th:each="pc : ${listPc}" class="col-md-3">
+      <div th:each="pc, iterStat : ${listPc}" class="col-md-3 card-box" th:if="${iterStat.index < 9}">
         <div class="wsk-cp-product">
           <div class="wsk-cp-img">
             <img src="https://m.media-amazon.com/images/I/51qnOdypvjL.jpg" alt="Product" class="img-responsive" />
@@ -270,21 +300,16 @@ function darkTheme()
 						<button th:data-id="${pc.id}" class="btn btn-primary d-inline p-2 mr-2" style="width: 50px; height:45px; margin-bottom: 10px; font-size: 14px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;" onclick="addToCart(this)"> <i class="fa-sharp fa-solid fa-cart-plus fa-2xl" ></i></button>
 
 					</div>
-
     
 				  </div>
-				  
- 
-			</div>
 
-            
-            
-            
+			</div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <div class="contenuto">
@@ -427,6 +452,13 @@ function darkTheme()
             </div>
         </div>
 </div>
+
+
+
+
+
+
+
 
 
 <footer class="text-center text-lg-start bg-dark text-white">
