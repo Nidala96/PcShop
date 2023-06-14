@@ -1,43 +1,124 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <!-- Font Awesome -->
+  <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
+          rel="stylesheet"
+  />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+        input[type="text"],
+        input[type="password"],
+        textarea {
+          background-color: white !important;
+        }
+    </style>
   <meta charset="UTF-8">
   <title>Registrazione Utente</title>
   <!-- Aggiungi qui i tuoi collegamenti a CSS o JavaScript -->
 </head>
 <body>
-<h1>Registrazione Utente</h1>
-<form name="registrazioneUtente" th:action="@{/register}" th:object="${utente}" method="post">
-  <div>
-    <label for="nome">Nome:</label>
-    <input type="text" th:field="${utente.nome}" id="nome" name="nome" required>
+
+<!-- MDB -->
+<section class="vh-100" style="background-image: url('https://res.cloudinary.com/corsair-pwa/image/upload/f_auto,q_auto/v1/akamai/landing/pc-builder/images/bg-bundle-save.jpg'); background-color: transparent; background-size: cover; background-repeat: no-repeat;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px; background-color: transparent;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: #86E825; font-family: 'Montserrat', sans-serif;" >Registrati</p>
+
+                <form name="registrazioneUtente" th:action="@{/register}" th:object="${utente}" method="post" class="mx-1 mx-md-4">
+
+                <!--Nome-->
+                  <div class="d-flex flex-row align-items-center mb-4" style="color: white;">
+                    <i class="fa-solid fa-user-plus fa-lg me-2"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" th:field="${utente.nome}" id="nome" name="nome" class="form-control" required/>
+                      <label class="form-label" for="nome">Nome</label>
+                    </div>
+                  </div>
+
+                <!--Cognome-->
+                  <div class="d-flex flex-row align-items-center mb-4" style="color: white;">
+                    <i class="fa-solid fa-user-plus fa-lg me-2"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" th:field="${utente.cognome}" id="cognome" name="cognome" class="form-control" required />
+                      <label class="form-label" for="cognome">Cognome</label>
+                    </div>
+                  </div>
+
+                <!--Username-->
+                  <div class="d-flex flex-row align-items-center mb-4" style="color: white;">
+                    <i class="fa-solid fa-user fa-lg me-3"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" th:field="${utente.username}" id="username" name="username" class="form-control" required/>
+                      <label class="form-label" for="username">Username</label>
+                    </div>
+                  </div>
+
+                <!--Password-->
+                  <div class="d-flex flex-row align-items-center mb-4" style="color: white;">
+                    <i class="fa-solid fa-lock fa-lg me-3"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="password" class="form-control" th:field="${utente.password}" id="password" name="password" required />
+                      <label class="form-label" for="password">Password</label>
+                    </div>
+                  </div>
+
+                <!--Ruolo-->
+                  <div class="d-flex flex-row align-items-center mb-4" style="color: white;">
+                    <i class="fa-solid fa-briefcase fa-lg me-3"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" th:field="${utente.ruolo}" id="ruolo" name="ruolo" class="form-control" required/>
+                      <label class="form-label" for="ruolo">Ruolo</label>
+                    </div>
+                  </div>
+
+                  <div class="form-check d-flex justify-content-center mb-5" style="color: white;">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label" for="form2Example3c">
+                      Accetto tutte le condizioni dei <a href="#!">Termini di servizio</a>
+                    </label>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <input type="submit" value="Registrati">
+                  </div>
+
+                  <div th:if="${error}" class="error-message">
+                    <p th:text="${error}"></p>
+                  </div>
+
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="cognome">Cognome:</label>
-    <input type="text" th:field="${utente.cognome}" id="cognome" name="cognome" required>
-  </div>
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" th:field="${utente.username}" id="username" name="username" required>
-  </div>
-  <div>
-    <label for="ruolo">Ruolo:</label>
-    <input type="text" th:field="${utente.ruolo}" id="ruolo" name="ruolo" required>
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" th:field="${utente.password}" id="password" name="password" required>
-  </div>
-  <div>
-    <label for="confirmPassword">Conferma Password:</label>
-    <input type="password" id="confirmPassword" name="confirmPassword" required>
-  </div>
-  <div>
-    <input type="submit" value="Registrati">
-  </div>
-  <div th:if="${error}" class="error-message">
-    <p th:text="${error}"></p>
-  </div>
-</form>
+</section>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
+></script>
 </body>
 </html>
