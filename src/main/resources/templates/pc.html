@@ -202,6 +202,12 @@ function darkTheme()
     <form action="/pc" method="GET" class="custom-form">
         <h2>Filtro pc</h2>
 
+        <label  for="filtroPrezzo" class="form-label">Seleziona Prezzo:</label>
+        <div class="range">
+            <input type="range" class="form-range" min=1 max=3000 step="1" value="3000"id="filtroPrezzo" name="filtroPrezzo" />
+        </div>
+
+
         <label for="filtroCpu" class="form-label">Seleziona CPU:</label>
         <select name="filtroCpu" id="filtroCpu" class="custom-select" selected>
             <option th:value="${null}">-----</option>
@@ -228,8 +234,92 @@ function darkTheme()
 
         <button class="btn btn-primary d-inline p-2 mr-2" id="filter-button" type="submit">Filtra</button>
         </form>
-        <div class="contenuto"><br>
+    </div>
+    <div class="shell">
+        <div class="container">
+            <div class="row">
+                <div th:each="pc, iterStat : ${listPc}" class="col-md-3 card-box" th:if="${iterStat.index < 9}">
+                    <div class="wsk-cp-product">
+                        <div class="wsk-cp-img">
+                            <img src="https://m.media-amazon.com/images/I/51qnOdypvjL.jpg" alt="Product" class="img-responsive" />
+                        </div>
+                        <div class="wsk-cp-text">
+                            <!--  <div class="category">
+                              <h5 th:text="${pc.tipo}" class="card-title"></h5>
+                            </div>-->
+                            <div class="title-product">
+                                <h3 th:text="${pc.nome}"></h3>
+                            </div>
+                            <div class="description-prod">
+                                <p th:text="'Processore: ' + ${pc.processore.nome}" class="card-text"><small class="text-muted"></small></p>
+                                <p th:text="'Scheda Video: ' + ${pc.gpu.nome}" class="card-text"></p>
+                                <p th:text="'Scheda Madre: ' + ${pc.schedaMadre.nome}" class="card-text"></p>
+                                <p th:text="'Case: ' + ${pc.casePc.nome}" class="card-text"></p>
+                                <p th:text="'Ram: ' + ${pc.ram.nome}" class="card-text"></p>
+                                <p th:text="'HardDisk: ' + ${pc.hardDisk.nome}" class="card-text"></p>
+
+
+                                <div style="display: flex; justify-content: center;">
+                                    <button  th:data-id="${pc.id}"
+                                             th:data-nome="${pc.nome}"
+                                             th:data-tipo="${pc.tipo}"
+                                             th:data-processore="${pc.processore.id}"
+                                             th:data-gpu="${pc.gpu.id}"
+                                             th:data-schedaMadre="${pc.schedaMadre.id}"
+                                             th:data-casePc="${pc.casePc.id}"
+                                             th:data-percentualeSconto="${pc.percentualeSconto}"
+                                             th:data-ram="${pc.ram.id}"
+                                             th:data-hardDisk="${pc.hardDisk.id}"
+                                             th:onclick="modifyPc(this)"
+                                             type="button" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 150px; margin-bottom: 10px ">Modifica
+                                    </button>
+
+                                    <form action="/delPc" th:if="${isAdmin}"method="get" class="d-inline">
+                                        <input type="hidden" name="id" th:value="${pc.id}">
+                                        <input  type="submit" value="ELIMINA" class="btn btn-danger p-2 ml-2" style="margin-left: 10px;">
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <div class="card-footer">
+                                <div class="wcf-left" style="margin-top: 10px; margin-bottom: 5px">
+				    <span class="price">
+				      <p>
+				        <span style="margin-left: 15px" id="prezzoriginale" th:if="${pc.percentualeSconto != 1}"><s th:text="${pc.prezzo} + ' €'"></s></span><br>
+				        <span th:text="${pc.prezzo * pc.percentualeSconto} + ' €'" id="prezzoscontato" th:if="${pc.percentualeSconto != 1}"></span>
+				        <span th:text="${pc.prezzo} + ' €'" th:if="${pc.percentualeSconto == 1}"></span>
+				      </p>
+				    </span>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 10px;">
+
+
+
+
+                                    <div style="display: flex; justify-content: center; align-items: center; margin-top:15px">
+                                        <div class="quantity-wrapper" style="margin-right: 10px;">
+                                            <input type="number" class="quantity" value="1" style="width: 40px; margin-bottom:5px;text-align: center;" />
+                                        </div>
+
+                                        <button th:data-id="${pc.id}" class="btn btn-primary d-inline p-2 mr-2" style="width: 50px; height:45px; margin-bottom: 10px; font-size: 14px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;" onclick="addToCart(this)"> <i class="fa-sharp fa-solid fa-cart-plus fa-2xl" ></i></button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         <button id = "modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 200px; margin-bottom: 50px ">Aggiungi PC</button>
+        <div class="contenuto"><br>
+
             <div class="text-center">
 
                 <div id="modal-add" class="modal">
@@ -292,9 +382,10 @@ function darkTheme()
                             <br><br>
 
                             <input type="submit" value="AGGIUNGI PC">
-
+                        </form>
 
                     </div>
+
                 </div>
 
                 <div id="modal-mod" class="modal">
@@ -369,91 +460,11 @@ function darkTheme()
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
+
+
     </form>
 </div>
-<div class="shell">
-  <div class="container">
-    <div class="row">
-      <div th:each="pc, iterStat : ${listPc}" class="col-md-3 card-box" th:if="${iterStat.index < 9}">
-        <div class="wsk-cp-product">
-          <div class="wsk-cp-img">
-            <img src="https://m.media-amazon.com/images/I/51qnOdypvjL.jpg" alt="Product" class="img-responsive" />
-          </div>
-          <div class="wsk-cp-text">
-            <!--  <div class="category">
-              <h5 th:text="${pc.tipo}" class="card-title"></h5>
-            </div>-->
-            <div class="title-product">
-              <h3 th:text="${pc.nome}"></h3>
-            </div>
-            <div class="description-prod">
-              <p th:text="'Processore: ' + ${pc.processore.nome}" class="card-text"><small class="text-muted"></small></p>
-              <p th:text="'Scheda Video: ' + ${pc.gpu.nome}" class="card-text"></p>
-              <p th:text="'Scheda Madre: ' + ${pc.schedaMadre.nome}" class="card-text"></p>
-              <p th:text="'Case: ' + ${pc.casePc.nome}" class="card-text"></p>
-                <p th:text="'Ram: ' + ${pc.ram.nome}" class="card-text"></p>
-                <p th:text="'HardDisk: ' + ${pc.hardDisk.nome}" class="card-text"></p>
 
-              
-			<div style="display: flex; justify-content: center;">
-              <button  th:data-id="${pc.id}"
-                       th:data-nome="${pc.nome}"
-                       th:data-tipo="${pc.tipo}"
-                       th:data-processore="${pc.processore.id}"
-                       th:data-gpu="${pc.gpu.id}"
-                       th:data-schedaMadre="${pc.schedaMadre.id}"
-                       th:data-casePc="${pc.casePc.id}"
-                       th:data-percentualeSconto="${pc.percentualeSconto}"
-                       th:data-ram="${pc.ram.id}"
-                       th:data-hardDisk="${pc.hardDisk.id}"
-                       th:onclick="modifyPc(this)"
-                       type="button" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 150px; margin-bottom: 10px ">Modifica
-             </button>
-                            
-              <form action="/delPc" th:if="${isAdmin}"method="get" class="d-inline">
-                        <input type="hidden" name="id" th:value="${pc.id}">
-                        <input  type="submit" value="ELIMINA" class="btn btn-danger p-2 ml-2" style="margin-left: 10px;">
-              </form>
-            </div>
-            </div>
-            
-            
-            <div class="card-footer">
-				  <div class="wcf-left" style="margin-top: 10px; margin-bottom: 5px">
-				    <span class="price">
-				      <p>
-				        <span style="margin-left: 15px" id="prezzoriginale" th:if="${pc.percentualeSconto != 1}"><s th:text="${pc.prezzo} + ' €'"></s></span><br>
-				        <span th:text="${pc.prezzo * pc.percentualeSconto} + ' €'" id="prezzoscontato" th:if="${pc.percentualeSconto != 1}"></span>
-				        <span th:text="${pc.prezzo} + ' €'" th:if="${pc.percentualeSconto == 1}"></span>
-				      </p>
-				    </span>
-				  </div>
-				  
-				  <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 10px;">
-				  
-				    
-				    
-				    
-				    <div style="display: flex; justify-content: center; align-items: center; margin-top:15px">
-					  <div class="quantity-wrapper" style="margin-right: 10px;">
-					    <input type="number" class="quantity" value="1" style="width: 40px; margin-bottom:5px;text-align: center;" />
-					  </div>
-		
-						<button th:data-id="${pc.id}" class="btn btn-primary d-inline p-2 mr-2" style="width: 50px; height:45px; margin-bottom: 10px; font-size: 14px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;" onclick="addToCart(this)"> <i class="fa-sharp fa-solid fa-cart-plus fa-2xl" ></i></button>
-
-					</div>
-    
-				  </div>
-
-			</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 
 <div class="contenuto">

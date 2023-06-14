@@ -44,7 +44,8 @@ public class PcController {
 	public String listPc(Model model, HttpSession session, @RequestParam(name = "filtroGpu", required = false) String filtroGpu,
 						 @RequestParam(name = "filtroCpu", required = false) String filtroCpu,
 						 @RequestParam(name = "filtroRam", required = false) String filtroRam,
-						 @RequestParam(name = "filtroHardDisk", required = false) String filtroHardDisk) {
+						 @RequestParam(name = "filtroHardDisk", required = false) String filtroHardDisk,
+						 @RequestParam(name = "filtroPrezzo", required = false) Double filtroPrezzo) {
 		boolean isAdmin = false;
 		Object utenteObj = session.getAttribute("utente");
 		if (utenteObj instanceof Utente) {
@@ -57,18 +58,21 @@ public class PcController {
 		List<Pc> pcsFiltrati = new ArrayList<>();
 
 
-		if (filtroGpu == null && filtroCpu == null && filtroRam == null && filtroHardDisk == null) {
+		if (filtroGpu == null && filtroCpu == null && filtroRam == null && filtroHardDisk == null && filtroPrezzo == null) {
 			pcsFiltrati = pcService.getPcs();
 		} else {
 			for (Pc pc : pcService.getPcs()) {
 				if ((filtroGpu == null || filtroGpu.isEmpty() || pc.getGpu().getNome().equals(filtroGpu))
 						&& (filtroCpu == null || filtroCpu.isEmpty() || pc.getProcessore().getNome().equals(filtroCpu))
 						&& (filtroRam == null || filtroRam.isEmpty() || pc.getRam().getNome().equals(filtroRam))
-						&& (filtroHardDisk == null || filtroHardDisk.isEmpty() || pc.getHardDisk().getNome().equals(filtroHardDisk))) {
+						&& (filtroHardDisk == null || filtroHardDisk.isEmpty() || pc.getHardDisk().getNome().equals(filtroHardDisk))
+						&&  (filtroPrezzo == null || filtroPrezzo == 0 || pc.getPrezzo() <= filtroPrezzo)) {
 					pcsFiltrati.add(pc);
 				}
 			}
 		}
+
+			System.out.println(filtroPrezzo);
 			System.out.println(filtroGpu);
 			System.out.println(pcsFiltrati);
 			System.out.println(pcService.getPcs());
