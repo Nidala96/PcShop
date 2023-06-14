@@ -235,10 +235,10 @@ function darkTheme()
                        th:data-ram="${pc.ram.id}"
                        th:data-hardDisk="${pc.hardDisk.id}"
                        th:onclick="modifyPc(this)"
-                       type="button" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 150px; margin-bottom: 10px ">Modifica
+                       type="button" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 150px; margin-bottom: 10px ">Modifica
              </button>
                             
-              <form action="/delPc" method="get" class="d-inline">
+              <form action="/delPc" th:if="${isAdmin}"method="get" class="d-inline">
                         <input type="hidden" name="id" th:value="${pc.id}">
                         <input  type="submit" value="ELIMINA" class="btn btn-danger p-2 ml-2" style="margin-left: 10px;">
               </form>
@@ -288,7 +288,7 @@ function darkTheme()
 </div>
 
 <div class="contenuto">
-    <button id = "modalNewItem" th:if="${isAdmin}">Aggiungi gioco</button>
+    <button id = "modalNewItem" th:if="${isAdmin}">Aggiungi PC</button>
     <div id="modal-add" class="modal">
         <div id="modalNew" class="modal-content">
             <span id="closeAdd" class="close">&times;</span>
