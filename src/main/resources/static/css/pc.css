@@ -545,6 +545,59 @@ body.dark-mode
     color: white !important;
 }
 
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.form-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.custom-select {
+  margin-top: 5px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+#filter-button {
+   margin-top: 15px !important;
+}
+
+.filter-button:hover {
+  background-color: #45a049;
+}
+
+option {
+  padding: 5px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.card-box {
+width:30% !important;
+}
+
+.shell-filter {
+padding: 95px 0;
+}
+
+
 
 
 
