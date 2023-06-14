@@ -227,6 +227,149 @@ function darkTheme()
         </select>
 
         <button class="btn btn-primary d-inline p-2 mr-2" id="filter-button" type="submit">Filtra</button>
+        <div class="contenuto"><br>
+        <button id = "modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 200px; margin-bottom: 50px ">Aggiungi PC</button>
+            <div class="text-center">
+
+                <div id="modal-add" class="modal">
+                    <div id="modalNew" class="modal-content">
+                        <span id="closeAdd" class="close">&times;</span>
+                        <h1>Aggiungi PC</h1>
+                        <form method="get" action="/addPC" >
+
+                            <label for="addNome">Nome:</label><br>
+                            <select id="addNome" name="nome" required>
+                                <option value="">Seleziona un'opzione</option>
+                                <option value="PC Gaming">PC Gaming</option>
+                                <option value="PC Ufficio">PC Ufficio</option>
+                            </select>
+                            <br><br>
+
+
+                            <label for="addTipo">Tipo:</label><br>
+                            <select id="addTipo" name="tipo" required>
+                                <option value="">Seleziona un'opzione</option>
+                                <option value="Gaming">gaming</option>
+                                <option value="Ufficio">ufficio</option>
+                            </select>
+                            <br><br>
+
+                            <label for="addProcessore">Processore:</label><br>
+                            <select id="addProcessore" name="processore_id" required>
+                                <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}" th:text="${processori.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="addGpu">Gpu:</label><br>
+                            <select id="addGpu" name="gpu_id" required>
+                                <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.id}" th:text="${gpu.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="addSchedaMadre">SchedaMadre:</label><br>
+                            <select id="addSchedaMadre" name="schedaMadre_id" required>
+                                <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="addRam">Ram:</label><br>
+                            <select id="addRam" name="ram_id" required>
+                                <option th:each="ram, iter : ${listRam}" th:value="${ram.id}" th:text="${ram.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="addHardDisk">HardDisk:</label><br>
+                            <select id="addHardDisk" name="hardDisk_id" required>
+                                <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="addCasePc">Case Pc:</label><br>
+                            <select id="addCasePc" name="casePc_id" required>
+                                <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}" th:text="${casepc.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <input type="submit" value="AGGIUNGI PC">
+
+                        </form>
+                    </div>
+                </div>
+
+                <div id="modal-mod" class="modal">
+                    <div id="modItem" class="modal-content">
+                        <span id="closeMod" class="close">&times;</span>
+                        <h1>Update PC</h1>
+                        <form method="get" action="/modPC">
+
+                            <input type="hidden" id="modId" name="id">
+                            <br>
+
+                            <label for="modNome">Nome:</label><br>
+                            <select id="modNome" name="nome" required>
+                                <option value="">Seleziona un'opzione</option>
+                                <option value="PC Gaming">PC Gaming</option>
+                                <option value="PC Ufficio">PC Ufficio</option>
+                            </select>
+                            <br><br>
+
+
+                            <label for="modTipo">Tipo:</label><br>
+                            <select id="modTipo" name="tipo" required>
+                                <option value="">Seleziona un'opzione</option>
+                                <option value="gaming">gaming</option>
+                                <option value="ufficio">ufficio</option>
+                            </select>
+                            <br><br>
+
+
+                            <label for="modProcessore">Processore:</label><br>
+                            <select id="modProcessore" name="processore_id" required>
+                                <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}" th:text="${processori.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="modGpu">Gpu:</label><br>
+                            <select id="modGpu" name="gpu_id" required>
+                                <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.id}" th:text="${gpu.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="modSchedaMadre">SchedaMadre:</label><br>
+                            <select id="modSchedaMadre" name="schedaMadre_id" required>
+                                <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="modRam">Ram:</label><br>
+                            <select id="modRam" name="ram_id" required>
+                                <option th:each="ram, iter : ${listRam}" th:value="${ram.id}" th:text="${ram.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="modHardDisk">HardDisk:</label><br>
+                            <select id="modHardDisk" name="hardDisk_id" required>
+                                <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
+                            </select>
+                            <br><br>
+
+                            <label for="modCasePc">Case Pc:</label><br>
+                            <select id="modCasePc" name="casePc_id" required>
+                                <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}" th:text="${casepc.nome}"></option>
+                            </select>
+                            <br>
+                            <label class="form-label" for="modScontato">Example range</label>
+                            <div class="range">
+                                <input type="range" class="form-range" min=1 max=100 step="1" id="modScontato" name="percentualeSconto" />
+                            </div>
+                            <br><br>
+
+                            <input type="submit" value="AGGIORNA PC">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 <div class="shell">
@@ -313,156 +456,7 @@ function darkTheme()
 </div>
 
 <div class="contenuto">
-          <div class="text-center">
-    <button id = "modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 200px; margin-bottom: 50px ">Aggiungi PC</button>
-          <div id="modal-add" class="modal">
-        <div id="modalNew" class="modal-content">
-            <span id="closeAdd" class="close">&times;</span>
-<h1>Aggiungi PC</h1>
-<form method="get" action="/addPC" >
-
-    <label for="addNome">Nome:</label><br>
-		<select id="addNome" name="nome" required>
-			  <option value="">Seleziona un'opzione</option>
-			  <option value="PC Gaming">PC Gaming</option>
-			  <option value="PC Ufficio">PC Ufficio</option>
-		</select>
-		<br><br>
-
-
-    <label for="addTipo">Tipo:</label><br>
-		<select id="addTipo" name="tipo" required>
-			  <option value="">Seleziona un'opzione</option>
-			  <option value="Gaming">gaming</option>
-			  <option value="Ufficio">ufficio</option>
-		</select>
-		<br><br>
-
-    <label for="addProcessore">Processore:</label><br>
-    <select id="addProcessore" name="processore_id" required>
-        <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}" th:text="${processori.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="addGpu">Gpu:</label><br>
-    <select id="addGpu" name="gpu_id" required>
-        <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.id}" th:text="${gpu.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="addSchedaMadre">SchedaMadre:</label><br>
-    <select id="addSchedaMadre" name="schedaMadre_id" required>
-        <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="addRam">Ram:</label><br>
-    <select id="addRam" name="ram_id" required>
-        <option th:each="ram, iter : ${listRam}" th:value="${ram.id}" th:text="${ram.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="addHardDisk">HardDisk:</label><br>
-    <select id="addHardDisk" name="hardDisk_id" required>
-        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
-    </select>
-    <br><br>
-    
-    <label for="addCasePc">Case Pc:</label><br>
-    <select id="addCasePc" name="casePc_id" required>
-        <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}" th:text="${casepc.nome}"></option>
-    </select>
-    <br><br>
-    
-    <input type="submit" value="AGGIUNGI PC">
-    
-</form>
-        </div>
-    </div>
-
-    <div id="modal-mod" class="modal">
-        <div id="modItem" class="modal-content">
-            <span id="closeMod" class="close">&times;</span>
-            <h1>Update PC</h1>
-<form method="get" action="/modPC">
-
-    <input type="hidden" id="modId" name="id">
-    <br>
-    
-    <label for="modNome">Nome:</label><br>
-		<select id="modNome" name="nome" required>
-			  <option value="">Seleziona un'opzione</option>
-			  <option value="PC Gaming">PC Gaming</option>
-			  <option value="PC Ufficio">PC Ufficio</option>
-		</select>
-		<br><br>
-
-
-   <label for="modTipo">Tipo:</label><br>
-		<select id="modTipo" name="tipo" required>
-			  <option value="">Seleziona un'opzione</option>
-			  <option value="gaming">gaming</option>
-			  <option value="ufficio">ufficio</option>
-		</select>
-		<br><br>
-
-
-    <label for="modProcessore">Processore:</label><br>
-    <select id="modProcessore" name="processore_id" required>
-        <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}" th:text="${processori.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="modGpu">Gpu:</label><br>
-    <select id="modGpu" name="gpu_id" required>
-        <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.id}" th:text="${gpu.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="modSchedaMadre">SchedaMadre:</label><br>
-    <select id="modSchedaMadre" name="schedaMadre_id" required>
-        <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="modRam">Ram:</label><br>
-    <select id="modRam" name="ram_id" required>
-        <option th:each="ram, iter : ${listRam}" th:value="${ram.id}" th:text="${ram.nome}"></option>
-    </select>
-    <br><br>
-
-    <label for="modHardDisk">HardDisk:</label><br>
-    <select id="modHardDisk" name="hardDisk_id" required>
-        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
-    </select>
-    <br><br>
-    
-    <label for="modCasePc">Case Pc:</label><br>
-    <select id="modCasePc" name="casePc_id" required>
-        <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}" th:text="${casepc.nome}"></option>
-    </select>
-    <br>
-    <label class="form-label" for="modScontato">Example range</label>
-    <div class="range">
-        <input type="range" class="form-range" min=1 max=100 step="1" id="modScontato" name="percentualeSconto" />
-    </div>
-    <br><br>
-    
-    <input type="submit" value="AGGIORNA PC">
-</form>
-            </div>
-        </div>
-</div>
-
-
-
-
-
-
-
-
-
-<footer class="text-center text-lg-start bg-dark text-white">
+    <footer class="text-center text-lg-start bg-dark text-white">
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->

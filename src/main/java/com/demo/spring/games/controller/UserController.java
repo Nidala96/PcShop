@@ -1,5 +1,6 @@
 package com.demo.spring.games.controller;
 
+
 import com.demo.spring.games.database.UtenteDao;
 import com.demo.spring.games.entities.Utente;
 import jakarta.servlet.http.HttpSession;
@@ -22,11 +23,10 @@ public class UserController
     ApplicationContext context;
 
     @GetMapping("/formregistrazione")
-    public String formRegistrazione(Model model)
-    {
+    public String formRegistrazione(Model model){
         Utente utente = context.getBean("utenteVuoto", Utente.class);
         model.addAttribute("utente",utente);
-        return "registrazioneutente.html";
+        return "formregistrazione.html";
     }
 
 
@@ -41,13 +41,13 @@ public class UserController
         // Verifica se l'utente esiste già nel sistema
         if (du.isUserExists(utente.getUsername())) {
             model.addAttribute("error", "Username già in uso");
-            return "registrazioneutente.html";
+            return "formregistrazione.html";
         }
         System.out.println("password model: " + utente.getPassword());
         // Verifica se le password coincidono
         if (!utente.getPassword().equals(confirmPassword)) {
             model.addAttribute("error", "Le password non coincidono");
-            return "registrazioneutente.html";
+            return "formregistrazione.html";
         }
 
         // Salva l'utente nel database o esegui altre operazioni necessarie
@@ -59,4 +59,5 @@ public class UserController
         // Reindirizza l'utente alla pagina di successo o di login
         return "confermaregistrazione";
     }
+
 }
