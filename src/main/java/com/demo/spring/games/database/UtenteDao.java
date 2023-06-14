@@ -75,4 +75,13 @@ public class UtenteDao
 		}
 		return null;
 	}
+
+	public boolean isUserExists(String user){
+		List<Map<String,String>> ris = leggiTutti();
+		for(Map<String,String> m : ris){
+			if(m.get("username").equals(user))
+				return true;
+		}
+		return false;
+	}
 }

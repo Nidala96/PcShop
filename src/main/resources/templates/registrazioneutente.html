@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrazione Utente</title>
+  <!-- Aggiungi qui i tuoi collegamenti a CSS o JavaScript -->
+</head>
+<body>
+<h1>Registrazione Utente</h1>
+<form name="registrazioneUtente" th:action="@{/register}" th:object="${utente}" method="post">
+  <div>
+    <label for="nome">Nome:</label>
+    <input type="text" th:field="${utente.nome}" id="nome" name="nome" required>
+  </div>
+  <div>
+    <label for="cognome">Cognome:</label>
+    <input type="text" th:field="${utente.cognome}" id="cognome" name="cognome" required>
+  </div>
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" th:field="${utente.username}" id="username" name="username" required>
+  </div>
+  <div>
+    <label for="ruolo">Ruolo:</label>
+    <input type="text" th:field="${utente.ruolo}" id="ruolo" name="ruolo" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" th:field="${utente.password}" id="password" name="password" required>
+  </div>
+  <div>
+    <label for="confirmPassword">Conferma Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+  </div>
+  <div>
+    <input type="submit" value="Registrati">
+  </div>
+  <div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+  </div>
+</form>
+</body>
+</html>
