@@ -19,7 +19,7 @@ public class ProcessoreController {
     @Autowired
     private ProcessoreService processoreService;
 
-    @RequestMapping(path = "/processore", method = RequestMethod.GET)
+    @RequestMapping(path = "/pcbuilder", method = RequestMethod.GET)
     public String listProcessori(Model model, HttpSession session) {
         System.out.println(processoreService.getProcessori());
 
@@ -29,7 +29,7 @@ public class ProcessoreController {
         model.addAttribute("ruolo", ruolo);
 
         model.addAttribute("listaProcessori", processoreService.getProcessori());
-        return "processore.html";
+        return "pcbuilder.html";
     }
 
     @RequestMapping(path = "/modProcessore", method = RequestMethod.GET)
