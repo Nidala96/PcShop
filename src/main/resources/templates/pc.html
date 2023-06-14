@@ -313,11 +313,12 @@ function darkTheme()
 </div>
 
 <div class="contenuto">
-    <button id = "modalNewItem" th:if="${isAdmin}">Aggiungi PC</button>
-    <div id="modal-add" class="modal">
+          <div class="text-center">
+    <button id = "modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 200px; margin-bottom: 50px ">Aggiungi PC</button>
+          <div id="modal-add" class="modal">
         <div id="modalNew" class="modal-content">
             <span id="closeAdd" class="close">&times;</span>
-<h1>Add PC</h1>
+<h1>Aggiungi PC</h1>
 <form method="get" action="/addPC" >
 
     <label for="addNome">Nome:</label><br>
@@ -591,6 +592,6 @@ function darkTheme()
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"
 ></script>
 
-
+</div>
 </body>
 </html>

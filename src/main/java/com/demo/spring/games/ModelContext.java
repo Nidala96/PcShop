@@ -5,6 +5,7 @@ import java.util.Map;
 import com.demo.spring.games.entities.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
@@ -30,10 +31,18 @@ public class ModelContext
 	
 	@Bean
 	@Scope("prototype")
+	@Primary
 	public Utente utente(Map<String,String> map)
 	{
 		Utente u = new Utente();
 		u.fromMap(map);
+		return u;
+	}
+
+	@Bean
+	@Scope("prototype")
+	public Utente utenteVuoto(){
+		Utente u = new Utente();
 		return u;
 	}
 
