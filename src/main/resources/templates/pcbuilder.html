@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,11 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Build your pc</title>
-    <script src="js/pcbuilderHDD.js" defer></script>
-    <script src="js/pcbuilderRAM.js" defer></script>
-    <script src="js/pcbuilderCP.js" defer></script>
-    <script src="js/pcbuilderSM.js" defer></script>
-    <script src="js/pcbuilderGPU.js" defer></script>
     <script src="js/pcbuilder.js" defer></script>
     <script src="js/main.js" defer></script>
 
@@ -101,11 +96,11 @@
                 </li>
 
             </ul>
-            <input type="checkbox" onclick="darkTheme()"  value=false class="toggle" checked>
-            <form class="d-flex input-group w-auto">
+            <input type="checkbox" onclick="darkTheme()"  value=false class="toggle navbar-right" checked>
+            <form class="d-flex input-group w-auto navbar-right">
                 <input
                         type="search"
-                        class="form-control rounded"
+                        class="form-control"
                         placeholder="Search"
                         aria-label="Search"
                         aria-describedby="search-addon"
@@ -130,22 +125,11 @@
 <br>
 <br>
 <h1 id="titolo-1">Scegli i tuoi componenti</h1>
-<script>
-function darkTheme()
-{
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-  console.log("Test dark-mode");
-}
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
 
 
 
-<table>
+<div class="table-container">
+<table class="table">
     <thead>
     <tr>
         <th>COMPONENTE</th>
@@ -157,14 +141,14 @@ function darkTheme()
     <tbody>
     <tr>
         <td>
-            <button id = "modalNewItem">CHOOSE CPU</button> <!--onclick="toggleTable('cpu-table')"-->
+            <button class="button-style" id = "modalNewItem">CHOOSE CPU</button> <!--onclick="toggleTable('cpu-table')"-->
         </td>
         <td id="nCPU">NOMECPU</td>
         <td id="pCPU">PREZZOCPU</td>
-        <td>X</td>
+        <td><i class="fa-solid fa-xmark"></i></td>
     </tr>
     <tr>
-        <td colspan="4">
+        <td colspan="4" class="table-row">
 
             <div id="modal-add" class="modal">
                 <div id="modalNew" class="modal-content">
@@ -203,14 +187,14 @@ function darkTheme()
 
     <tr>
         <td>
-            <button id = "modalNewItemGPU">CHOOSE GPU</button>
+            <button class="button-style" id ="modalNewItemGPU" >CHOOSE GPU</button>
         </td>
         <td id="nGPU">NOMEGPU</td>
         <td id="pGPU">PREZZOGPU</td>
-        <td>X</td>
+        <td><i class="fa-solid fa-xmark"></i></td>
     </tr>
     <tr>
-        <td colspan="4">
+        <td colspan="4" class="table-row">
 
             <div id="modal-addGPU" class="modal">
                 <div id="modalNewGPU" class="modal-content">
@@ -242,23 +226,18 @@ function darkTheme()
 
         </td>
     </tr>
-
-    <!--SCHEDE MADRE-->
     <tr>
         <td>
-            <button id="modalNewItemSM">CHOOSE MOTHERBOARD</button>
+            <button class="button-style" onclick="toggleTable('motherboard-table')">CHOOSE MOTHERBOARD</button>
         </td>
         <td id="nSM">NOMESCHEDAMADRE</td>
         <td id="pSM">PREZZOSCHEDAMADRE</td>
-        <td>X</td>
+        <td><i class="fa-solid fa-xmark"></i></td>
     </tr>
     <tr>
-        <td colspan="4">
+        <td colspan="4" class="table-row">
 
-            <div id="modal-addSM" class="modal">
-                <div id="modalNewSM" class="modal-content">
-                    <span id="closeAddSM" class="close">&times;</span>
-            <table id="motherboard-table" style="display:table;">
+            <table id="motherboard-table" style="display:none;">
                 <thead>
                 <tr>
                     <th hidden>Id</th>
@@ -282,27 +261,19 @@ function darkTheme()
                 </tr>
                 </tbody>
             </table>
-                </div>
-            </div>
         </td>
     </tr>
-
-
-    <!--CASE PC-->
     <tr>
         <td>
-            <button id="modalNewItemCP">CHOOSE PC CASE</button>
+            <button class="button-style" onclick="toggleTable('pc-case-table')">CHOOSE PC CASE</button>
         </td>
         <td id="nCASE">NOMECASE</td>
         <td id="pCASE">PREZZOCASE</td>
-        <td>X</td>
+        <td><i class="fa-solid fa-xmark"></i></td>
     </tr>
     <tr>
-        <td colspan="4">
-            <div id="modal-addCP" class="modal">
-                <div id="modalNewCP" class="modal-content">
-                    <span id="closeAddCP" class="close">&times;</span>
-            <table id="pc-case-table" style="display:table;">
+        <td colspan="4" class="table-row">
+            <table id="pc-case-table" style="display:none;">
                 <thead>
                 <tr>
                     <th hidden>Id</th>
@@ -324,26 +295,19 @@ function darkTheme()
                 </tr>
                 </tbody>
             </table>
-                </div>
-            </div>
         </td>
     </tr>
     <tr>
         <td>
-            <button id="modalNewItemRAM">CHOOSE RAM</button>
+            <button class="button-style" onclick="toggleTable('ram-table')">CHOOSE RAM</button>
         </td>
         <td id="nRAM">NOMERAM</td>
         <td id="pRAM">PREZZORAM</td>
-        <td>X</td>
+        <td><i class="fa-solid fa-xmark"></i></td>
     </tr>
-
-    <!--RAM-->
     <tr>
-        <td colspan="7">
-            <div id="modal-addRAM" class="modal">
-                <div id="modalNewRAM" class="modal-content">
-                    <span id="closeAddRAM" class="close">&times;</span>
-            <table id="ram-table" style="display:table;">
+        <td colspan="4" class="table-row">
+            <table id="ram-table" style="display:none;">
                 <thead>
                 <tr>
                     <th hidden>Id</th>
@@ -371,26 +335,19 @@ function darkTheme()
                 </tr>
                 </tbody>
             </table>
-                </div>
-            </div>
         </td>
     </tr>
-
-    <!--HardDisk-->
     <tr>
         <td>
-            <button id="modalNewItemHDD">CHOOSE HARD DISK</button>
+            <button class="button-style" onclick="toggleTable('hard-disk-table')">CHOOSE HARD DISK</button>
         </td>
         <td id="nHD">NOMEHARDDISK</td>
         <td id="pHD">PREZZOHARDDISK</td>
-        <td>X</td>
+        <td><i class="fa-solid fa-xmark"></i></td>
     </tr>
     <tr>
-        <td colspan="4">
-            <div id="modal-addHDD" class="modal">
-                <div id="modalNewHDD" class="modal-content">
-                    <span id="closeAddHDD" class="close">&times;</span>
-            <table id="hard-disk-table" style="display:table;">
+        <td colspan="4" class="table-row">
+            <table id="hard-disk-table" style="display:none;">
                 <thead>
                 <tr>
                     <th hidden>Id</th>
@@ -416,21 +373,137 @@ function darkTheme()
                 </tr>
                 </tbody>
             </table>
-                </div>
-            </div>
         </td>
     </tr>
     </tbody>
 </table>
 
+</div>
 
+<h3 id="prezzo-totale">Prezzo totale: <span id="TOTAL">0.00</span></h3>
 
-<h3>Prezzo totale: <span id="TOTAL">0.00</span></h3>
+<div class="contenuto">
+    <footer class="text-center text-lg-start footer-container text-white">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
 
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
 
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
 
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Angular</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">React</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vue</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Laravel</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
 
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
 
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            Â© 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</div>
 
 <script>
 function toggleTable(tableId)
@@ -457,6 +530,18 @@ function addComponent(componentType, componentId)
     }
 
 </script>
+<script>
+function darkTheme()
+{
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  console.log("Test dark-mode");
+}
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
 
 </body>
 </html>
