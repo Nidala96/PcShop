@@ -2,6 +2,7 @@ package com.demo.spring.games.controller;
 
 import java.util.Map;
 
+import com.demo.spring.games.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.demo.spring.games.entities.Utente;
-import com.demo.spring.games.services.ProcessoreService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -18,6 +18,20 @@ import jakarta.servlet.http.HttpSession;
 public class ProcessoreController {
     @Autowired
     private ProcessoreService processoreService;
+
+    @Autowired
+    private GpuService gpuService;
+
+    @Autowired
+    private SchedaMadreService schedamadreService;
+
+    @Autowired
+    private CasePcService casepcService;
+
+    @Autowired
+    private HardDiskService hardDiskService;
+
+    @Autowired RamService ramService;
 
     @RequestMapping(path = "/pcbuilder", method = RequestMethod.GET)
     public String listProcessori(Model model, HttpSession session) {
@@ -29,6 +43,12 @@ public class ProcessoreController {
         model.addAttribute("ruolo", ruolo);
 
         model.addAttribute("listaProcessori", processoreService.getProcessori());
+        model.addAttribute("listGpu", gpuService.getGpus());
+        model.addAttribute("listSchedeMadre", schedamadreService.getSchedeMadre());
+        model.addAttribute("listCasePc", casepcService.getCasePc());
+        model.addAttribute("listRam", ramService.getRams());
+        model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
+        System.out.println(ramService.getRams());
         return "pcbuilder.html";
     }
 

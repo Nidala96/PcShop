@@ -184,8 +184,36 @@ body.dark-mode
   font-family: 'Montserrat', sans-serif;
 }
 
+/* Stile generale per le tabelle */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
+table th {
+  background-color: #f2f2f2;
+}
+
+/* Nascondi le tabelle inizialmente */
+#cpu-table,
+#gpu-table,
+#motherboard-table,
+#pc-case-table,
+#ram-table,
+#hard-disk-table {
+  display: none;
+}
+
+.dark-mode table th
+{
+color: #4f4f4f;
+}
 
 
 

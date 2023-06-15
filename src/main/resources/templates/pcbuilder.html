@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Build your pc</title>
+    <script src="js/pcbuilder.js" defer></script>
+    <script src="js/main.js" defer></script>
+
     <link rel="stylesheet" href="css/pcbuild.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css%22%3E">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -117,7 +121,10 @@
         </div>
     </div>
 </nav>
-<h1 id="titolo-1">Choose Your Parts</h1>
+<br>
+<br>
+<br>
+<h1 id="titolo-1">Scegli i tuoi componenti</h1>
 <script>
 function darkTheme()
 {
@@ -130,6 +137,292 @@ function darkTheme()
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
+
+
+
+<table>
+    <thead>
+    <tr>
+        <th>COMPONENTE</th>
+        <th>NOME COMPONENTE</th>
+        <th>PREZZO</th>
+        <th>OPZIONE</th> <!-- Bottone "AGGIUNGI" -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <button id = "modalNewItem">CHOOSE CPU</button> <!--onclick="toggleTable('cpu-table')"-->
+        </td>
+        <td id="nCPU">NOMECPU</td>
+        <td id="pCPU">PREZZOCPU</td>
+        <td>X</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+
+            <div id="modal-add" class="modal">
+                <div id="modalNew" class="modal-content">
+                    <span id="closeAdd" class="close">&times;</span>
+                    <table id="cpu-table" style="display:table;">
+                <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                    <th>Prezzo</th>
+                    <th>Descrizione</th>
+                    <th></th> <!-- Bottone "AGGIUNGI" -->
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="processore, iter: ${listaProcessori}">
+                    <td th:text="${processore.id}" hidden></td>
+                    <td th:text="${processore.nome}"></td>
+                    <td th:text="${processore.marca}"></td>
+                    <td th:text="${processore.prezzo}"></td>
+                    <td th:text="${processore.descrizione}"></td>
+                    <td>
+                        <button th:data-pid="${processore.id}"  th:data-pnome="${processore.nome}" th:data-pprezzo="${processore.prezzo}" th:onclick="addCPU(this)" type="button">AGGIUNGI</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+                </div>
+            </div>
+
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>
+            <button id = "modalNewItemGPU">CHOOSE GPU</button>
+        </td>
+        <td id="nGPU">NOMEGPU</td>
+        <td id="pGPU">PREZZOGPU</td>
+        <td>X</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+
+            <div id="modal-addGPU" class="modal">
+                <div id="modalNewGPU" class="modal-content">
+                    <span id="closeAddGPU" class="close">&times;</span>
+            <table id="gpu-table" style="display:table;">
+                <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Nome</th>
+                    <th>Prezzo</th>
+                    <th>Descrizione</th>
+                    <th></th> <!-- Bottone "AGGIUNGI" -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="gpu, iter: ${listGpu}">
+                    <td th:text="${gpu.id}" hidden></td>
+                    <td th:text="${gpu.nome}"></td>
+                    <td th:text="${gpu.prezzo}"></td>
+                    <td th:text="${gpu.descrizione}"></td>
+                    <td>
+                        <button th:data-gid="${gpu.id}"  th:data-gnome="${gpu.nome}" th:data-gprezzo="${gpu.prezzo}" th:onclick="addGPU(this)" type="button">AGGIUNGI</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+                </div>
+            </div>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="toggleTable('motherboard-table')">CHOOSE MOTHERBOARD</button>
+        </td>
+        <td id="nSM">NOMESCHEDAMADRE</td>
+        <td id="pSM">PREZZOSCHEDAMADRE</td>
+        <td>X</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+
+            <table id="motherboard-table" style="display:none;">
+                <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Nome</th>
+                    <th>Supporto</th>
+                    <th>Prezzo</th>
+                    <th>Descrizione</th>
+                    <th></th> <!-- Bottone "AGGIUNGI" -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="schedaMadre, iter: ${listSchedeMadre}">
+                    <td th:text="${schedaMadre.id}" hidden></td>
+                    <td th:text="${schedaMadre.nome}"></td>
+                    <td th:text="${schedaMadre.supporto}"></td>
+                    <td th:text="${schedaMadre.prezzo}"></td>
+                    <td th:text="${schedaMadre.descrizione}"></td>
+                    <td>
+                        <button th:data-smid="${schedaMadre.id}"  th:data-smnome="${schedaMadre.nome}" th:data-smprezzo="${schedaMadre.prezzo}" th:onclick="addSCHEDAMADRE(this)" type="button">AGGIUNGI</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="toggleTable('pc-case-table')">CHOOSE PC CASE</button>
+        </td>
+        <td id="nCASE">NOMECASE</td>
+        <td id="pCASE">PREZZOCASE</td>
+        <td>X</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <table id="pc-case-table" style="display:none;">
+                <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Nome</th>
+                    <th>Prezzo</th>
+                    <th>Descrizione</th>
+                    <th></th> <!-- Bottone "AGGIUNGI" -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="casepc, iter: ${listCasePc}">
+                    <td th:text="${casepc.id}" hidden></td>
+                    <td th:text="${casepc.nome}"></td>
+                    <td th:text="${casepc.prezzo}"></td>
+                    <td th:text="${casepc.descrizione}"></td>
+                    <td>
+                        <button th:data-cpcid="${casepc.id}"  th:data-cpcnome="${casepc.nome}" th:data-cpcprezzo="${casepc.prezzo}" th:onclick="addCASEPC(this)" type="button">AGGIUNGI</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="toggleTable('ram-table')">CHOOSE RAM</button>
+        </td>
+        <td id="nRAM">NOMERAM</td>
+        <td id="pRAM">PREZZORAM</td>
+        <td>X</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <table id="ram-table" style="display:none;">
+                <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
+                    <th>Frequenza</th>
+                    <th>Descrizione</th>
+                    <th></th> <!-- Bottone "AGGIUNGI" -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ram, iter: ${listRam}">
+                    <td th:text="${ram.id}" hidden></td>
+                    <td th:text="${ram.nome}"></td>
+                    <td th:text="${ram.tipo}"></td>
+                    <td th:text="${ram.quantita}"></td>
+                    <td th:text="${ram.prezzo}"></td>
+                    <td th:text="${ram.frequenza}"></td>
+                    <td th:text="${ram.descrizione}"></td>
+                    <td>
+                        <button th:data-ramid="${ram.id}"  th:data-ramnome="${ram.nome}" th:data-ramprezzo="${ram.prezzo}" th:onclick="addRAM(this)" type="button">AGGIUNGI</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="toggleTable('hard-disk-table')">CHOOSE HARD DISK</button>
+        </td>
+        <td id="nHD">NOMEHARDDISK</td>
+        <td id="pHD">PREZZOHARDDISK</td>
+        <td>X</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <table id="hard-disk-table" style="display:none;">
+                <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Quantità di memoria</th>
+                    <th>Prezzo</th>
+                    <th>Descrizione</th>
+                    <th></th> <!-- Bottone "AGGIUNGI" -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="hardDisk, iter: ${listHardDisk}">
+                    <td th:text="${hardDisk.id}" hidden></td>
+                    <td th:text="${hardDisk.nome}"></td>
+                    <td th:text="${hardDisk.tipo}"></td>
+                    <td th:text="${hardDisk.quantitaMem}"></td>
+                    <td th:text="${hardDisk.prezzo}"></td>
+                    <td th:text="${hardDisk.descrizione}"></td>
+                    <td>
+                        <button th:data-hdid="${hardDisk.id}"  th:data-hdnome="${hardDisk.nome}" th:data-hdprezzo="${hardDisk.prezzo}" th:onclick="addHARDDISK(this)" type="button">AGGIUNGI</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<h3>Prezzo totale: <span id="TOTAL">0.00</span></h3>
+
+
+
+
+
+
+<script>
+function toggleTable(tableId)
+{
+  var table = document.getElementById(tableId);
+  if (table.style.display === "none")
+  {
+    table.style.display = "table";
+  }
+  else
+  {
+    table.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function addComponent(componentType, componentId)
+ {
+    // Esegui l'azione desiderata quando si aggiunge un componente.
+    // Puoi implementare questa funzione per eseguire l'aggiunta effettiva del componente nel tuo sistema.
+    console.log("Aggiunto componente di tipo: " + componentType + ", ID: " + componentId);
+
+    }
+
+</script>
 
 </body>
 </html>
