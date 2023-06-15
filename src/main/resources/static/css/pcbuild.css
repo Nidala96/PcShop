@@ -1,4 +1,5 @@
 
+
 input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -8,6 +9,14 @@ input[type="checkbox"] {
 }
 input[type="checkbox"]:focus {
   outline: 0;
+}
+
+.navbar-right {
+    margin-right: 18px;
+}
+
+.form-control {
+    border-radius: 16px !important;
 }
 
 .toggle {
@@ -215,5 +224,57 @@ table th {
 color: #4f4f4f;
 }
 
+.table-container {
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center;
 
+}
+
+.table {
+    width: 80% !important;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 2px 4px 12px rgba(25,27,42,0.05);
+    margin: 15px auto;
+    background: white;
+    border-style: none;
+}
+
+.button-style {
+    background-color: #2c87c3;
+    color: #ffffff;
+    padding: 0.125rem 0.375rem;
+    font-size: 0.75rem!important;
+    border-radius: 0.25rem;
+    text-decoration: none!important;
+    border-color: #2c87c3;
+    font-weight: 700;
+}
+
+.table-row {
+  display: table;
+}
+
+.footer-container {
+    margin-top: 11rem;
+    background-image: linear-gradient(to right, black, #8d8d8d);
+}
+
+#prezzo-totale {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 18rem;
+      padding-top: 2rem;
+}
+
+.table th {
+    font-weight: 700;
+
+}
+
+tbody {
+ font-size: 14px !important;
+ font-weight: 100 !important;
+}
 
