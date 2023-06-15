@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i');
+
 
 body {
-  font-family: 'Muli', sans-serif;
-  background: #ddd;
+  font-family: 'Roboto', sans-serif;
+  background: #f7f7f7 !important;
 }
 
 .shell {
   padding: 80px 0;
+  min-width: 73.2rem;
 }
 
 .navbar-nav .nav-link {
@@ -26,16 +28,16 @@ body {
 
 
 .wsk-cp-product {
-  background: #fff;
   padding: 15px;
   border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 2px 4px 12px rgba(25,27,42,0.05);
   position: relative;
-  margin: 20px auto;
+  margin: 15px auto;
+  background: white;
 }
 
 #titolo-1 {
-   background-image: linear-gradient(to right, black, #86E825);
+   background-image: linear-gradient(to right, black, #8d8d8d);
   text-align: center;
   padding: 30px;
   color: white;
@@ -123,9 +125,11 @@ body {
 
 .wsk-cp-text .description-prod p {
   margin: 0;
-  height: 60px;
-  text-align: center;
-  padding: 0 10px;
+  padding: 6px 10px;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .card-footer {
@@ -162,6 +166,7 @@ body {
     border: none;
     padding: 0;
     cursor: pointer;
+    margin-right: 32px;
 }
 
 .buttonLogin .nav-link {
@@ -261,7 +266,7 @@ a.buy-btn:focus {
 }
 
 .carousel {
-    padding-top: 45px !important;
+    padding-top: 60px !important;
 }
 
 .carousel img {
@@ -549,10 +554,11 @@ body.dark-mode
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 2px 4px 12px rgba(25,27,42,0.05);
   max-width: 400px;
+  background: white;
 }
 
 .form-label {
@@ -585,24 +591,31 @@ option {
 .flex-container {
     display: flex;
     justify-content: center;
-
-
+    background: #f7f7f7;
 }
 
 .card-box {
-width:30% !important;
+    min-width: 22rem;
 }
 
 .shell-filter {
-padding: 95px 0;
+    padding: 95px 0;
 }
 
+.navbar-right {
+    margin-right: 18px;
+}
 
+.form-control {
+    border-radius: 16px !important;
+}
 
+.carousel-inner {
+    height: 45rem;
+}
 
-
-
-
-
-
-
+.quantity {
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #a1a1a13d;
+}

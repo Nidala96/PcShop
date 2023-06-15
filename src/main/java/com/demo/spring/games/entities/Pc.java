@@ -81,10 +81,6 @@ public class Pc extends Entity {
     }
 
     // Setter e getter per l'attributo "prezzo"
-    public void setPrezzo() {
-
-        this.prezzo = calcolaPrezzoTotale();
-    }
 
     public double getPrezzo() {
         return calcolaPrezzoTotale();

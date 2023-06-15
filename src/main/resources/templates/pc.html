@@ -97,11 +97,11 @@
                 </li>
 
             </ul>
-            <input type="checkbox" onclick="darkTheme()"  value=false class="toggle" checked>
-            <form class="d-flex input-group w-auto">
+            <input type="checkbox" onclick="darkTheme()" value=false class="toggle navbar-right" checked>
+            <form class="d-flex input-group w-auto navbar-right">
                 <input
                         type="search"
-                        class="form-control rounded"
+                        class="form-control"
                         placeholder="Search"
                         aria-label="Search"
                         aria-describedby="search-addon"
@@ -175,13 +175,13 @@ function darkTheme()
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://www.xidax.com/img/home_banner/32_fg_bannerfinancing_comp80.png" class="d-block w-100" alt="Wild Landscape"/>
+            <img src="img/radeon_gpu.jpg" class="d-block w-100" alt="Wild Landscape"/>
         </div>
         <div class="carousel-item">
-            <img src="https://www.xidax.com//img/home_banner/30_bg_rtx%204060_comp80.jpg" class="d-block w-100" alt="Camera"/>
+            <img src="img/nvidia_gpu.jpg" class="d-block w-100" alt="Nvidia GPU"/>
         </div>
         <div class="carousel-item">
-            <img src="https://www.xidax.com//img/home_banner/33_bg_Fjz1eSyWQAAQYwk_comp80.jpeg" class="d-block w-100" alt="Exotic Fruits"/>
+            <img src="img/ryzen_cpu.jpg" class="d-block w-100" alt="Ryzen CPU Logo"/>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="prev">
@@ -193,43 +193,42 @@ function darkTheme()
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-<br>
 
 <h1 id="titolo-1">I nostri PC assemblati</h1>
 
 <div class="flex-container">
     <div class="shell-filter">
     <form action="/pc" method="GET" class="custom-form">
-        <h2>Filtro pc</h2>
+        <h2>Filtro PC</h2>
 
-        <label  for="filtroPrezzo" class="form-label">Seleziona Prezzo:</label>
+        <label  for="filtroPrezzo" class="form-label">Seleziona Prezzo Massimo:</label>
         <div class="range">
-            <input type="range" class="form-range" min=1 max=3000 step="1" value="3000"id="filtroPrezzo" name="filtroPrezzo" />
+            <input type="range" class="form-range" min=1 th:max="${maxPcPrice}" step="1" id="filtroPrezzo" name="filtroPrezzo" th:value="${filtroPrezzo}" />
         </div>
 
 
         <label for="filtroCpu" class="form-label">Seleziona CPU:</label>
         <select name="filtroCpu" id="filtroCpu" class="custom-select" selected>
             <option th:value="${null}">-----</option>
-            <option th:each="cpu, iter : ${listProcessori}" th:value="${cpu.nome}" th:text="${cpu.nome}"></option>
+            <option th:each="cpu, iter : ${listProcessori}" th:value="${cpu.nome}" th:text="${cpu.nome}" th:selected="${filtroCpu == cpu.nome}"></option>
         </select>
 
         <label for="filtroGpu" class="form-label">Seleziona GPU:</label>
         <select name="filtroGpu" id="filtroGpu" class="custom-select" selected>
             <option th:value="${null}">-----</option>
-            <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.nome}" th:text="${gpu.nome}"></option>
+            <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.nome}" th:text="${gpu.nome}" th:selected="${filtroGpu == gpu.nome}"></option>
         </select>
 
         <label for="filtroRam" class="form-label">Seleziona RAM:</label>
         <select name="filtroRam" id="filtroRam" class="custom-select" selected>
             <option th:value="${null}">-----</option>
-            <option th:each="ram, iter : ${listRam}" th:value="${ram.nome}" th:text="${ram.nome}"></option>
+            <option th:each="ram, iter : ${listRam}" th:value="${ram.nome}" th:text="${ram.nome}" th:selected="${filtroRam == ram.nome}"></option>
         </select>
 
         <label for="filtroHardDisk" class="form-label">Seleziona Hard Disk:</label>
         <select name="filtroHardDisk" id="filtroHardDisk" class="custom-select">
             <option th:value="${null}" selected>-----</option>
-            <option th:each="hardDisk, iter : ${listHardDisk}" th:value="${hardDisk.nome}" th:text="${hardDisk.nome}"></option>
+            <option th:each="hardDisk, iter : ${listHardDisk}" th:value="${hardDisk.nome}" th:text="${hardDisk.nome}" th:selected="${filtroHardDisk == hardDisk.nome}"></option>
         </select>
 
         <button class="btn btn-primary d-inline p-2 mr-2" id="filter-button" type="submit">Filtra</button>
@@ -256,7 +255,7 @@ function darkTheme()
                                 <p th:text="'Scheda Madre: ' + ${pc.schedaMadre.nome}" class="card-text"></p>
                                 <p th:text="'Case: ' + ${pc.casePc.nome}" class="card-text"></p>
                                 <p th:text="'Ram: ' + ${pc.ram.nome}" class="card-text"></p>
-                                <p th:text="'HardDisk: ' + ${pc.hardDisk.nome}" class="card-text"></p>
+                                <p th:text="'Storage ' + ${pc.hardDisk.nome}" class="card-text"></p>
 
 
                                 <div style="display: flex; justify-content: center;">
@@ -300,7 +299,7 @@ function darkTheme()
 
                                     <div style="display: flex; justify-content: center; align-items: center; margin-top:15px">
                                         <div class="quantity-wrapper" style="margin-right: 10px;">
-                                            <input type="number" class="quantity" value="1" style="width: 40px; margin-bottom:5px;text-align: center;" />
+                                            <input type="number" class="quantity" value="1" min="1" max="9" style="width: 40px; margin-bottom:5px;text-align: center;" />
                                         </div>
 
                                         <button th:data-id="${pc.id}" class="btn btn-primary d-inline p-2 mr-2" style="width: 50px; height:45px; margin-bottom: 10px; font-size: 14px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;" onclick="addToCart(this)"> <i class="fa-sharp fa-solid fa-cart-plus fa-2xl" ></i></button>
@@ -369,7 +368,7 @@ function darkTheme()
                             </select>
                             <br><br>
 
-                            <label for="addHardDisk">HardDisk:</label><br>
+                            <label for="addHardDisk">Hard Disk:</label><br>
                             <select id="addHardDisk" name="hardDisk_id" required>
                                 <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
                             </select>
@@ -439,7 +438,7 @@ function darkTheme()
                             </select>
                             <br><br>
 
-                            <label for="modHardDisk">HardDisk:</label><br>
+                            <label for="modHardDisk">Hard Disk:</label><br>
                             <select id="modHardDisk" name="hardDisk_id" required>
                                 <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
                             </select>

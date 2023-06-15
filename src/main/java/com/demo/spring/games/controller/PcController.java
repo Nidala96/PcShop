@@ -1,8 +1,10 @@
 package com.demo.spring.games.controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.demo.spring.games.entities.Gpu;
 import com.demo.spring.games.entities.Pc;
@@ -57,11 +59,11 @@ public class PcController {
 		model.addAttribute("isAdmin", isAdmin);
 		List<Pc> pcsFiltrati = new ArrayList<>();
 
-
+		List<Pc> unfilteredPcs = pcService.getPcs();
 		if (filtroGpu == null && filtroCpu == null && filtroRam == null && filtroHardDisk == null && filtroPrezzo == null) {
-			pcsFiltrati = pcService.getPcs();
+			pcsFiltrati = unfilteredPcs;
 		} else {
-			for (Pc pc : pcService.getPcs()) {
+			for (Pc pc : unfilteredPcs) {
 				if ((filtroGpu == null || filtroGpu.isEmpty() || pc.getGpu().getNome().equals(filtroGpu))
 						&& (filtroCpu == null || filtroCpu.isEmpty() || pc.getProcessore().getNome().equals(filtroCpu))
 						&& (filtroRam == null || filtroRam.isEmpty() || pc.getRam().getNome().equals(filtroRam))
@@ -77,6 +79,12 @@ public class PcController {
 			System.out.println(pcsFiltrati);
 			System.out.println(pcService.getPcs());
 			model.addAttribute("listPc", pcsFiltrati);
+			model.addAttribute("maxPcPrice", unfilteredPcs.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Pc::getPrezzo))).get().getPrezzo());
+			model.addAttribute("filtroCpu", filtroCpu);
+			model.addAttribute("filtroGpu", filtroGpu);
+			model.addAttribute("filtroRam", filtroRam);
+			model.addAttribute("filtroHardDisk", filtroHardDisk);
+			model.addAttribute("filtroPrezzo", filtroPrezzo);
 			model.addAttribute("listProcessori", processoreService.getProcessori());
 			model.addAttribute("listGpu", gpuService.getGpus());
 			model.addAttribute("listSchedeMadre", schedamadreService.getSchedeMadre());
