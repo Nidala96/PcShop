@@ -80,6 +80,7 @@ public class PcController {
 			System.out.println(pcService.getPcs());
 			model.addAttribute("listPc", pcsFiltrati);
 			model.addAttribute("maxPcPrice", unfilteredPcs.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Pc::getPrezzo))).get().getPrezzo());
+			model.addAttribute("minPcPrice", unfilteredPcs.stream().collect(Collectors.minBy(Comparator.comparingDouble(Pc::getPrezzo))).get().getPrezzo());
 			model.addAttribute("filtroCpu", filtroCpu);
 			model.addAttribute("filtroGpu", filtroGpu);
 			model.addAttribute("filtroRam", filtroRam);

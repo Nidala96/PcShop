@@ -203,7 +203,7 @@ function darkTheme()
 
         <label  for="filtroPrezzo" class="form-label">Seleziona Prezzo Massimo:</label>
         <div class="range">
-            <input type="range" class="form-range" min=1 th:max="${maxPcPrice}" step="1" id="filtroPrezzo" name="filtroPrezzo" th:value="${filtroPrezzo}" />
+            <input type="range" class="form-range" th:min="${minPcPrice}" th:max="${maxPcPrice}" step="1" id="filtroPrezzo" name="filtroPrezzo" th:value="${filtroPrezzo}" />
         </div>
 
 
@@ -467,7 +467,7 @@ function darkTheme()
 </div>
 
 <div class="contenuto">
-    <footer class="text-center text-lg-start bg-dark text-white">
+    <footer class="text-center text-lg-start footer-container text-white">
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->

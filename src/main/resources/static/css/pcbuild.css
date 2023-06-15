@@ -40,8 +40,6 @@ input[type="checkbox"]:focus {
   transform: translateX(20px);
 }
 
-
-
 .btn-primary {
   background-color: #4CAF50 !important;
   color: white;
@@ -76,9 +74,6 @@ xbtn-shop
   		transition: background-color 0.3s ease;
 }
 
-
-
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -109,14 +104,10 @@ xbtn-shop
   font-size: 2rem;
 }
 
-
-
     .navbar {
         background-color: rgba(0, 0, 0, 0.4) !important;
         backdrop-filter: blur(10px) !important;
     }
-
-
 
 .navbar-nav .nav-link {
     font-family: 'Montserrat', sans-serif;
@@ -170,9 +161,6 @@ body.dark-mode
 .dark-mode .navbar-light .navbar-brand {
     color: white !important;
 }
-
-
-
 
 .navbar-nav .nav-link {
   color: white;
