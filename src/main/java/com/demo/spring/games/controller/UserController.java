@@ -52,6 +52,6 @@ public class UserController
         du.create(utente.toMap());
 
         // Reindirizza l'utente alla pagina di successo o di login
-        return "confermaregistrazione";
+        return "formlogin"; //modificato per reindirizzare a formlogin anzichè confermaregistrazione
     }
 }
