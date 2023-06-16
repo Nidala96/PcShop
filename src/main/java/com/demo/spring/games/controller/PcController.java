@@ -10,6 +10,7 @@ import com.demo.spring.games.entities.Gpu;
 import com.demo.spring.games.entities.Pc;
 import com.demo.spring.games.entities.Utente;
 import com.demo.spring.games.services.*;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,16 +49,22 @@ public class PcController {
 						 @RequestParam(name = "filtroRam", required = false) String filtroRam,
 						 @RequestParam(name = "filtroHardDisk", required = false) String filtroHardDisk,
 						 @RequestParam(name = "filtroPrezzo", required = false) Double filtroPrezzo) {
+
 		boolean isAdmin = false;
 		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
 		if (utenteObj instanceof Utente) {
 			Utente utente = (Utente) utenteObj;
+			System.out.println(utente.getId());
 			if (utente.getRuolo().equals("amministratore")) {
 				isAdmin = true;
 			}
 		}
 		model.addAttribute("isAdmin", isAdmin);
+
+
 		List<Pc> pcsFiltrati = new ArrayList<>();
+
 
 		List<Pc> unfilteredPcs = pcService.getPcs();
 		if (filtroGpu == null && filtroCpu == null && filtroRam == null && filtroHardDisk == null && filtroPrezzo == null) {
@@ -73,9 +80,6 @@ public class PcController {
 				}
 			}
 		}
-
-
-			System.out.println(casepcService.getCasePc());
 
 			model.addAttribute("listPc", pcsFiltrati);
 			model.addAttribute("maxPcPrice", unfilteredPcs.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Pc::getPrezzo))).get().getPrezzo());
@@ -99,6 +103,7 @@ public class PcController {
 
 	@RequestMapping(path="/modPC", method = RequestMethod.GET)
 	public String updatePc(@RequestParam Map<String, String> params) {
+		System.out.println(params);
 		pcService.updatePC(params);
 		return "redirect:/pc";
 	}
@@ -115,5 +120,14 @@ public class PcController {
 		return "redirect:/pc";
 	}
 
+	@RequestMapping(path="/addCarrello", method = RequestMethod.GET)
+	public String addCarrello(
+							  @RequestParam(name = "id", required = false) Integer filtroPrezzo, HttpSession session) {
+
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		int id = utenteOne.getId();
+		return "redirect:/pc";
+	}
 
 }

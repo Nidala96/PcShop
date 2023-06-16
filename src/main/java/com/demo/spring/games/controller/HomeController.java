@@ -2,14 +2,12 @@ package com.demo.spring.games.controller;
 
 import java.util.Map;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.demo.spring.games.database.UtenteDao;
 import com.demo.spring.games.entities.Utente;
@@ -54,8 +52,13 @@ public class HomeController
 	@PostMapping("/login")
 	public String login(@RequestParam("username") String user,
 						@RequestParam("password") String pass,
-						HttpSession session)
+						HttpSession session, HttpServletRequest request)
 	{
+
+
+		HttpSession sessione = request.getSession();
+		String id = (String) sessione.getAttribute("username");
+		System.out.println(id);
 		/*
 		 * Prendo i valori inseriti dall'utente tramite la form, quindi username e password, e li controllo
 		 * cioè verifico che quello specifico username e la password associata a quello user saranno salvati nel db 
@@ -64,7 +67,8 @@ public class HomeController
 		 * Se invece lo user o la password o entrambi non sono corretti
 		 * rimando l'utente alla pagina di login.
 		 * */
-		
+
+
 		//verifico che username e password siano salvati nel db e che i valori coincidano
 		Map<String,String> utenteLoggato = du.autentica(user, pass);
 		Utente utente = null;
@@ -133,4 +137,6 @@ public class HomeController
 	public String carrelloPage() {
 		return "carrello";
 	}
+
+
 }
