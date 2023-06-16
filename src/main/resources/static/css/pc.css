@@ -24,7 +24,9 @@ body {
   margin-right: 5px;
 }
 
-
+.img-container {
+    object: fit;
+}
 
 
 .wsk-cp-product {
@@ -69,7 +71,7 @@ body {
 }
 
 .wsk-cp-text {
-  padding-top: 100%;
+  padding-top: 160%;
 }
 
 .wsk-cp-text .category {

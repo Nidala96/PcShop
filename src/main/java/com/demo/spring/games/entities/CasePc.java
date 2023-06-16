@@ -3,26 +3,21 @@ package com.demo.spring.games.entities;
 
 public class CasePc extends Entity
 {
-	private int id;
+
 	private String nome;
 	private double prezzo;
 	private String descrizione;
 
-	private String immagineCase;
+	private String immaginecase;
 
-	public String getImmagineCase() {
-		return immagineCase;
-	}
-	public void setImmagineCase(String immagineCase) {
-		this.immagineCase = immagineCase;
+	public String getImmaginecase() {
+		return immaginecase;
 	}
 
-	public int getId() {
-		return id;
+	public void setImmaginecase(String immaginecase) {
+		this.immaginecase = immaginecase;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -45,11 +40,11 @@ public class CasePc extends Entity
 	@Override
 	public String toString() {
 		return "CasePc{" +
-				"id=" + id +
+				"id=" +
 				", nome='" + nome + '\'' +
 				", prezzo=" + prezzo +
 				", descrizione='" + descrizione + '\'' +
-				", immagineCase='" + immagineCase + '\'' +
+				", immagineCase='" + immaginecase + '\'' +
 				"} " + super.toString();
 	}
 }

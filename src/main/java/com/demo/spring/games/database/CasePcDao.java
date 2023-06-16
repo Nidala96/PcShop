@@ -30,7 +30,7 @@ public class CasePcDao implements IDao {
                     map.get("nome"),
                     map.get("prezzo"),
                     map.get("descrizione"),
-                    map.get("immagineCase"));
+                    map.get("immaginecase"));
     }
 
     public List<Map<String, String>> read(int id) {
