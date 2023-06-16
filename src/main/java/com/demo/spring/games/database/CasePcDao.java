@@ -17,7 +17,7 @@ public class CasePcDao implements IDao {
             "select * from casePc";
     
     private String update = 
-            "update casePc set nome = ?, prezzo = ?, descrizione = ? where id = ?";
+            "update casePc set nome = ?, prezzo = ?, descrizione = ?, immagineCase = ? where id = ?";
 
     private String readOne =
             "select * from casePc where id = ?";
@@ -29,7 +29,8 @@ public class CasePcDao implements IDao {
         db.update(insert, 
                     map.get("nome"),
                     map.get("prezzo"),
-                    map.get("descrizione"));
+                    map.get("descrizione"),
+                    map.get("immagineCase"));
     }
 
     public List<Map<String, String>> read(int id) {

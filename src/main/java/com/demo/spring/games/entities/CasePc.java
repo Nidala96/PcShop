@@ -7,7 +7,16 @@ public class CasePc extends Entity
 	private String nome;
 	private double prezzo;
 	private String descrizione;
-	
+
+	private String immagineCase;
+
+	public String getImmagineCase() {
+		return immagineCase;
+	}
+	public void setImmagineCase(String immagineCase) {
+		this.immagineCase = immagineCase;
+	}
+
 	public int getId() {
 		return id;
 	}
