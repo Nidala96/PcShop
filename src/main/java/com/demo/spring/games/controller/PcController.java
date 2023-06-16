@@ -98,9 +98,6 @@ public class PcController {
 	}
 
 
-
-
-	
 	@RequestMapping(path="/modPC", method = RequestMethod.GET)
 	public String updatePc(@RequestParam Map<String, String> params) {
 		pcService.updatePC(params);
