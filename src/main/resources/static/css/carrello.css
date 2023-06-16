@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i');
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f7f7f7 !important;
+}
+
+
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
+}
+
+.navbar-right {
+    margin-right: 18px !important;
+}
+
+.form-control {
+    border-radius: 16px !important;
+}
+
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+input[type="checkbox"]:focus {
+  outline: 0;
+}
+
+
+.toggle {
+  height: 32px;
+  width: 52px;
+  border-radius: 16px;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  border: 2px solid #474755;
+  background: linear-gradient(180deg, #2D2F39 0%, #1F2027 100%);
+  transition: all 0.2s ease;
+}
+.toggle:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 2px rgba(44, 44, 44, 0.2);
+  transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+}
+.toggle:checked {
+  border-color: #654FEC;
+}
+.toggle:checked:after {
+  transform: translateX(20px);
+}
+
+.btn-primary {
+  background-color: #4CAF50 !important;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+
+xbtn-shop
+{
+	background-color: #4CAF50 !important;
+	  color: white;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+  		transition: background-color 0.3s ease;
+}
+
+.btn-negozz
+{
+	background-color: #4CAF50 !important;
+
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+  		transition: background-color 0.3s ease;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-green {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-green:hover {
+  background-color: #45a049;
+}
+
+.fa-sharp {
+  font-family: "FontAwesome";
+}
+
+.fa-2xl {
+  font-size: 2rem;
+}
+
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(10px) !important;
+    }
+
+.navbar-nav .nav-link {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dark-mode a.buy-btn
+{
+  color: rgb(211, 207, 202);
+  border-color: rgb(129, 120, 106);
+
+
+}
+
+body.dark-mode
+{
+  background-color: rgb(43, 47, 49) !important;
+  color: white !important;
+}
+
+.dark-mode .wsk-cp-product
+{
+     background-color: rgb(24, 26, 27);
+}
+
+.dark-mode a.buy-btn:hover a.buy-btn:active a.buy-btn:focus
+{
+    color: #212121 !important;
+}
+
+.dark-mode .bg-body-tertiary  {
+    --darkreader-bg--bs-bg-opacity: 1;
+    background-color: rgb(36, 39, 41) !important;
+}
+
+
+.dark-mode .navbar-nav .nav-link.active,
+.dark-mode .navbar-nav .nav-link.active:hover,
+.dark-mode .navbar-nav .nav-link.active:focus {
+    color: white !important;
+}
+
+.dark-mode .navbar-collapse {
+    background-color: rgb(43, 47, 49) !important;
+    filter: brightness(0.8);
+}
+
+.dark-mode .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.dark-mode .navbar-light .navbar-brand {
+    color: white !important;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 8px 12px;
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-link i {
+  color: white;
+  margin-right: 5px;
+}
+
+#search-addon {
+background: none !important;
+}
+
+.buttonLogin {
+    background-color: transparent;
+    color: white !important;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-right: 32px;
+}
+
+.buttonLogin .nav-link {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    color: white !important;
+    font-family: Montserrat, sans-serif;
+    line-height: 1.2;
+}
+
+.buttonLogin .nav-link small {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.footer-container {
+    background-image: linear-gradient(to right, black, #8d8d8d);
+}
+
+#titolo-1 {
+   background-image: linear-gradient(to right, black, #8d8d8d);
+  text-align: center;
+  padding: 30px;
+  color: white;
+  margin-top: 4rem;
+}
