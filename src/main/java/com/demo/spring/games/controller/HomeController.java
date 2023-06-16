@@ -133,4 +133,9 @@ public class HomeController
 	public String carrelloPage() {
 		return "carrello";
 	}
+
+	@RequestMapping("/recuperopassword")
+	public String recuperoPassw() {
+		return "recuperopassword";
+	}
 }
