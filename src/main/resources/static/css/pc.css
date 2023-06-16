@@ -511,8 +511,9 @@ xbtn-shop
 
 body.dark-mode
 {
-  background-color: rgb(43, 47, 49) !important;
+  /*background-color: rgb(43, 47, 49) !important;*/
   color: white !important;
+  background: rgb(36, 39, 41) !important;
 }
 
 .dark-mode .wsk-cp-product
@@ -624,4 +625,36 @@ option {
     background-image: linear-gradient(to right, black, #8d8d8d);
 }
 
-.
+
+
+
+
+
+
+
+.dark-mode .custom-form /*menu ricerca*/
+{
+    background-color: rgb(43, 47, 49) !important;
+    text-color: white !important;
+}
+
+
+
+
+.dark-mode .shell-filter .custom-select { /*//campi tendina del filtro ricerca*/
+  background-color: #222;
+  color: #fff;
+  border-color: #86E825;
+}
+
+.dark-mode .flex-container { /*//SFONDO DEL SITO*/
+    display: flex;
+    justify-content: center;
+    background: rgb(36, 39, 41) !important;
+}
+
+.dark-mode .form-label {
+color: white !important;
+}
+
+
