@@ -44,8 +44,12 @@ public class CasePc extends Entity
 
 	@Override
 	public String toString() {
-		return "CasePc [toString()=" + super.toString() + ", id=" + id + ", nome=" + nome + ", prezzo=" + prezzo
-				+ ", descrizione=" + descrizione + "]";
+		return "CasePc{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", prezzo=" + prezzo +
+				", descrizione='" + descrizione + '\'' +
+				", immagineCase='" + immagineCase + '\'' +
+				"} " + super.toString();
 	}
-	
 }

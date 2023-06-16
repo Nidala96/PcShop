@@ -1,6 +1,7 @@
+drop database negozioPc;
 create database negozioPc;
 use negozioPc;
- -- drop database negozioPc;
+
 
 create table processore (
 id int primary key auto_increment,
@@ -25,11 +26,13 @@ prezzo double,
 descrizione varchar(100)
 );
 
+
 create table casePc(
 id int primary key auto_increment,
 nome varchar(100),
 prezzo double,
-descrizione varchar(100)
+descrizione varchar(100),
+immaginecase varchar(500)
 );
 
 drop table pc;
@@ -153,6 +156,29 @@ VALUES
   ('Lian Li PC-O11D XL ROG Edition', 249.99, 'Case di fascia alta in edizione speciale per ASUS ROG'),
   ('NZXT H710', 149.99, 'Case di fascia alta con ampio spazio interno e possibilità di gestione avanzata dei cavi'),
   ('Corsair Obsidian 500D RGB SE', 249.99, 'Case di fascia alta con design elegante e illuminazione RGB');
+
+    INSERT INTO casePc (nome, prezzo, descrizione, immaginecase)
+  VALUES
+    ('NZXT H510', 79.99, 'Case di fascia media con design elegante e funzionalità avanzate', 'https://www.vhv.rs/dpng/d/572-5721027_gaming-pc-cover-pc-case-computer-tower-pc.png'),
+    ('Corsair iCUE 4000X RGB', 129.99, 'Case ATX con pannello in vetro temperato e illuminazione RGB', 'https://m.media-amazon.com/images/I/7192x-eqn5L._AC_UF1000,1000_QL80_.jpg'),
+    ('Fractal Design Meshify C', 89.99, 'Case compatto con elevata capacità di ventilazione','https://m.media-amazon.com/images/I/51o7U-7oUHL._AC_SX679_.jpg'),
+    ('Phanteks Eclipse P400A', 99.99, 'Case con ampia ventilazione e supporto per radiatori','https://m.media-amazon.com/images/I/71ypPUokJXS._AC_SX679_.jpg'),
+    ('Cooler Master MasterBox Q300L', 49.99, 'Case Micro ATX compatto e versatile','https://m.media-amazon.com/images/I/61+hzTPdsqL._AC_SX679_.jpg'),
+    ('Lian Li PC-O11 Dynamic', 149.99, 'Case ATX con design moderno e vetro temperato','https://m.media-amazon.com/images/I/61taCZVvAOS._AC_SX679_.jpg'),
+    ('NZXT H710i', 169.99, 'Case di fascia alta con ampio spazio interno e gestione dei cavi','https://m.media-amazon.com/images/I/71+fp-uBnNL._AC_SY879_.jpg'),
+    ('Corsair Carbide 275R', 69.99, 'Case ATX con design minimalista e buona ventilazione','https://m.media-amazon.com/images/I/61KHNDdkLOL._AC_SX679_.jpg'),
+    ('Phanteks Eclipse P500A', 149.99, 'Case con elevata capacità di raffreddamento e spazio per componenti','https://m.media-amazon.com/images/I/71ToSg6bzQL._AC_SX679_.jpg'),
+    ('Fractal Design Define 7', 169.99, 'Case ATX con isolamento acustico e funzionalità di gestione dei cavi','https://m.media-amazon.com/images/I/61taCZVvAOS._AC_SX679_.jpg'),
+    ('Cooler Master MasterCase H500', 99.99, 'Case ATX con pannello frontale in mesh per una migliore ventilazione','https://m.media-amazon.com/images/I/71AHW-ZeXhL._AC_SX679_.jpg'),
+    ('Lian Li PC-O11 Dynamic XL', 199.99, 'Case di fascia alta con ampio spazio per il raffreddamento a liquido','https://m.media-amazon.com/images/I/719r23GvupL._AC_SX679_.jpg'),
+    ('NZXT H510 Elite', 149.99, 'Case di fascia media con pannello frontale in vetro temperato e illuminazione RGB','https://m.media-amazon.com/images/I/51vBAQoLbpL._AC_SX679_.jpg'),
+    ('Corsair Crystal 570X RGB', 179.99, 'Case ATX con pannello in vetro temperato e illuminazione RGB','https://m.media-amazon.com/images/I/617DnRINssL._AC_SX679_.jpg'),
+    ('Phanteks Enthoo Pro II', 129.99, 'Case ATX con ampio spazio interno e possibilità di personalizzazione','https://m.media-amazon.com/images/I/61qCKi2hROL._AC_SX679_.jpg'),
+    ('Fractal Design Meshify S2', 149.99, 'Case ATX con design compatto e ottime capacità di raffreddamento','https://m.media-amazon.com/images/I/61WSOZog8SL._AC_SX679_.jpg'),
+    ('Cooler Master MasterCase H500M', 199.99, 'Case ATX con pannello frontale in mesh e illuminazione RGB','https://m.media-amazon.com/images/I/71Vqm46FdlL._AC_SX679_.jpg'),
+    ('Lian Li PC-O11D XL ROG Edition', 249.99, 'Case di fascia alta in edizione speciale per ASUS ROG','https://m.media-amazon.com/images/I/71S1GQEi7PL._AC_SX679_.jpg'),
+    ('NZXT H710', 149.99, 'Case di fascia alta con ampio spazio interno e possibilità di gestione avanzata dei cavi','https://m.media-amazon.com/images/I/71j98EXwKYL._AC_SX679_.jpg'),
+    ('Corsair Obsidian 500D RGB SE', 249.99, 'Case di fascia alta con design elegante e illuminazione RGB','https://m.media-amazon.com/images/I/61QEeMUMnPS._AC_SX679_.jpg');
   
   INSERT INTO pc (nome, tipo, percentualeSconto, processore_id, gpu_id, schedaMadre_id, casePc_id, ram_id, hardDisk_id)
 	VALUES

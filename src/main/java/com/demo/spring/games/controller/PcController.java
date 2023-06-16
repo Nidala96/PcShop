@@ -74,10 +74,9 @@ public class PcController {
 			}
 		}
 
-			System.out.println(filtroPrezzo);
-			System.out.println(filtroGpu);
-			System.out.println(pcsFiltrati);
-			System.out.println(pcService.getPcs());
+
+			System.out.println(casepcService.getCasePc());
+
 			model.addAttribute("listPc", pcsFiltrati);
 			model.addAttribute("maxPcPrice", unfilteredPcs.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Pc::getPrezzo))).get().getPrezzo());
 			model.addAttribute("minPcPrice", unfilteredPcs.stream().collect(Collectors.minBy(Comparator.comparingDouble(Pc::getPrezzo))).get().getPrezzo());
@@ -92,7 +91,7 @@ public class PcController {
 			model.addAttribute("listCasePc", casepcService.getCasePc());
 			model.addAttribute("listRam", ramService.getRams());
 			model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
-			System.out.println(ramService.getRams());
+
 			return "pc.html";
 
 	}
