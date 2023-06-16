@@ -95,10 +95,12 @@ function calculateTotal() {
 
 
 
-document.getElementById("modalNewItemGPU").onclick = function()
+ /*document.getElementById("modalNewItemGPU").onclick = function()
 {
 	document.getElementById("modal-addGPU").style.display = "block";
-}
+	console.log(hello)
+
+} */
 
 document.getElementById("closeAddGPU").onclick = function()
 {
