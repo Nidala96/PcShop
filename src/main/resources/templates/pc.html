@@ -237,10 +237,11 @@ function darkTheme()
             <option th:each="hardDisk, iter : ${listHardDisk}" th:value="${hardDisk.nome}" th:text="${hardDisk.nome}" th:selected="${filtroHardDisk == hardDisk.nome}"></option>
         </select>
 
-        <button class="btn btn-primary d-inline p-2 mr-2" id="filter-button" type="submit">Filtra</button>
+        <button class="btn btn-primary d-inline p-2 mr-2 " id="filter-button" type="submit">Filtra</button>
         <br>
-        <button id = "modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="width: 200px">Aggiungi PC</button>
+        <button type="button" id = "modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="width: 200px">Aggiungi PC</button>
         </form>
+
     </div>
     <div class="shell">
         <div class="container">
