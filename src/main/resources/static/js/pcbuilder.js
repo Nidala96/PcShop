@@ -12,8 +12,7 @@ function addCPU(element) {
   document.getElementById("pCPU").textContent = prezzoCPU.toFixed(2);
 
   priceCPU = prezzoCPU;
-
-    prezzototale =  0;
+  prezzototale =  0;
   prezzototale += prezzoCPU;
 
 
@@ -88,10 +87,75 @@ function addHARDDISK(element) {
 }
 
 function calculateTotal() {
-  document.getElementById("TOTAL").textContent =  (priceCPU + priceGPU + priceSM + priceCPC + priceRAM + priceHD);
+
+  prezzototale = priceCPU + priceGPU + priceSM + priceCPC + priceRAM + priceHD;
+  document.getElementById("TOTAL").textContent =  prezzototale.toFixed(2);
   console.log(priceCPU + priceGPU + priceSM + priceCPC + priceRAM + priceHD)
   console.log(document.getElementById("TOTAL").textContent);
 }
+
+
+function rimuoviComponente(element, componente)
+{
+    var rigaComponente = element.closest('tr'); //ottenere la riga corrispondente al componente
+    var prezzoComponente = parseFloat(rigaComponente.querySelector('td:last-child').textContent); //ottenre il prezzo del componente
+
+    prezzototale -= prezzoComponente;
+
+    document.getElementById("TOTAL").textContent = prezzototale.toFixed(2);
+
+    switch(componente)
+    {
+        case "CPU":
+            rigaComponente.querySelector('#nCPU').textContent = 'NOMECPU';
+            rigaComponente.querySelector('#pCPU').textContent = 'PREZZOCPU';
+
+            priceCPU = 0;
+            calculateTotal();
+        break;
+
+        case "GPU":
+             rigaComponente.querySelector('#nGPU').textContent = 'NOMEGPU';
+             rigaComponente.querySelector('#pGPU').textContent = 'PREZZOGPU';
+
+             priceGPU = 0;
+             calculateTotal();
+         break;
+
+         case "SM":
+             rigaComponente.querySelector('#nSM').textContent = 'NOMESCHEDAMADRE';
+             rigaComponente.querySelector('#pSM').textContent = 'PREZZOSCHEDAMADRE';
+
+             priceSM = 0;
+             calculateTotal();
+         break;
+
+         case "CASE":
+             rigaComponente.querySelector('#nCASE').textContent = 'NOMESCHEDAMADRE';
+             rigaComponente.querySelector('#pCASE').textContent = 'PREZZOSCHEDAMADRE';
+
+             priceCPC = 0;
+             calculateTotal();
+         break;
+
+         case "RAM":
+             rigaComponente.querySelector('#nRAM').textContent = 'NOMERAM';
+             rigaComponente.querySelector('#pRAM').textContent = 'PREZZORAM';
+
+             priceRAM = 0;
+             calculateTotal();
+         break;
+
+         case "HDD":
+           rigaComponente.querySelector('#nHD').textContent = 'NOMEHARDDISK';
+           rigaComponente.querySelector('#pHD').textContent = 'PREZZOHARDDISK';
+
+           priceHD = 0;
+           calculateTotal();
+         break;
+    }
+}
+
 
 
 

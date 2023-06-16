@@ -101,21 +101,22 @@ border-bottom-right-radius: .3rem;
                     <input type="text" th:field="${utente.ruolo}" id="ruolo" name="ruolo" class="form-control" required/>
                     <label class="form-label" for="ruolo">Ruolo</label>
                   </div>
-                </form>
+
                 <!--FINE CAMPI REGISTRAZIONE-->
 
                 <!--BOTTONE REGISTRATI-->
                 <div class="text-center pt-1 mb-5 pb-1">
-                  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registrati</button>
+                  <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">REGISTRATI</button>
                 </div>
 
                 <div th:if="${error}" class="error-message">
                   <p th:text="${error}"></p>
                 </div>
+                </form>
 
                 <!--LOGIN SE GIA' UTENTE-->
                 <div class="d-flex align-items-center justify-content-center pb-4">
-                  <p class="mb-0 me-2">Sei già un membro?</p>
+                  <p class="mb-0 me-2">Hai già un account?</p>
                   <form action="/formlogin" method="get">
                     <input type="submit" class="btn btn-outline-danger btn-create" value="EFFETTUA IL LOGIN">
                   </form>
@@ -127,7 +128,7 @@ border-bottom-right-radius: .3rem;
                 <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                   <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                     <h4 class="mb-4">Siamo molto più di un semplice sito</h4>
-                    <p class="small mb-0">Qui potrai dare vita alla tua visione di un PC perfetto, personalizzando ogni componente per ottenere le prestazioni desiderate. Registrati oggi stesso e inizia il tuo viaggio nel mondo dell'assemblaggio PC!</p>
+                    <p class="small mb-0">Qui potrai dare vita alla tua visione di un PC perfetto, personalizzando ogni componente per ottenere le prestazioni desiderate. <br> Registrati oggi stesso e inizia il tuo viaggio nel mondo dell'assemblaggio PC!</p>
                   </div>
                 </div>
           </div>
