@@ -177,7 +177,7 @@ public class PcController {
 		return "redirect:/carrello";
 	}
 
-	@RequestMapping(path="/modQuantita", method = RequestMethod.GET)
+	@RequestMapping(path="/modQuantita", method = RequestMethod.POST)
 	public String modCarrello(@RequestParam Map<String, String> params, HttpSession session) {
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
@@ -192,7 +192,7 @@ public class PcController {
 				carrelloService.modificaQuantitaPc(utenteId, pcId, quantitaPc);
 			}
 		}
-		return "redirect:/pc";
+		return "redirect:/carrello";
 	}
 
 }

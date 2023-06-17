@@ -162,11 +162,13 @@
                       </div>
                       <div class="d-flex flex-row align-items-center">
                         <div style="width: 50px;">
-                          <form action="/modQuantita" method="GET">
+                          <form action="/modQuantita" class="myForm" method="POST" >
                             <input th:value="${entry.id}" name="pc_id" hidden>
-                            <button type="submit">
-                              <input type="number" name="quantitaPc" class="quantity" th:value="${quantitaPc[iterStat.index]}" min="1" max="9" style="width: 40px; margin-bottom:5px;text-align: center;" />
+                            <button type="submit" style="opacity: 1; border: none; outline: none; background: transparent; padding: 0;">
+                              <input type="number" name="quantitaPc" class="quantity" th:value="${quantitaPc[iterStat.index]}" min="1" max="9" style="width: 40px; margin-bottom:5px;text-align: center; border: 1px solid #ccc; padding: 5px;">
                             </button>
+
+
                           </form>
                         </div>
                         <div style="width: 80px;">
@@ -183,7 +185,35 @@
                     </div>
                   </div>
                 </div>
+                <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var forms = document.getElementsByClassName('myForm');
 
+        Array.from(forms).forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        console.log('Form submitted successfully');
+                        // Additional actions or UI updates
+                    } else {
+                        throw new Error('Error submitting form');
+                    }
+                })
+                .catch(function(error) {
+                    console.log('Error submitting form: ' + error);
+                });
+            });
+        });
+    });
+</script>
 
 
               </div>

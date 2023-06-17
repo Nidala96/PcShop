@@ -17,7 +17,7 @@ public class CarrelloDao implements IDao {
             "select * from carrello";
     
     private String update = 
-            "update carrello set quantitaPc = ?  where pc_id = ?";
+            "update carrello set quantitaPc = ? where pc_id = ? and utente_id = ?";
     
     private String delete = 
             "DELETE FROM carrello\n" +
@@ -48,7 +48,8 @@ public class CarrelloDao implements IDao {
     public void update(Map<String, String> map) {
         db.update(update,
                     map.get("quantitaPc"),
-                    map.get("pc_id"));
+                    map.get("pc_id"),
+                    map.get("utente_id"));
     }
 
     @Override
