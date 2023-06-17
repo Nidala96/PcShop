@@ -119,7 +119,7 @@ public class HomeController
 		
 		session.setAttribute("loggato", null);
 		session.setAttribute("utente", null);
-		return "redirect:formlogin";
+		return "redirect:pc";
 	}
 
 	//creo un metodo che consenta all'utente di loggare come ospite, quindi non può modificare o acquistare
