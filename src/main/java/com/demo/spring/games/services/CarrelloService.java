@@ -135,12 +135,14 @@ public class CarrelloService {
         List<Map<String, String>> carrelloItems = carrelloDao.read(utenteId);
 
         for (Map<String, String> item : carrelloItems) {
-            int itemId = Integer.parseInt(item.get("id"));
+            int itemId = Integer.parseInt(item.get("pc_id"));
             if (itemId == pcId) {
                 int quantitaPrecedente = Integer.parseInt(item.get("quantitaPc"));
 
 
                 // Aggiorna la quantità del PC nel carrello
+                item.put("utente_id", String.valueOf(utenteId));
+                item.put("pc_id", String.valueOf(pcId));
                 item.put("quantitaPc", String.valueOf(quantitaPc));
                 carrelloDao.update(item);
 
