@@ -221,7 +221,7 @@ table th {
 
 .dark-mode table th
 {
-color: #4f4f4f;
+color: black !important;
 }
 
 .table-container {
@@ -252,6 +252,17 @@ color: #4f4f4f;
     font-weight: 700;
 }
 
+.button-delete {
+    background-color: #dc4c64;
+    color: black;
+    padding: 0.125rem 0.375rem;
+    font-size: 0.75rem!important;
+    border-radius: 0.25rem;
+    text-decoration: none!important;
+    border-color: black;
+    font-weight: 700;
+}
+
 .table-row {
   display: table;
 }
@@ -276,5 +287,105 @@ color: #4f4f4f;
 tbody {
  font-size: 14px !important;
  font-weight: 100 !important;
+}
+
+#headertabella
+{
+font-size: 20px !important;
+font-weight: 10px;
+text-align: center;
+color: white !important;
+
+.table>:not(caption)>*>*
+{
+color: white !important
+}
+.table
+{
+color:white !important;
+}
+
+background-color: rgba(0, 0, 0, 0.4) !important;
+backdrop-filter: blur(10px) !important;
+
+}
+/*background-color: #FA9E42;background-image: linear-gradient(to top, #ffffff, #929f9b) */
+#nCPU
+{
+color: black;
+font-size: 20px
+}
+
+#nGPU
+{
+color: black;
+font-size: 20px
+}
+
+#nSM
+{
+color: black;
+font-size: 20px
+}
+
+#nCASE
+{
+color: black;
+font-size: 20px
+}
+
+#nRAM
+{
+color: black;
+font-size: 20px
+}
+
+
+#nHD
+{
+color: black;
+font-size: 20px
+}
+
+#pCPU
+{
+color: green;
+font-size: 20px
+
+}
+
+#pGPU
+{
+color: green;
+font-size: 20px
+
+}
+
+#pSM
+{
+color: green;
+font-size: 20px
+
+}
+
+#pCASE
+{
+color: green;
+font-size: 20px
+
+}
+
+#pRAM
+{
+color: green;
+font-size: 20px
+
+}
+
+#pHD
+{
+color: green;
+font-size: 20px
+
 }
 
