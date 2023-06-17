@@ -59,5 +59,10 @@ public class GpuDao implements IDao {
     public void delete(int id) {
         db.update(delete, String.valueOf(id));
     }
+
+    @Override
+    public void delete(int pc_id, int utente_id) {
+
+    }
 }
 

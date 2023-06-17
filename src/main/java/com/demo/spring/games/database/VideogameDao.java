@@ -62,6 +62,11 @@ public class VideogameDao implements IDao{
 	}
 
 	@Override
+	public void delete(int pc_id, int utente_id) {
+
+	}
+
+	@Override
 	public List<Map<String, String>> read(int id) {
 		return null;
 	}

@@ -70,6 +70,11 @@ public class PcDao implements IDao {
     }
 
     @Override
+    public void delete(int pc_id, int utente_id) {
+
+    }
+
+    @Override
     public List<Map<String, String>> read(int id) {
         List<Map<String, String>> lista = new ArrayList<>();
         lista = db.execute(readCarrello, String.valueOf(id));

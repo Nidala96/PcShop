@@ -69,4 +69,9 @@ public class HardDiskDao implements IDao
     {
         db.update(delete, String.valueOf(id));
     }
+
+    @Override
+    public void delete(int pc_id, int utente_id) {
+
+    }
 }

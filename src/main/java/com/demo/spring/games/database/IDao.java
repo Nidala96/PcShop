@@ -9,5 +9,7 @@ public interface IDao
 	void update(Map<String, String> map);
 	void delete(int id);
 
-	List<Map<String, String>> read(int id);
+    void delete(int pc_id, int utente_id);
+
+    List<Map<String, String>> read(int id);
 }

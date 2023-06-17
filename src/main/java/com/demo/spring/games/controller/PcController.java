@@ -128,9 +128,21 @@ public class PcController {
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
 		if(utenteOne != null) {
-			int id = utenteOne.getId();
-			params.put("utente_id", String.valueOf(id));
-			carrelloService.addCarrello(params);
+			int utenteId = utenteOne.getId();
+			int pcId = Integer.parseInt(params.get("pc_id"));
+			int quantitaPc = Integer.parseInt(params.get("quantitaPc"));
+
+			// Controlla se il PC esiste già nel carrello dell'utente
+			boolean pcEsisteNelCarrello = carrelloService.pcEsisteNelCarrello(utenteId, pcId);
+
+			if (pcEsisteNelCarrello) {
+				// Aggiorna la quantità del PC esistente nel carrello
+				carrelloService.aggiornaQuantitaPc(utenteId, pcId, quantitaPc);
+			} else {
+				// Aggiungi una nuova voce al carrello
+				params.put("utente_id", String.valueOf(utenteId));
+				carrelloService.addCarrello(params);
+			}
 		}
 		return "redirect:/pc";
 	}
@@ -143,7 +155,22 @@ public class PcController {
 			int id = utenteOne.getId();
 			List<Pc> carrello = carrelloService.getCarrello(id);
 			model.addAttribute("carrello", carrello);
+
 		}
 		return "carrello.html";
 	}
+
+
+	@RequestMapping(path="/deleteCarrello", method = RequestMethod.GET)
+	public String deleteCarrello(@RequestParam("pc_id") int pcId, HttpSession session) {
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		if (utenteOne != null) {
+			int utenteId = utenteOne.getId();
+			carrelloService.deleteCarrello(utenteId, pcId);
+		}
+		return "redirect:/carrello";
+	}
+
+
 }

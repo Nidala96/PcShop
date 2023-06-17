@@ -56,6 +56,11 @@ public class ProcessoreDao implements IDao {
                     String.valueOf(id));
     }
 
+    @Override
+    public void delete(int pc_id, int utente_id) {
+
+    }
+
     public List<Map<String, String>> read(int id) {
         List<Map<String, String>> lista = new ArrayList<>();
         lista = db.execute(readOne,

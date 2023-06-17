@@ -78,13 +78,57 @@ public class CarrelloService {
         carrelloDao.update(context.getBean(Carrello.class, params).toMap());
     }
 
-    public void deleteCarrello(int id)
-    {
-        carrelloDao.delete(id);
+    public void deleteCarrello(int utenteId, int pcId) {
+        carrelloDao.delete(utenteId, pcId);
     }
+
 
     public void addCarrello(Map<String, String> params)
     {
         carrelloDao.add(params);
+    }
+
+    public boolean pcEsisteNelCarrello(int utenteId, int pcId) {
+        List<Map<String, String>> carrelloItems = carrelloDao.read(utenteId);
+        System.out.println(carrelloItems);
+        for (Map<String, String> item : carrelloItems) {
+            int itemId = Integer.parseInt(item.get("id"));
+            if (itemId == pcId) {
+                return true; // Il PC esiste già nel carrello
+            }
+        }
+
+        return false; // Il PC non esiste nel carrello
+    }
+
+    public void aggiornaQuantitaPc(int utenteId, int pcId, int quantitaPc) {
+        List<Map<String, String>> carrelloItems = carrelloDao.read(utenteId);
+
+        for (Map<String, String> item : carrelloItems) {
+            int itemId = Integer.parseInt(item.get("id"));
+            if (itemId == pcId) {
+                int quantitaPrecedente = Integer.parseInt(item.get("quantitaPc"));
+                int nuovaQuantita = quantitaPrecedente + quantitaPc;
+
+                // Aggiorna la quantità del PC nel carrello
+                item.put("quantitaPc", String.valueOf(nuovaQuantita));
+                carrelloDao.update(item);
+
+                return;
+            }
+        }
+    }
+
+    public int getQuantitaPc(int utenteId, int pcId) {
+        List<Map<String, String>> carrelloItems = carrelloDao.read(utenteId);
+
+        for (Map<String, String> item : carrelloItems) {
+            int itemId = Integer.parseInt(item.get("pc_id"));
+            if (itemId == pcId) {
+                return Integer.parseInt(item.get("quantitaPc"));
+            }
+        }
+
+        return 0; // PC non presente nel carrello
     }
 }
