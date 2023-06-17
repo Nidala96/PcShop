@@ -137,9 +137,11 @@ public class PcController {
 	public String listCarrello(Model model, HttpSession session) {
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
-		int id = utenteOne.getId();
-		List<Pc> carrello = carrelloService.getCarrello(id);
-		model.addAttribute("carrello", carrello);
+		if(utenteOne != null) {
+			int id = utenteOne.getId();
+			List<Pc> carrello = carrelloService.getCarrello(id);
+			model.addAttribute("carrello", carrello);
+		}
 		return "carrello.html";
 	}
 }
