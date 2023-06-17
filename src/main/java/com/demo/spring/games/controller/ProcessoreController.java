@@ -40,6 +40,7 @@ public class ProcessoreController {
         // Verifica il ruolo dell'utente
         Utente utente = (Utente)session.getAttribute("utente");
         String ruolo = (utente != null) ? utente.getRuolo() : "";
+        String username = "";
         model.addAttribute("ruolo", ruolo);
 
         model.addAttribute("listaProcessori", processoreService.getProcessori());
@@ -49,6 +50,17 @@ public class ProcessoreController {
         model.addAttribute("listRam", ramService.getRams());
         model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
         System.out.println(ramService.getRams());
+
+        if (utente != null)
+        {
+            username = utente.getUsername();
+
+            model.addAttribute("username", username);
+        }
+        else
+        {
+            model.addAttribute("username", null);
+        }
         return "pcbuilder.html";
     }
 

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.demo.spring.games.database.CarrelloDao;
 import com.demo.spring.games.database.PcDao;
+import com.demo.spring.games.database.UtenteDao;
 import com.demo.spring.games.entities.Carrello;
 import com.demo.spring.games.entities.Gpu;
 import com.demo.spring.games.entities.Pc;
@@ -22,19 +23,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.servlet.http.HttpSession;
 @Controller
 public class PcController {
-	
+
 	@Autowired
 	private PcService pcService;
-	
+
 	@Autowired
 	private ProcessoreService processoreService;
-	
+
 	@Autowired
 	private GpuService gpuService;
-	
+
 	@Autowired
 	private SchedaMadreService schedamadreService;
-	
+
 	@Autowired
 	private CasePcService casepcService;
 
@@ -45,7 +46,7 @@ public class PcController {
 
 	@Autowired
 	private CarrelloService carrelloService;
-	
+
 	@RequestMapping(path = "/pc", method = RequestMethod.GET)
 	public String listPc(Model model, HttpSession session, @RequestParam(name = "filtroGpu", required = false) String filtroGpu,
 						 @RequestParam(name = "filtroCpu", required = false) String filtroCpu,
@@ -56,14 +57,28 @@ public class PcController {
 		boolean isAdmin = false;
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
-		if (utenteObj instanceof Utente) {
+		String username = "";
+
+		if (utenteObj instanceof Utente)
+		{
 			Utente utente = (Utente) utenteObj;
 			System.out.println(utente.getId());
-			if (utente.getRuolo().equals("amministratore")) {
+			System.out.println(utente.getUsername());
+
+			if (utente.getRuolo().equals("amministratore"))
+			{
 				isAdmin = true;
 			}
+
+			username = utente.getUsername();
+			model.addAttribute("username", username);
+		}
+		else
+		{
+			model.addAttribute("username", null);
 		}
 		model.addAttribute("isAdmin", isAdmin);
+
 
 
 		List<Pc> pcsFiltrati = new ArrayList<>();
@@ -100,9 +115,7 @@ public class PcController {
 			model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
 
 			return "pc.html";
-
 	}
-
 
 	@RequestMapping(path="/modPC", method = RequestMethod.GET)
 	public String updatePc(@RequestParam Map<String, String> params) {
@@ -110,13 +123,13 @@ public class PcController {
 		pcService.updatePC(params);
 		return "redirect:/pc";
 	}
-	
+
 	@RequestMapping(path="/delPc", method = RequestMethod.GET)
 	public String deletePc(@RequestParam("id") int id) {
 		pcService.deletePC(id);
 		return "redirect:/pc";
 	}
-	
+
 	@RequestMapping(path="/addPC", method = RequestMethod.GET)
 	public String addPC(@RequestParam Map<String, String> params) {
 		pcService.addPC(params);
@@ -151,7 +164,9 @@ public class PcController {
 	public String listCarrello(Model model, HttpSession session) {
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
-		if(utenteOne != null) {
+		String username = "";
+		if(utenteOne != null)
+		{
 			int id = utenteOne.getId();
 			List<Pc> carrello = carrelloService.getCarrello(id);
 			ArrayList<Integer> quantita = new ArrayList<>();
@@ -159,8 +174,22 @@ public class PcController {
 				quantita.add(carrelloService.getQuantitaPc(id, pc.getId()));
 
 			}
+
+
+
 			model.addAttribute("quantitaPc", quantita);
 			model.addAttribute("carrello", carrello);
+		}
+
+		if (utenteObj instanceof Utente)
+		{
+			Utente utente = (Utente) utenteObj;
+			username = utente.getUsername();
+
+			model.addAttribute("username", username);
+		}
+		else{
+			model.addAttribute("username", null);
 		}
 		return "carrello.html";
 	}

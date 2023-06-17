@@ -22,10 +22,11 @@ public class UserController
     ApplicationContext context;
 
     @GetMapping("/formregistrazione")
-    public String formRegistrazione(Model model)
+    public String formRegistrazione(Model model, HttpSession session)
     {
         Utente utente = context.getBean("utenteVuoto", Utente.class);
         model.addAttribute("utente",utente);
+
         return "registrazioneutente.html";
     }
 
