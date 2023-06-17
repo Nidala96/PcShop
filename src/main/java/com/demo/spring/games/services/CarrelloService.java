@@ -130,4 +130,22 @@ public class CarrelloService {
         }
         return 0; // PC non presente nel carrello
     }
+
+    public void modificaQuantitaPc(int utenteId, int pcId, int quantitaPc) {
+        List<Map<String, String>> carrelloItems = carrelloDao.read(utenteId);
+
+        for (Map<String, String> item : carrelloItems) {
+            int itemId = Integer.parseInt(item.get("id"));
+            if (itemId == pcId) {
+                int quantitaPrecedente = Integer.parseInt(item.get("quantitaPc"));
+
+
+                // Aggiorna la quantità del PC nel carrello
+                item.put("quantitaPc", String.valueOf(quantitaPc));
+                carrelloDao.update(item);
+
+                return;
+            }
+        }
+    }
 }

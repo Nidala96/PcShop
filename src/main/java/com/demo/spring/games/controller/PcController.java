@@ -177,5 +177,22 @@ public class PcController {
 		return "redirect:/carrello";
 	}
 
+	@RequestMapping(path="/modQuantita", method = RequestMethod.GET)
+	public String modCarrello(@RequestParam Map<String, String> params, HttpSession session) {
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		if(utenteOne != null) {
+			int utenteId = utenteOne.getId();
+			int pcId = Integer.parseInt(params.get("pc_id"));
+			int quantitaPc = Integer.parseInt(params.get("quantitaPc"));
+			// Controlla se il PC esiste già nel carrello dell'utente
+			boolean pcEsisteNelCarrello = carrelloService.pcEsisteNelCarrello(utenteId, pcId);
+			if (pcEsisteNelCarrello) {
+				// Aggiorna la quantità del PC esistente nel carrello
+				carrelloService.modificaQuantitaPc(utenteId, pcId, quantitaPc);
+			}
+		}
+		return "redirect:/pc";
+	}
 
 }

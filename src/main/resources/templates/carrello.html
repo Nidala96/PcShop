@@ -162,7 +162,12 @@
                       </div>
                       <div class="d-flex flex-row align-items-center">
                         <div style="width: 50px;">
-                          <h5 th:text="${quantitaPc[iterStat.index]}  " class="fw-normal mb-0"></h5>
+                          <form action="/modQuantita" method="GET">
+                            <input th:value="${entry.id}" name="pc_id" hidden>
+                            <button type="submit">
+                              <input type="number" name="quantitaPc" class="quantity" th:value="${quantitaPc[iterStat.index]}" min="1" max="9" style="width: 40px; margin-bottom:5px;text-align: center;" />
+                            </button>
+                          </form>
                         </div>
                         <div style="width: 80px;">
                           <h5 th:text="${entry.prezzo}" class="mb-0"></h5>
