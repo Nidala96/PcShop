@@ -50,7 +50,7 @@ public class UtenteDao
 	    public void create(Map<String,String> m)
 	    {
 	        String query = "insert into utenti (nome,cognome,username,password,ruolo) values (?,?,?,?,?)";
-	        db.update(query, m.get("nome"), m.get("cognome"), m.get("username"), m.get("password"), m.get("ruolo"));
+	        db.update(query, m.get("nome"), m.get("cognome"), m.get("username"), m.get("password"), "visitatore");
 	    }
 
 	    public void update(Map<String,String> m)
