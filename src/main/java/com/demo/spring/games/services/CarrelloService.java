@@ -128,7 +128,6 @@ public class CarrelloService {
                 return Integer.parseInt(item.get("quantitaPc"));
             }
         }
-
         return 0; // PC non presente nel carrello
     }
 }

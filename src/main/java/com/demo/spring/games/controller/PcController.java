@@ -154,8 +154,13 @@ public class PcController {
 		if(utenteOne != null) {
 			int id = utenteOne.getId();
 			List<Pc> carrello = carrelloService.getCarrello(id);
-			model.addAttribute("carrello", carrello);
+			ArrayList<Integer> quantita = new ArrayList<>();
+			for( Pc pc : carrello) {
+				quantita.add(carrelloService.getQuantitaPc(id, pc.getId()));
 
+			}
+			model.addAttribute("quantitaPc", quantita);
+			model.addAttribute("carrello", carrello);
 		}
 		return "carrello.html";
 	}
