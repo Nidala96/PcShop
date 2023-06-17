@@ -9,7 +9,7 @@ var priceHD =0;
 function addCPU(element) {
   var prezzoCPU = parseFloat(element.getAttribute('data-pprezzo'));
   document.getElementById("nCPU").textContent = element.getAttribute('data-pnome');
-  document.getElementById("pCPU").textContent = prezzoCPU.toFixed(2);
+  document.getElementById("pCPU").textContent = prezzoCPU.toFixed(2) + "€";
 
   priceCPU = prezzoCPU;
   prezzototale =  0;
@@ -23,7 +23,7 @@ function addCPU(element) {
 function addGPU(element) {
   var prezzoGPU = parseFloat(element.getAttribute('data-gprezzo'));
   document.getElementById("nGPU").textContent = element.getAttribute('data-gnome');
-  document.getElementById("pGPU").textContent = prezzoGPU.toFixed(2);
+  document.getElementById("pGPU").textContent = prezzoGPU.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pGPU").textContent);
   prezzototale += prezzoGPU;
 
@@ -35,7 +35,7 @@ function addGPU(element) {
 function addSCHEDAMADRE(element) {
   var prezzoSM = parseFloat(element.getAttribute('data-smprezzo'));
   document.getElementById("nSM").textContent = element.getAttribute('data-smnome');
-  document.getElementById("pSM").textContent = prezzoSM.toFixed(2);
+  document.getElementById("pSM").textContent = prezzoSM.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pSM").textContent);
   prezzototale += prezzoSM;
 
@@ -49,7 +49,7 @@ function addSCHEDAMADRE(element) {
 function addCASEPC(element) {
   var prezzoCASE = parseFloat(element.getAttribute('data-cpcprezzo'));
   document.getElementById("nCASE").textContent = element.getAttribute('data-cpcnome');
-  document.getElementById("pCASE").textContent = prezzoCASE.toFixed(2);
+  document.getElementById("pCASE").textContent = prezzoCASE.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pCASE").textContent);
   prezzototale += prezzoCASE;
 
@@ -63,7 +63,7 @@ function addCASEPC(element) {
 function addRAM(element) {
   var prezzoRAM = parseFloat(element.getAttribute('data-ramprezzo'));
   document.getElementById("nRAM").textContent = element.getAttribute('data-ramnome');
-  document.getElementById("pRAM").textContent = prezzoRAM.toFixed(2);
+  document.getElementById("pRAM").textContent = prezzoRAM.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pRAM").textContent);
   prezzototale += prezzoRAM;
 
@@ -76,7 +76,7 @@ function addRAM(element) {
 function addHARDDISK(element) {
   var prezzoHD = parseFloat(element.getAttribute('data-hdprezzo'));
   document.getElementById("nHD").textContent = element.getAttribute('data-hdnome');
-  document.getElementById("pHD").textContent = prezzoHD.toFixed(2);
+  document.getElementById("pHD").textContent = prezzoHD.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pHD").textContent);
   prezzototale += prezzoHD;
 
@@ -107,48 +107,48 @@ function rimuoviComponente(element, componente)
     switch(componente)
     {
         case "CPU":
-            rigaComponente.querySelector('#nCPU').textContent = 'NOMECPU';
-            rigaComponente.querySelector('#pCPU').textContent = 'PREZZOCPU';
+            rigaComponente.querySelector('#nCPU').textContent = '---';
+            rigaComponente.querySelector('#pCPU').textContent = '---';
 
             priceCPU = 0;
             calculateTotal();
         break;
 
         case "GPU":
-             rigaComponente.querySelector('#nGPU').textContent = 'NOMEGPU';
-             rigaComponente.querySelector('#pGPU').textContent = 'PREZZOGPU';
+             rigaComponente.querySelector('#nGPU').textContent = '---';
+             rigaComponente.querySelector('#pGPU').textContent = '---';
 
              priceGPU = 0;
              calculateTotal();
          break;
 
          case "SM":
-             rigaComponente.querySelector('#nSM').textContent = 'NOMESCHEDAMADRE';
-             rigaComponente.querySelector('#pSM').textContent = 'PREZZOSCHEDAMADRE';
+             rigaComponente.querySelector('#nSM').textContent = '---';
+             rigaComponente.querySelector('#pSM').textContent = '---';
 
              priceSM = 0;
              calculateTotal();
          break;
 
          case "CASE":
-             rigaComponente.querySelector('#nCASE').textContent = 'NOMESCHEDAMADRE';
-             rigaComponente.querySelector('#pCASE').textContent = 'PREZZOSCHEDAMADRE';
+             rigaComponente.querySelector('#nCASE').textContent = '---';
+             rigaComponente.querySelector('#pCASE').textContent = '---';
 
              priceCPC = 0;
              calculateTotal();
          break;
 
          case "RAM":
-             rigaComponente.querySelector('#nRAM').textContent = 'NOMERAM';
-             rigaComponente.querySelector('#pRAM').textContent = 'PREZZORAM';
+             rigaComponente.querySelector('#nRAM').textContent = '---';
+             rigaComponente.querySelector('#pRAM').textContent = '---';
 
              priceRAM = 0;
              calculateTotal();
          break;
 
          case "HDD":
-           rigaComponente.querySelector('#nHD').textContent = 'NOMEHARDDISK';
-           rigaComponente.querySelector('#pHD').textContent = 'PREZZOHARDDISK';
+           rigaComponente.querySelector('#nHD').textContent = '---';
+           rigaComponente.querySelector('#pHD').textContent = '---';
 
            priceHD = 0;
            calculateTotal();
@@ -188,6 +188,26 @@ window.onclick = function(event)
 		document.getElementById("modal-addGPU").style.display = "none";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
