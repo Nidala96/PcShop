@@ -127,9 +127,11 @@ public class PcController {
 	public String addCarrello(@RequestParam Map<String, String> params, HttpSession session) {
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
-		int id = utenteOne.getId();
-		params.put("utente_id", String.valueOf(id));
-		carrelloService.addCarrello(params);
+		if(utenteOne != null) {
+			int id = utenteOne.getId();
+			params.put("utente_id", String.valueOf(id));
+			carrelloService.addCarrello(params);
+		}
 		return "redirect:/pc";
 	}
 
