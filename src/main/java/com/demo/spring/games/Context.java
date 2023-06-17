@@ -55,5 +55,8 @@ public class Context
 	@Bean
 	public HardDiskService hardDiskService() { return new HardDiskService(); }
 
+	@Bean
+	public CarrelloService carrelloService() { return new CarrelloService(); }
+
 
 }

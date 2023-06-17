@@ -109,5 +109,12 @@ public class ModelContext
 		return u;
 	}
 
-
+	@Bean
+	@Scope("prototype")
+	public Carrello carrello(Map<String,String> map)
+	{
+		Carrello u = new Carrello();
+		u.fromMap(map);
+		return u;
+	}
 }

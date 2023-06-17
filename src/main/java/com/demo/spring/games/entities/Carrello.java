@@ -1,36 +1,36 @@
 package com.demo.spring.games.entities;
 
-public class Carrello extends Entity {
+public class Carrello implements IMapp {
 
-    private Pc pc;
-    private Utente utente;
+    private long pc_id;
 
+    private long utente_id;
 
-    public Pc getPc()
-    {
-        return pc;
+    private long quantitaPc;
+
+    public long getPc_id() {
+        return pc_id;
     }
 
-    public void setPc(Pc pc)
-    {
-        this.pc = pc;
+    public void setPc_id(long pc_id) {
+        this.pc_id = pc_id;
     }
 
-    public Utente getUtente()
-    {
-        return utente;
+    public long getUtente_id() {
+        return utente_id;
     }
 
-    public void setUtente(Utente utente)
-    {
-        this.utente = utente;
+    public void setUtente_id(long utente_id) {
+        this.utente_id = utente_id;
     }
 
-    @Override
-    public String toString() {
-        return "Carrello" +
-                "\npc= " + pc +
-                "\nutente= " + utente;
+    public long getQuantitaPc() {
+        return quantitaPc;
     }
+
+    public void setQuantitaPc(long quantitaPc) {
+        this.quantitaPc = quantitaPc;
+    }
+
 }
 

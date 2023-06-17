@@ -8,4 +8,6 @@ public interface IDao
 	List<Map<String,String>> read();
 	void update(Map<String, String> map);
 	void delete(int id);
+
+	List<Map<String, String>> read(int id);
 }

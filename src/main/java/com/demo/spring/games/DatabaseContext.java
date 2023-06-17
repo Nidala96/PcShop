@@ -68,4 +68,7 @@ public class DatabaseContext
 
 	@Bean
 	public HardDiskDao hardDiskDao() { return new HardDiskDao();}
+
+	@Bean
+	CarrelloDao carreloDao() { return new CarrelloDao(); }
 }

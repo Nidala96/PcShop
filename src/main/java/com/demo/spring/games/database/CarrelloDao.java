@@ -1,5 +1,6 @@
 package com.demo.spring.games.database;
 
+import com.demo.spring.games.entities.Carrello;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -11,22 +12,28 @@ public class CarrelloDao implements IDao {
     private Database db;
     
     private String insert = 
-            "insert into carrello (pc_id, utente_id) values (?, ?)";
+            "insert into carrello (pc_id, utente_id, quantitaPc) values (?, ?, ?)";
     
     private String read = 
             "select * from carrello";
     
     private String update = 
-            "update carrello set pc_id = ?, utente_id = ?  where id = ?";
+            "update carrello set pc_id = ?, utente_id = ?, quantitaPc = ?  where id = ?";
     
     private String delete = 
             "delete from carrello where id = ?";
+
+    private String readCarrello = "SELECT pc.*\n" +
+            "FROM pc\n" +
+            "JOIN carrello ON pc.id = carrello.pc_id\n" +
+            "WHERE carrello.utente_id = ?;";
         
     @Override
     public void add(Map<String, String> map) {
         db.update(insert, 
                     map.get("pc_id"),
-                    map.get("utente_id"));
+                    map.get("utente_id"),
+                    map.get("quantitaPc"));
     }
 
     @Override
@@ -41,6 +48,7 @@ public class CarrelloDao implements IDao {
         db.update(update, 
                     map.get("pc_id"),
                     map.get("utente_id"),
+                    map.get("quantitaPc"),
                     map.get("id"));
     }
 
@@ -48,5 +56,12 @@ public class CarrelloDao implements IDao {
     public void delete(int id) {
         db.update(delete,
                     String.valueOf(id));
+    }
+
+    @Override
+    public List<Map<String, String>> read(int id) {
+        List<Map<String, String>> lista = new ArrayList<>();
+        lista = db.execute(readCarrello, String.valueOf(id));
+        return lista;
     }
 }

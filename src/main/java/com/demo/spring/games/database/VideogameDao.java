@@ -60,5 +60,10 @@ public class VideogameDao implements IDao{
 		db.update(delete,
 					String.valueOf(id));
 	}
-	
+
+	@Override
+	public List<Map<String, String>> read(int id) {
+		return null;
+	}
+
 }

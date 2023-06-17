@@ -1,15 +1,16 @@
 package com.demo.spring.games.controller;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import com.demo.spring.games.database.CarrelloDao;
+import com.demo.spring.games.database.PcDao;
+import com.demo.spring.games.entities.Carrello;
 import com.demo.spring.games.entities.Gpu;
 import com.demo.spring.games.entities.Pc;
 import com.demo.spring.games.entities.Utente;
 import com.demo.spring.games.services.*;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,9 @@ public class PcController {
 	private HardDiskService hardDiskService;
 
 	@Autowired RamService ramService;
+
+	@Autowired
+	private CarrelloService carrelloService;
 	
 	@RequestMapping(path = "/pc", method = RequestMethod.GET)
 	public String listPc(Model model, HttpSession session, @RequestParam(name = "filtroGpu", required = false) String filtroGpu,
@@ -48,16 +52,22 @@ public class PcController {
 						 @RequestParam(name = "filtroRam", required = false) String filtroRam,
 						 @RequestParam(name = "filtroHardDisk", required = false) String filtroHardDisk,
 						 @RequestParam(name = "filtroPrezzo", required = false) Double filtroPrezzo) {
+
 		boolean isAdmin = false;
 		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
 		if (utenteObj instanceof Utente) {
 			Utente utente = (Utente) utenteObj;
+			System.out.println(utente.getId());
 			if (utente.getRuolo().equals("amministratore")) {
 				isAdmin = true;
 			}
 		}
 		model.addAttribute("isAdmin", isAdmin);
+
+
 		List<Pc> pcsFiltrati = new ArrayList<>();
+
 
 		List<Pc> unfilteredPcs = pcService.getPcs();
 		if (filtroGpu == null && filtroCpu == null && filtroRam == null && filtroHardDisk == null && filtroPrezzo == null) {
@@ -73,9 +83,6 @@ public class PcController {
 				}
 			}
 		}
-
-
-			System.out.println(casepcService.getCasePc());
 
 			model.addAttribute("listPc", pcsFiltrati);
 			model.addAttribute("maxPcPrice", unfilteredPcs.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Pc::getPrezzo))).get().getPrezzo());
@@ -99,6 +106,7 @@ public class PcController {
 
 	@RequestMapping(path="/modPC", method = RequestMethod.GET)
 	public String updatePc(@RequestParam Map<String, String> params) {
+		System.out.println(params);
 		pcService.updatePC(params);
 		return "redirect:/pc";
 	}
@@ -115,5 +123,23 @@ public class PcController {
 		return "redirect:/pc";
 	}
 
+	@RequestMapping(path="/addCarrello", method = RequestMethod.GET)
+	public String addCarrello(@RequestParam Map<String, String> params, HttpSession session) {
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		int id = utenteOne.getId();
+		params.put("utente_id", String.valueOf(id));
+		carrelloService.addCarrello(params);
+		return "redirect:/pc";
+	}
 
+	@RequestMapping(path="/carrello", method = RequestMethod.GET)
+	public String listCarrello(Model model, HttpSession session) {
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		int id = utenteOne.getId();
+		List<Pc> carrello = carrelloService.getCarrello(id);
+		model.addAttribute("carrello", carrello);
+		return "carrello.html";
+	}
 }
