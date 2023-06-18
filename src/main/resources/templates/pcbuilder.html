@@ -8,15 +8,19 @@
 
     <title>Build your pc</title>
     <script src="js/pcbuilder.js" defer></script>
-    <script src="js/main.js" defer></script>
+
+
+
+
+
+
+
+
+
 
     <link rel="stylesheet" href="css/pcbuild.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/pcbuilderHDD.js" defer></script>
-    <script src="js/pcbuilderRAM.js" defer></script>
-    <script src="js/pcbuilderCP.js" defer></script>
-    <script src="js/pcbuilderSM.js" defer></script>
-    <script src="js/pcbuilderGPU.js" defer></script>
+
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css%22%3E">
@@ -294,7 +298,7 @@
         <tbody>
         <tr>
             <td>
-                <button class="button-style" id = "modalNewItem">CHOOSE CPU</button> <!--onclick="toggleTable('cpu-table')"-->
+                <button class="button-style" id = "modalNewItemCPU">CHOOSE CPU</button> <!--onclick="toggleTable('cpu-table')"-->
             </td>
             <td class="td-element" id="nCPU">---</td>
             <td class="td-element" id="pCPU">---</td>
@@ -303,9 +307,10 @@
         <tr>
             <td colspan="4" class="table-row">
 
-                <div id="modal-add" class="modal">
-                    <div id="modalNew" class="modal-content">
-                        <span id="closeAdd" class="close">&times;</span>
+
+                <div id="modal-addCPU" class="modal">
+                    <div id="modalNewCPU" class="modal-content">
+                        <span id="closeAddCPU" class="close">&times;</span>
                         <table id="cpu-table" style="display:table;">
                             <thead>
                             <tr>
@@ -333,9 +338,10 @@
                         </table>
                     </div>
                 </div>
-
             </td>
         </tr>
+        <script src="js/pcbuilderCPU.js"defer></script>
+
 
 
         <tr>
@@ -376,9 +382,13 @@
                         </table>
                     </div>
                 </div>
-
             </td>
         </tr>
+        <script src="js/pcbuilderGPU.js"></script>
+
+
+
+
         <tr>
             <td>
                 <button class="button-style" id="modalNewItemSM">CHOOSE MOTHERBOARD</button>
@@ -420,6 +430,9 @@
                 </div>
             </td>
         </tr>
+        <script src="js/pcbuilderSM.js"></script>
+
+
         <tr>
             <td>
                 <button class="button-style" id="modalNewItemCP">CHOOSE PC CASE</button>
@@ -459,6 +472,8 @@
                 </div>
             </td>
         </tr>
+        <script src="js/pcbuilderCP.js"></script>
+
         <tr>
             <td>
                 <button class="button-style" id="modalNewItemRAM">CHOOSE RAM</button>
@@ -504,6 +519,9 @@
                 </div>
             </td>
         </tr>
+        <script src="js/pcbuilderRAM.js"></script>
+
+
         <tr>
             <td>
                 <button class="button-style" id="modalNewItemHDD">CHOOSE HARD DISK</button>
@@ -549,6 +567,8 @@
         </tr>
         </tbody>
     </table>
+    <script src="js/pcbuilderHDD.js"></script>
+
 
 </div>
 
@@ -811,5 +831,6 @@ function darkTheme()
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
+
                </body>
 </html>
