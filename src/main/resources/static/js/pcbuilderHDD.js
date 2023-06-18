@@ -1,29 +1,19 @@
 //Tabella HardDisk
-document.getElementById("modalNewItemHDD").onclick = function()
+document.getElementById("modalNewItemHDD").addEventListener("click", function()
 {
     console.log(document.getElementById("modalNewItemHDD"));
 	document.getElementById("modal-addHDD").style.display = "block";
-}
+});
 
-document.getElementById("closeAddHDD").onclick = function()
+document.getElementById("closeAddHDD").addEventListener("click", function()
 {
 	document.getElementById("modal-addHDD").style.display = "none";
-}
+});
 
-document.getElementById("closeModHDD").onclick = function()
+window.addEventListener("click", function()
 {
-	document.getElementById("modal-modHDD").style.display = "none";
-}
-
-window.onclick = function(event)
-{
-	if(event.target == document.getElementById("modal-modHDD"))
-	{
-		document.getElementById("modal-modHDD").style.display = "none";
-	}
-
 	if(event.target == document.getElementById("modal-addHDD"))
 	{
 		document.getElementById("modal-addHDD").style.display = "none";
 	}
-}
+});
