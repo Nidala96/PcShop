@@ -150,4 +150,8 @@ public class CarrelloService {
             }
         }
     }
+
+    public void deleteAll(int utenteId) {
+        carrelloDao.deleteAll(utenteId);
+    }
 }

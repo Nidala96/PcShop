@@ -162,6 +162,7 @@ public class PcController {
 
 	@RequestMapping(path="/carrello", method = RequestMethod.GET)
 	public String listCarrello(Model model, HttpSession session) {
+		Double prezzoSpedizione = 10D;
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
 		String username = "";
@@ -172,13 +173,20 @@ public class PcController {
 			ArrayList<Integer> quantita = new ArrayList<>();
 			for( Pc pc : carrello) {
 				quantita.add(carrelloService.getQuantitaPc(id, pc.getId()));
-
 			}
-
-
+			Double subTotale = 0.0;
+			for (int i = 0; i < carrello.size(); i++) {
+				Pc pc = carrello.get(i);
+				int quantity = quantita.get(i);
+				double itemPrice = pc.getPrezzo() * quantity;
+				subTotale += itemPrice;
+			}
 
 			model.addAttribute("quantitaPc", quantita);
 			model.addAttribute("carrello", carrello);
+			model.addAttribute("subTotale", subTotale);
+			model.addAttribute("prezzoSpedizione", prezzoSpedizione);
+			model.addAttribute("prezzoTotale", subTotale + prezzoSpedizione);
 		}
 
 		if (utenteObj instanceof Utente)
@@ -224,4 +232,12 @@ public class PcController {
 		return "redirect:/carrello";
 	}
 
+	@RequestMapping(path="/success", method = RequestMethod.GET)
+	public String success(Model model, HttpSession session) {
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		carrelloService.deleteAll(utenteOne.getId());
+		model.addAttribute("username", utenteOne.getUsername());
+		return "success.html";
+	}
 }

@@ -23,6 +23,10 @@ public class CarrelloDao implements IDao {
             "DELETE FROM carrello\n" +
                     "WHERE utente_id = ? AND pc_id = ?;";
 
+    private String deleteAll =
+        "DELETE FROM carrello\n" +
+            "WHERE utente_id = ?;";
+
     private String readCarrello = "SELECT pc.*, carrello.pc_id ,carrello.quantitaPc\n" +
             "FROM pc\n" +
             "JOIN carrello ON pc.id = carrello.pc_id\n" +
@@ -61,6 +65,11 @@ public class CarrelloDao implements IDao {
     public void delete(int pc_id, int utente_id) {
         db.update(delete,
                     String.valueOf(pc_id),String.valueOf(utente_id));
+    }
+
+    @Override
+    public void deleteAll(int utente_id) {
+        db.update(deleteAll, String.valueOf(utente_id));
     }
 
     @Override

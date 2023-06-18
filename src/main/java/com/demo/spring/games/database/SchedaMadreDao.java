@@ -61,6 +61,12 @@ public class SchedaMadreDao implements IDao {
 
     }
 
+    @Override
+    public void deleteAll(int utente_id)
+    {
+
+    }
+
     public List<Map<String, String>> read(int id) {
         List<Map<String, String>> lista = new ArrayList<>();
         lista = db.execute(readOne,

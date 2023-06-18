@@ -237,3 +237,14 @@ background: none !important;
   color: white;
   margin-top: 4rem;
 }
+
+.paypal-buttons-container {
+    background-color: #54b4d3;
+    border-radius: 8px;
+    padding: 24px 24px 8px 24px;
+    box-shadow: 0 4px 9px -4px #54b4d3;
+}
+
+.currency::after {
+    content: " €";
+}

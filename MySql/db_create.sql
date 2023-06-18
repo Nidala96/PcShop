@@ -32,25 +32,6 @@ prezzo double,
 descrizione varchar(100)
 );
 
-CREATE TABLE pc (
-  id int primary key auto_increment,
-  nome varchar(100),
-  tipo varchar(100),
-  percentualeSconto double,
-  processore_id int,
-  gpu_id int,
-  schedaMadre_id int,
-  casePc_id int,
-  ram_id INT,
-  hardDisk_id INT,
-  foreign key (processore_id) references processore(id),
-  foreign key (gpu_id) references gpu(id),
-  foreign key (schedaMadre_id) references schedaMadre(id),
-  foreign key (casePc_id) references casePc(id),
-  FOREIGN KEY (ram_id) REFERENCES ram(id),
-  FOREIGN KEY (hardDisk_id) REFERENCES hardDisk(id)
-);
-
 create table ram (
   id int primary key auto_increment,
   nome varchar(100),
@@ -70,8 +51,45 @@ descrizione varchar(100),
 prezzo double
 );
 
+CREATE TABLE pc (
+  id int primary key auto_increment,
+  nome varchar(100),
+  tipo varchar(100),
+  percentualeSconto double,
+  processore_id int,
+  gpu_id int,
+  schedaMadre_id int,
+  casePc_id int,
+  ram_id INT,
+  hardDisk_id INT,
+  foreign key (processore_id) references processore(id),
+  foreign key (gpu_id) references gpu(id),
+  foreign key (schedaMadre_id) references schedaMadre(id),
+  foreign key (casePc_id) references casePc(id),
+  FOREIGN KEY (ram_id) REFERENCES ram(id),
+  FOREIGN KEY (hardDisk_id) REFERENCES hardDisk(id)
+);
+
+create table utenti
+(
+	id int primary key auto_increment,
+    nome varchar(100),
+    cognome varchar(100),
+    username varchar(100),
+    password varchar(100),
+    ruolo varchar(100)
+);
+
+create table carrello (
+  pc_id int,
+  utente_id int,
+  quantitaPc int,
+  foreign key (pc_id) references pc(id),
+  foreign key (utente_id) references utenti(id)
+);
+
 INSERT INTO processore (nome, marca, prezzo, descrizione)
-VALUES 
+VALUES
   ('Intel Core i9-9900K', 'Intel', 549.99, 'Processore octa-core ad alte prestazioni'),
   ('AMD Ryzen 7 3700X', 'AMD', 329.99, 'Processore octa-core con prestazioni eccezionali'),
   ('Intel Core i5-9600K', 'Intel', 269.99, 'Processore hexa-core per giochi e applicazioni'),
@@ -151,83 +169,8 @@ VALUES
   ('Lian Li PC-O11D XL ROG Edition', 249.99, 'Case di fascia alta in edizione speciale per ASUS ROG'),
   ('NZXT H710', 149.99, 'Case di fascia alta con ampio spazio interno e possibilità di gestione avanzata dei cavi'),
   ('Corsair Obsidian 500D RGB SE', 249.99, 'Case di fascia alta con design elegante e illuminazione RGB');
-  
-  INSERT INTO pc (nome, tipo, percentualeSconto, processore_id, gpu_id, schedaMadre_id, casePc_id, ram_id, hardDisk_id)
-	VALUES
-  ('PC Gaming','gaming', 1, 8, 12, 4, 7, 6, 4),
-  ('PC Ufficio', 'ufficio', 1, 2, 9, 6, 10, 6, 4),
-  ('PC Gaming', 'gaming',  1, 11, 18, 1, 14, 6, 4),
-  ('PC Ufficio','ufficio', 1, 3, 10, 5, 12, 6, 4),
-  ('PC Gaming','gaming', 1, 11, 7, 11, 11, 6, 4),
-  ('PC Ufficio','ufficio',1, 4, 5, 8, 3, 6, 4),
-  ('PC Gaming','gaming',1, 9, 16, 2, 9, 6, 4),
-  ('PC Ufficio','ufficio',1, 6, 14, 11, 5, 6, 4),
-  ('PC Gaming','gaming', 1,1, 3, 10, 6, 6, 4),
-  ('PC Ufficio','ufficio', 1,1, 8, 7, 2, 6, 4);
-  
-  INSERT INTO pc (nome, tipo, percentualeSconto, processore_id, gpu_id, schedaMadre_id, casePc_id, ram_id, hardDisk_id)
-VALUES
-  ('PC Gaming', 'gaming', 1, 8, 12, 4, 7, 6, 1),
-  ('PC Ufficio', 'ufficio', 1, 2, 9, 6, 10, 9, 2),
-  ('PC Gaming', 'gaming', 1, 11, 15, 1, 14, 7, 3),
-  ('PC Ufficio', 'ufficio', 1, 3, 10, 5, 12, 11, 4),
-  ('PC Gaming', 'gaming', 1, 11, 7, 11, 11, 5, 5),
-  ('PC Ufficio', 'ufficio', 1, 4, 5, 8, 3, 6, 6),
-  ('PC Gaming', 'gaming', 1, 9, 15, 2, 9, 6, 7),
-  ('PC Ufficio', 'ufficio', 1, 6, 14, 11, 5, 3, 8),
-  ('PC Gaming', 'gaming', 1, 1, 3, 10, 6, 6, 9),
-  ('PC Ufficio', 'ufficio', 1, 1, 8, 7, 2, 6, 10),
-  ('PC Gaming', 'gaming', 1, 8, 12, 4, 7, 6, 11),
-  ('PC Ufficio', 'ufficio', 1, 2, 9, 6, 10, 8, 12),
-  ('PC Gaming', 'gaming', 1, 11, 15, 1, 14, 3, 13),
-  ('PC Ufficio', 'ufficio', 1, 3, 10, 5, 12, 5, 14),
-  ('PC Gaming', 'gaming', 1, 11, 7, 11, 11, 1, 15),
-  ('PC Ufficio', 'ufficio', 1, 4, 5, 8, 3, 4, 16),
-  ('PC Gaming', 'gaming', 1, 9, 15, 2, 9, 1, 17),
-  ('PC Ufficio', 'ufficio', 1, 6, 14, 11, 5, 9, 18),
-  ('PC Gaming', 'gaming', 1, 1, 3, 10, 6, 3, 19),
-  ('PC Ufficio', 'ufficio', 1, 1, 8, 7, 2, 4, 20);
 
-
-select * from pc;
-  
-  select * from utenti;
-  select * from processore;
-  
-  select * from gpu;
-  
-  select * from ram;
-  
-  select * from schedaMadre;
-  
-  select * from casePc;
-  
-  SELECT pc.nome AS pc_nome, pc.tipo AS pc_tipo,
-  processore.nome AS processore_nome, processore.marca AS processore_marca, processore.prezzo AS processore_prezzo,
-  gpu.nome AS gpu_nome, gpu.prezzo AS gpu_prezzo,
-  schedaMadre.nome AS schedaMadre_nome, schedaMadre.supporto AS schedaMadre_supporto, schedaMadre.prezzo AS schedaMadre_prezzo,
-  casePc.nome AS casePc_nome, casePc.prezzo AS casePc_prezzo
-FROM pc
-INNER JOIN processore ON pc.processore_id = processore.id
-INNER JOIN gpu ON pc.gpu_id = gpu.id
-INNER JOIN schedaMadre ON pc.schedaMadre_id = schedaMadre.id
-INNER JOIN casePc ON pc.casePc_id = casePc.id;
-
-create table utenti
-(
-	id int primary key auto_increment,
-    nome varchar(100),
-    cognome varchar(100),
-    username varchar(100),
-    password varchar(100),
-    ruolo varchar(100)
-);
-
-insert into utenti
-(nome,cognome,username,password,ruolo)
-values("Mario","Rossi","admin","admin","amministratore"),("Mara","Bianchi","mb","marabianchi","visitatore");
-
-INSERT INTO ram (nome, tipo, quantita, prezzo, descrizione, frequenza)
+ INSERT INTO ram (nome, tipo, quantita, prezzo, descrizione, frequenza)
 VALUES
   ('Corsair Vengeance LPX', 'DDR4', 16, 89.99, 'Kit di memoria ad alte prestazioni per PC desktop', '3200 MHz'),
   ('G.Skill Ripjaws V', 'DDR4', 32, 169.99, 'Memoria ad alte prestazioni per gaming e multitasking', '3600 MHz'),
@@ -249,7 +192,7 @@ VALUES
   ('Corsair Vengeance RGB Pro SL', 'DDR4', 32, 199.99, 'RAM con effetti di illuminazione RGB vivaci e profilo sottile', '3200 MHz'),
 ('Kingston HyperX Impact', 'DDR4', 16, 259.90, 'Memoria RAM ad alta velocità per notebook e mini PC', '2666 MHz'),
   ('Crucial Ballistix Gaming', 'DDR4', 32, 158.90, 'RAM ad alte prestazioni per gaming e multitasking', '3200 MHz');
-  
+
 INSERT INTO hardDisk (nome, tipo, quantitaMem, descrizione, prezzo)
 VALUES
   ('Seagate Barracuda', 'HDD', 2000, 'Hard disk interno da 2 TB per archiviazione dati', 79.99),
@@ -273,5 +216,43 @@ VALUES
   ('Samsung T5', 'External SSD', 500, 'Solid state drive esterno da 500 GB con connessione USB 3.1', 119.99),
   ('Seagate Game Drive', 'External HDD', 2000, 'Hard disk esterno da 2 TB per console di gioco', 299.90),
   ('Crucial BX500', 'SSD', 240, 'Solid state drive SATA da 240 GB per migliorare le prestazioni del sistema', 189.90);
-  
-  select * from hardDisk;
+
+  INSERT INTO pc (nome, tipo, percentualeSconto, processore_id, gpu_id, schedaMadre_id, casePc_id, ram_id, hardDisk_id)
+	VALUES
+  ('PC Gaming','gaming', 1, 8, 12, 4, 7, 6, 4),
+  ('PC Ufficio', 'ufficio', 1, 2, 9, 6, 10, 6, 4),
+  ('PC Gaming', 'gaming',  1, 11, 18, 1, 14, 6, 4),
+  ('PC Ufficio','ufficio', 1, 3, 10, 5, 12, 6, 4),
+  ('PC Gaming','gaming', 1, 11, 7, 11, 11, 6, 4),
+  ('PC Ufficio','ufficio',1, 4, 5, 8, 3, 6, 4),
+  ('PC Gaming','gaming',1, 9, 16, 2, 9, 6, 4),
+  ('PC Ufficio','ufficio',1, 6, 14, 11, 5, 6, 4),
+  ('PC Gaming','gaming', 1,1, 3, 10, 6, 6, 4),
+  ('PC Ufficio','ufficio', 1,1, 8, 7, 2, 6, 4);
+
+  INSERT INTO pc (nome, tipo, percentualeSconto, processore_id, gpu_id, schedaMadre_id, casePc_id, ram_id, hardDisk_id)
+VALUES
+  ('PC Gaming', 'gaming', 1, 8, 12, 4, 7, 6, 1),
+  ('PC Ufficio', 'ufficio', 1, 2, 9, 6, 10, 9, 2),
+  ('PC Gaming', 'gaming', 1, 11, 15, 1, 14, 7, 3),
+  ('PC Ufficio', 'ufficio', 1, 3, 10, 5, 12, 11, 4),
+  ('PC Gaming', 'gaming', 1, 11, 7, 11, 11, 5, 5),
+  ('PC Ufficio', 'ufficio', 1, 4, 5, 8, 3, 6, 6),
+  ('PC Gaming', 'gaming', 1, 9, 15, 2, 9, 6, 7),
+  ('PC Ufficio', 'ufficio', 1, 6, 14, 11, 5, 3, 8),
+  ('PC Gaming', 'gaming', 1, 1, 3, 10, 6, 6, 9),
+  ('PC Ufficio', 'ufficio', 1, 1, 8, 7, 2, 6, 10),
+  ('PC Gaming', 'gaming', 1, 8, 12, 4, 7, 6, 11),
+  ('PC Ufficio', 'ufficio', 1, 2, 9, 6, 10, 8, 12),
+  ('PC Gaming', 'gaming', 1, 11, 15, 1, 14, 3, 13),
+  ('PC Ufficio', 'ufficio', 1, 3, 10, 5, 12, 5, 14),
+  ('PC Gaming', 'gaming', 1, 11, 7, 11, 11, 1, 15),
+  ('PC Ufficio', 'ufficio', 1, 4, 5, 8, 3, 4, 16),
+  ('PC Gaming', 'gaming', 1, 9, 15, 2, 9, 1, 17),
+  ('PC Ufficio', 'ufficio', 1, 6, 14, 11, 5, 9, 18),
+  ('PC Gaming', 'gaming', 1, 1, 3, 10, 6, 3, 19),
+  ('PC Ufficio', 'ufficio', 1, 1, 8, 7, 2, 4, 20);
+
+insert into utenti
+(nome,cognome,username,password,ruolo)
+values("Mario","Rossi","admin","admin","amministratore"),("Mara","Bianchi","mb","marabianchi","visitatore");

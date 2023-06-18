@@ -11,5 +11,7 @@ public interface IDao
 
     void delete(int pc_id, int utente_id);
 
-    List<Map<String, String>> read(int id);
+	void deleteAll(int utente_id);
+
+	List<Map<String, String>> read(int id);
 }

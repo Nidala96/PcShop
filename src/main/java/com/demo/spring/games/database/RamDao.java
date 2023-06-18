@@ -76,4 +76,10 @@ public class RamDao implements IDao
 	public void delete(int pc_id, int utente_id) {
 
 	}
+
+	@Override
+	public void deleteAll(int utente_id)
+	{
+
+	}
 }
