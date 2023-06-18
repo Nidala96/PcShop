@@ -203,6 +203,11 @@ table th,
 table td {
   border: 1px solid #ddd;
   padding: 8px;
+
+}
+
+.td-element {
+text-align: center;
 }
 
 table th {
@@ -232,7 +237,7 @@ color: black !important;
 }
 
 .table {
-    width: 80% !important;
+    width: 70% !important;
     padding: 15px;
     border-radius: 6px;
     box-shadow: 2px 4px 12px rgba(25,27,42,0.05);
@@ -252,15 +257,34 @@ color: black !important;
     font-weight: 700;
 }
 
-.button-delete {
-    background-color: #dc4c64;
-    color: black;
+.button-add-element {
+background-color: #4CAF50;
+    color: #ffffff;
     padding: 0.125rem 0.375rem;
     font-size: 0.75rem!important;
     border-radius: 0.25rem;
     text-decoration: none!important;
-    border-color: black;
+    border-color: #4CAF50;
     font-weight: 700;
+}
+
+.button-delete {
+    background-color: #dc4c64;
+    color: white;
+    padding: 0.125rem 0.375rem;
+    font-size: 0.75rem!important;
+    border-radius: 0.25rem;
+    text-decoration: none!important;
+    border-color: #dc4c64;
+    font-weight: 700;
+}
+
+#opzione-th {
+    width: 4rem;
+}
+
+tr th {
+color: white !important;
 }
 
 .table-row {
@@ -273,10 +297,16 @@ color: black !important;
 }
 
 #prezzo-totale {
-      display: flex;
-      justify-content: flex-end;
-      padding-right: 18rem;
-      padding-top: 2rem;
+
+
+}
+
+
+.container-input {
+padding-top: 1rem;
+display: flex;
+justify-content: flex-end;
+padding-right: 24rem;
 }
 
 .table th {
@@ -387,5 +417,15 @@ font-size: 20px
 color: green;
 font-size: 20px
 
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border-left: none;
+    border-right: none;
 }
 

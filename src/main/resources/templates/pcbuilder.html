@@ -288,7 +288,7 @@
             <th>Componente</th>
             <th>Nome Componente</th>
             <th>Prezzo</th>
-            <th>Opzione</th> <!-- Bottone "AGGIUNGI" -->
+            <th id="opzione-th">Opzione</th> <!-- Bottone "AGGIUNGI" -->
         </tr>
         </thead>
         <tbody>
@@ -296,8 +296,8 @@
             <td>
                 <button class="button-style" id = "modalNewItem">CHOOSE CPU</button> <!--onclick="toggleTable('cpu-table')"-->
             </td>
-            <td id="nCPU">---</td>
-            <td id="pCPU">---</td>
+            <td class="td-element" id="nCPU">---</td>
+            <td class="td-element" id="pCPU">---</td>
             <td><button class="button-delete" onclick="rimuoviComponente(this, 'CPU')">ELIMINA</button></td>
         </tr>
         <tr>
@@ -326,7 +326,7 @@
                                 <td th:text="${processore.prezzo}"></td>
                                 <td th:text="${processore.descrizione}"></td>
                                 <td>
-                                    <button th:data-pid="${processore.id}"  th:data-pnome="${processore.nome}" th:data-pprezzo="${processore.prezzo}" th:onclick="addCPU(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-pid="${processore.id}"  th:data-pnome="${processore.nome}" th:data-pprezzo="${processore.prezzo}" th:onclick="addCPU(this)" type="button">AGGIUNGI</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -342,8 +342,8 @@
             <td>
                 <button class="button-style" id ="modalNewItemGPU" >CHOOSE GPU</button>
             </td>
-            <td id="nGPU">---</td>
-            <td id="pGPU">---</td>
+            <td class="td-element" id="nGPU">---</td>
+            <td class="td-element" id="pGPU">---</td>
             <td><button class="button-delete" onclick="rimuoviComponente(this, 'GPU')">ELIMINA</button></td>
         </tr>
         <tr>
@@ -369,7 +369,7 @@
                                 <td th:text="${gpu.prezzo}"></td>
                                 <td th:text="${gpu.descrizione}"></td>
                                 <td>
-                                    <button th:data-gid="${gpu.id}"  th:data-gnome="${gpu.nome}" th:data-gprezzo="${gpu.prezzo}" th:onclick="addGPU(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-gid="${gpu.id}"  th:data-gnome="${gpu.nome}" th:data-gprezzo="${gpu.prezzo}" th:onclick="addGPU(this)" type="button">AGGIUNGI</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -383,8 +383,8 @@
             <td>
                 <button class="button-style" id="modalNewItemSM">CHOOSE MOTHERBOARD</button>
             </td>
-            <td id="nSM">---</td>
-            <td id="pSM">---</td>
+            <td class="td-element" id="nSM">---</td>
+            <td class="td-element" id="pSM">---</td>
             <td><button class="button-delete" onclick="rimuoviComponente(this, 'SM')">ELIMINA</button></td>
         </tr>
         <tr>
@@ -411,7 +411,7 @@
                                 <td th:text="${schedamadre.prezzo}"></td>
                                 <td th:text="${schedamadre.descrizione}"></td>
                                 <td>
-                                    <button th:data-smid="${schedamadre.id}"  th:data-smnome="${schedamadre.nome}" th:data-smprezzo="${schedamadre.prezzo}" th:onclick="addSCHEDAMADRE(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-smid="${schedamadre.id}"  th:data-smnome="${schedamadre.nome}" th:data-smprezzo="${schedamadre.prezzo}" th:onclick="addSCHEDAMADRE(this)" type="button">AGGIUNGI</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -424,8 +424,8 @@
             <td>
                 <button class="button-style" id="modalNewItemCP">CHOOSE PC CASE</button>
             </td>
-            <td id="nCASE">---</td>
-            <td id="pCASE">---</td>
+            <td class="td-element" id="nCASE">---</td>
+            <td class="td-element" id="pCASE">---</td>
             <td><button class="button-delete" onclick="rimuoviComponente(this, 'CASE')">ELIMINA</button></td>
         </tr>
         <tr>
@@ -450,7 +450,7 @@
                                 <td th:text="${casepc.prezzo}"></td>
                                 <td th:text="${casepc.descrizione}"></td>
                                 <td>
-                                    <button th:data-cpcid="${casepc.id}"  th:data-cpcnome="${casepc.nome}" th:data-cpcprezzo="${casepc.prezzo}" th:onclick="addCASEPC(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-cpcid="${casepc.id}"  th:data-cpcnome="${casepc.nome}" th:data-cpcprezzo="${casepc.prezzo}" th:onclick="addCASEPC(this)" type="button">AGGIUNGI</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -463,8 +463,8 @@
             <td>
                 <button class="button-style" id="modalNewItemRAM">CHOOSE RAM</button>
             </td>
-            <td id="nRAM">---</td>
-            <td id="pRAM">---</td>
+            <td class="td-element" id="nRAM">---</td>
+            <td class="td-element" id="pRAM">---</td>
             <td><button class="button-delete" onclick="rimuoviComponente(this, 'RAM')">ELIMINA</button></td>
         </tr>
         <tr>
@@ -495,7 +495,7 @@
                                 <td th:text="${ram.frequenza}"></td>
                                 <td th:text="${ram.descrizione}"></td>
                                 <td>
-                                    <button th:data-ramid="${ram.id}"  th:data-ramnome="${ram.nome}" th:data-ramprezzo="${ram.prezzo}" th:onclick="addRAM(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-ramid="${ram.id}"  th:data-ramnome="${ram.nome}" th:data-ramprezzo="${ram.prezzo}" th:onclick="addRAM(this)" type="button">AGGIUNGI</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -508,8 +508,8 @@
             <td>
                 <button class="button-style" id="modalNewItemHDD">CHOOSE HARD DISK</button>
             </td>
-            <td id="nHD">---</td>
-            <td id="pHD">---</td>
+            <td class="td-element" id="nHD">---</td>
+            <td class="td-element" id="pHD">---</td>
             <td><button class="button-delete" onclick="rimuoviComponente(this, 'HDD')">ELIMINA</button></td>
         </tr>
         <tr>
@@ -538,7 +538,7 @@
                                 <td th:text="${hardDisk.prezzo}"></td>
                                 <td th:text="${hardDisk.descrizione}"></td>
                                 <td>
-                                    <button th:data-hdid="${hardDisk.id}"  th:data-hdnome="${hardDisk.nome}" th:data-hdprezzo="${hardDisk.prezzo}" th:onclick="addHARDDISK(this)" type="button">AGGIUNGI</button>
+                                    <button th:data-hdid="${hardDisk.id}"  th:data-hdnome="${hardDisk.nome}" th:data-hdprezzo="${hardDisk.prezzo}" th:onclick="addHARDDISK(this)" type="button" class="button-add-element">AGGIUNGI</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -559,9 +559,7 @@
 
 
   .price-container {
-    display: flex;
-    flex-direction: column;
-    align-items: right;
+
   }
 
   /* Resto degli stili come prima */
@@ -576,21 +574,22 @@
   }
 
   .add-to-cart-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
+   background-color: #4CAF50;
+    color: #ffffff;
+    padding: 0.125rem 0.375rem;
+    font-size: 1rem!important;
+    border-radius: 0.25rem;
+    text-decoration: none!important;
+    border-color: #4CAF50;
+    font-weight: 700;
+
+
+}
+
+
 </style>
 
-<div class="price-container" style="margin-left: 1400px">
+<div>
     <form id="selectedComponentsForm" action="/addBuild" method="GET">
         <input type="hidden" value="1" name="percentualeSconto" />
         <input type="hidden" name="nome" value="custom" required>
@@ -601,8 +600,14 @@
         <input type="hidden" id="selectedRamId" name="ram_id" required>
         <input type="hidden" id="selectedCasepcId" name="casePc_id" required>
         <input type="hidden" id="selectedHarddisk" name="hardDisk_id" required>
+        <div class="container-input">
         <h3 id="prezzo-totale">Totale: <span id="TOTAL">0.00</span>€</h3>
-        <button type="submit add-to-cart-button">Submit</button>
+        </div>
+            <div class="container-input">
+            <button type="submit" class="add-to-cart-button">Aggiungi al carrello</button>
+            </div>>
+
+
     </form>
 </div>
 
