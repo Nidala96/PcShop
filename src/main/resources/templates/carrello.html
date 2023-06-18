@@ -204,47 +204,11 @@
                           }
                     </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <input type="checkbox" onclick="darkTheme()" value=false class="toggle navbar-right" checked>
-      <form class="d-flex input-group w-auto navbar-right">
-        <input
-                type="search"
-                class="form-control"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="search-addon"
-        />
-        <span class="input-group-text border-0" id="search-addon">
-        <i class="fas fa-search"></i>
-      </span>
-      </form>
 
       <button class="buttonLogin" type="submit">
         <a class="nav-link" aria-current="page" href="/formlogin" style="text-align: left; display: flex; align-items: center;">
-          <i class="fa-solid fa-circle-user fa-xl" style="margin-right: 5px;"></i>
+          <i class="fa-solid fa-circle-user fa-lg" style="margin-right: 5px;"></i>
           <span>
             <th:block th:if="${username}">
                 <small><em>Benvenuto</em></small>
@@ -257,15 +221,35 @@
         </a>
       </button>
 
-      <form method="get" action="/logout" >
-        <button class="buttonLogin" type="submit">
-          <a class="nav-link" aria-current="page"  style="text-align: left; display: flex; align-items: center;">
-            <i class="fa-solid fa-circle-user fa-xl" style="margin-right: 5px;"></i>
-            <span>Logout</span>
+      <!--BUTTON LOGOUT NUOVO-->
+      <form method="get" action="/logout">
+        <li class="nav-item">
+          <button class="buttonLogin" type="submit" style="background-color: transparent; border: none;">
+            <a class="nav-link" aria-current="page" style="text-align: left; display: flex; align-items: center;">
 
-          </a>
-        </button>
+              <span th:if="${username}"><i class="fa-solid fa-right-from-bracket fa-rotate-180 fa-lg icon-hover" style="margin-right: 5px;"></i>Logout</span>
+              <span th:unless="${username}"></span>
+            </a>
+          </button>
+        </li>
       </form>
+
+      <style>
+                .nav-item
+                {
+                    list-style: none;
+                }
+
+                .icon-hover:hover
+                {
+                    color: 86E825;
+                }
+
+                 .nav-link:hover .fa-right-from-bracket
+                 {
+                    color: #86E825;
+                 }
+            </style>
     </div>
   </div>
 </nav>
