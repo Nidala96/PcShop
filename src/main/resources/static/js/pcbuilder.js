@@ -14,7 +14,9 @@ function addCPU(element) {
   priceCPU = prezzoCPU;
   prezzototale =  0;
   prezzototale += prezzoCPU;
-
+    let cpu_id = element.getAttribute("data-pid");
+    console.log(element.getAttribute("data-pid"));
+   document.getElementById("selectedCpuId").value = cpu_id;
 
   calculateTotal();
 
@@ -26,9 +28,10 @@ function addGPU(element) {
   document.getElementById("pGPU").textContent = prezzoGPU.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pGPU").textContent);
   prezzototale += prezzoGPU;
-
   priceGPU = prezzoGPU;
-
+    let gpu_id = element.getAttribute("data-gid");
+    console.log(element.getAttribute("data-gid"));
+    document.getElementById("selectedGpuId").value = gpu_id;
    calculateTotal();
 }
 
@@ -38,9 +41,10 @@ function addSCHEDAMADRE(element) {
   document.getElementById("pSM").textContent = prezzoSM.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pSM").textContent);
   prezzototale += prezzoSM;
-
   priceSM = prezzoSM;
 
+  let schedamadre_id = element.getAttribute("data-smid");
+  document.getElementById("selectedSchedamadreId").value = schedamadre_id;
   calculateTotal();
 
 
@@ -52,7 +56,8 @@ function addCASEPC(element) {
   document.getElementById("pCASE").textContent = prezzoCASE.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pCASE").textContent);
   prezzototale += prezzoCASE;
-
+    let casepc_id = element.getAttribute("data-cpcid");
+  document.getElementById("selectedCasepcId").value = casepc_id;
 
 
   priceCPC = prezzoCASE;
@@ -66,7 +71,8 @@ function addRAM(element) {
   document.getElementById("pRAM").textContent = prezzoRAM.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pRAM").textContent);
   prezzototale += prezzoRAM;
-
+    let ram_id = element.getAttribute("data-ramid");
+    document.getElementById("selectedRamId").value = ram_id;
 
   priceRAM = prezzoRAM;
 
@@ -79,8 +85,8 @@ function addHARDDISK(element) {
   document.getElementById("pHD").textContent = prezzoHD.toFixed(2) + "€";
   prezzototale -= parseFloat(document.getElementById("pHD").textContent);
   prezzototale += prezzoHD;
-
-
+  let harddisk_id = element.getAttribute("data-hdid");
+  document.getElementById("selectedHarddisk").value = harddisk_id;
   priceHD = prezzoHD;
 
    calculateTotal();

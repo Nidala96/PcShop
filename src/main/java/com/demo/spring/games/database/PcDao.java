@@ -27,6 +27,8 @@ public class PcDao implements IDao {
             "JOIN carrello ON pc.id = carrello.pc_id\n" +
             "WHERE carrello.utente_id = ?;";
 
+    private String getLastInsertedIdQuery = "SELECT id FROM pc ORDER BY id DESC LIMIT 1";
+
     @Override
     public void add(Map<String, String> map) {
         db.update(insert,
@@ -85,6 +87,18 @@ public class PcDao implements IDao {
         List<Map<String, String>> lista = new ArrayList<>();
         lista = db.execute(readCarrello, String.valueOf(id));
         return lista;
+    }
+
+    public int getLastInsertedPCId() {
+        int pcId = 0;
+
+        List<Map<String, String>> result = db.execute(getLastInsertedIdQuery);
+        if (!result.isEmpty()) {
+            Map<String, String> row = result.get(0);
+            pcId = Integer.parseInt(row.get("id"));
+        }
+
+        return pcId;
     }
 
 }

@@ -111,6 +111,8 @@ public class CarrelloService {
                 int nuovaQuantita = quantitaPrecedente + quantitaPc;
 
                 // Aggiorna la quantità del PC nel carrello
+                item.put("utente_id", String.valueOf(utenteId));
+                item.put("pc_id", String.valueOf(pcId));
                 item.put("quantitaPc", String.valueOf(nuovaQuantita));
                 carrelloDao.update(item);
 

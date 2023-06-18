@@ -91,6 +91,10 @@ public class PcService {
         pcDao.add(map);
     }
 
+    public int getLastInsertedPCId() {
+        return pcDao.getLastInsertedPCId();
+    }
+
 
 }
 

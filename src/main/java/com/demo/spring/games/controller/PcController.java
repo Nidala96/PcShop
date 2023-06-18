@@ -113,7 +113,6 @@ public class PcController {
 			model.addAttribute("listCasePc", casepcService.getCasePc());
 			model.addAttribute("listRam", ramService.getRams());
 			model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
-
 			return "pc.html";
 	}
 
@@ -239,5 +238,25 @@ public class PcController {
 		carrelloService.deleteAll(utenteOne.getId());
 		model.addAttribute("username", utenteOne.getUsername());
 		return "success.html";
+	}
+
+	@RequestMapping(path="/addBuild", method = RequestMethod.GET)
+	public String addBuild(@RequestParam Map<String, String> params, HttpSession session) {
+
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		if(utenteOne != null) {
+			pcService.addPC(params);
+			int utenteId = utenteOne.getId();
+			int pcId = pcService.getLastInsertedPCId();
+			int quantitaPc = 1;
+			Map<String, String> paremetriCarrello = new HashMap<>();
+			// Controlla se il PC esiste già nel carrello dell'utente
+				paremetriCarrello.put("utente_id", String.valueOf(utenteId));
+				paremetriCarrello.put("pc_id", String.valueOf(pcId));
+				paremetriCarrello.put("quantitaPc", String.valueOf(quantitaPc));
+				carrelloService.addCarrello(paremetriCarrello);
+		}
+		return "redirect:/pcbuilder";
 	}
 }
