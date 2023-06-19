@@ -32,6 +32,8 @@ public class CarrelloDao implements IDao {
             "JOIN carrello ON pc.id = carrello.pc_id\n" +
             "WHERE carrello.utente_id = ? ;";
 
+    private String countCarrelloElements = "SELECT SUM(quantitaPc) AS result FROM carrello WHERE utente_id = ?";
+
         
     @Override
     public void add(Map<String, String> map) {
@@ -77,5 +79,13 @@ public class CarrelloDao implements IDao {
         List<Map<String, String>> lista = new ArrayList<>();
         lista = db.execute(readCarrello, String.valueOf(id));
         return lista;
+    }
+
+    public Integer count(Integer utente_id)
+    {
+        List<Map<String, String>> lista = db.execute(countCarrelloElements, String.valueOf(utente_id));
+        System.out.println(lista.get(0).get("result"));
+        lista.get(0).get("result");
+        return (lista.get(0).get("result") != null) ? Integer.parseInt(lista.get(0).get("result")) : 0;
     }
 }

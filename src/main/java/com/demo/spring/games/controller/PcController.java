@@ -1,17 +1,13 @@
 package com.demo.spring.games.controller;
 
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import com.demo.spring.games.database.CarrelloDao;
-import com.demo.spring.games.database.PcDao;
-import com.demo.spring.games.database.UtenteDao;
-import com.demo.spring.games.entities.Carrello;
-import com.demo.spring.games.entities.Gpu;
+import com.demo.spring.games.entities.CartInfo;
 import com.demo.spring.games.entities.Pc;
 import com.demo.spring.games.entities.Utente;
 import com.demo.spring.games.services.*;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class PcController {
 
@@ -113,7 +111,8 @@ public class PcController {
 			model.addAttribute("listCasePc", casepcService.getCasePc());
 			model.addAttribute("listRam", ramService.getRams());
 			model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
-			return "pc.html";
+			model.addAttribute("elementiCarrello", carrelloService.getCartElementCount(utenteOne != null ? utenteOne.getId() : null));
+		return "pc.html";
 	}
 
 	@RequestMapping(path="/modPC", method = RequestMethod.GET)
@@ -161,31 +160,22 @@ public class PcController {
 
 	@RequestMapping(path="/carrello", method = RequestMethod.GET)
 	public String listCarrello(Model model, HttpSession session) {
-		Double prezzoSpedizione = 10D;
+		DecimalFormat df = new DecimalFormat("#.##");
+		Double prezzoSpedizione = 1D;
 		Object utenteObj = session.getAttribute("utente");
 		Utente utenteOne = (Utente) utenteObj;
 		String username = "";
 		if(utenteOne != null)
 		{
 			int id = utenteOne.getId();
-			List<Pc> carrello = carrelloService.getCarrello(id);
-			ArrayList<Integer> quantita = new ArrayList<>();
-			for( Pc pc : carrello) {
-				quantita.add(carrelloService.getQuantitaPc(id, pc.getId()));
-			}
-			Double subTotale = 0.0;
-			for (int i = 0; i < carrello.size(); i++) {
-				Pc pc = carrello.get(i);
-				int quantity = quantita.get(i);
-				double itemPrice = pc.getPrezzo() * quantity;
-				subTotale += itemPrice;
-			}
+			CartInfo cartInfo = getCartInfo(id);
 
-			model.addAttribute("quantitaPc", quantita);
-			model.addAttribute("carrello", carrello);
-			model.addAttribute("subTotale", subTotale);
-			model.addAttribute("prezzoSpedizione", prezzoSpedizione);
-			model.addAttribute("prezzoTotale", subTotale + prezzoSpedizione);
+			model.addAttribute("quantitaPc", (cartInfo.getQuantitaElementiCarrello() != null) ? cartInfo.getQuantitaElementiCarrello() : 0);
+			model.addAttribute("carrello", cartInfo.getElementiCarrello());
+			model.addAttribute("subTotale", df.format(cartInfo.getSubTotale()));
+			model.addAttribute("prezzoSpedizione", cartInfo.getPrezzoSpedizione());
+			model.addAttribute("prezzoTotale", df.format(cartInfo.getPrezzoTotale()));
+			model.addAttribute("elementiCarrello", carrelloService.getCartElementCount(utenteOne != null ? utenteOne.getId() : null));
 		}
 
 		if (utenteObj instanceof Utente)
@@ -201,6 +191,42 @@ public class PcController {
 		return "carrello.html";
 	}
 
+	@RequestMapping(path="/cartInfo", method = RequestMethod.GET)
+	@ResponseBody
+	public CartInfo cartInfo(HttpSession session) {
+		Object utenteObj = session.getAttribute("utente");
+		Utente utenteOne = (Utente) utenteObj;
+		return getCartInfo(utenteOne != null ? utenteOne.getId() : null);
+	}
+
+	private CartInfo getCartInfo(Integer id_utente)
+	{
+		DecimalFormat df = new DecimalFormat("#.##");
+		CartInfo cartInfo = new CartInfo();
+
+		if(id_utente != null)
+		{
+			int id = id_utente;
+			cartInfo.setElementiCarrello(carrelloService.getCarrello(id));
+			cartInfo.setQuantitaElementiCarrello(new ArrayList<>());
+			for( Pc pc : cartInfo.getElementiCarrello()) {
+				cartInfo.getQuantitaElementiCarrello().add(carrelloService.getQuantitaPc(id, pc.getId()));
+			}
+			Double subTotale = 0.0;
+			for (int i = 0; i < cartInfo.getElementiCarrello().size(); i++) {
+				Pc pc = cartInfo.getElementiCarrello().get(i);
+				int quantity = cartInfo.getQuantitaElementiCarrello().get(i);
+				double itemPrice = pc.getPrezzo() * quantity;
+				subTotale += itemPrice;
+			}
+			cartInfo.setSubTotale(Double.parseDouble(df.format(subTotale)));
+			return cartInfo;
+		}
+		else
+		{
+			return null;
+		}
+	}
 
 	@RequestMapping(path="/deleteCarrello", method = RequestMethod.GET)
 	public String deleteCarrello(@RequestParam("pc_id") int pcId, HttpSession session) {
@@ -237,6 +263,7 @@ public class PcController {
 		Utente utenteOne = (Utente) utenteObj;
 		carrelloService.deleteAll(utenteOne.getId());
 		model.addAttribute("username", utenteOne.getUsername());
+		model.addAttribute("elementiCarrello", carrelloService.getCartElementCount(utenteOne.getId()));
 		return "success.html";
 	}
 

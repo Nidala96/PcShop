@@ -1,0 +1,14 @@
+.item-count {
+  position: absolute;
+  top: 12px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

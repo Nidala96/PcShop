@@ -1,7 +1,7 @@
 // TABELLA CP
 document.getElementById("modalNewItemCP").addEventListener("click", function() {
     console.log(document.getElementById("modalNewItemCP"));
-    document.getElementById("modal-addCPU").style.display = "block";
+    document.getElementById("modal-addCP").style.display = "block";
 });
 
 document.getElementById("closeAddCP").addEventListener("click", function() {

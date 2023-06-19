@@ -32,7 +32,9 @@
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="300" /> <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="css/pc.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
+    <link rel="stylesheet" href="css/pc.css">
+    <link rel="stylesheet" href="css/global.css">
     <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
             rel="stylesheet"
@@ -108,6 +110,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/carrello">
                         <i class="fa-sharp fa-solid fa-cart-shopping nav-icon"></i>Carrello
+                        <span class="item-count" th:if="${elementiCarrello > 0}" th:text="${elementiCarrello}"></span>
                     </a>
                 </li>
 
@@ -278,9 +281,6 @@
         </div>
     </div>
 </nav>
-<br>
-<br>
-<br>
 <h1 id="titolo-1">Scegli i tuoi componenti</h1>
 
 
@@ -574,7 +574,6 @@
 
 
 
-
 <style>
 
 
@@ -625,12 +624,38 @@
         </div>
             <div class="container-input">
             <button type="submit" class="add-to-cart-button">Aggiungi al carrello</button>
-            </div>>
+            </div>
 
 
     </form>
 </div>
+<div class="chatgpt-container">
+    <div class="chatgpt-container-2">
+        <div class="chatgpt-text">
+            <div class="chatgpt-text" id="chatgpt-preloading"></div>
+            <div class="chatgpt-text" id="chatgpt-loading"></div>
+            <div class="chatgpt-text" id="chatgpt-prompt-answer"></div>
+        </div>
+    </div>
+</div>
 
+<script>
+
+    const text = 'Completa la tua build per scoprire cosa ne pensa ChatGPT.';
+
+    const typewriter = document.getElementById('chatgpt-preloading');
+let index = 0;
+function type() {
+  if (index < text.length) {
+    typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+    index++;
+    setTimeout(type, Math.random() * 50 + 10);
+    } else {
+      typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+    }
+}
+type();
+</script>
 
 
 
@@ -683,7 +708,6 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
             <div class="me-5 d-none d-lg-block">
-                <span>Connettiti ai nostri social network:</span>
             </div>
             <!-- Left -->
 
@@ -790,7 +814,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
         </section>
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             PC© 2023 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">motech.com</a>
+            <a class="text-reset fw-bold" href="https://motech.com/">motech.com</a>
         </div>
     </footer></div>
 

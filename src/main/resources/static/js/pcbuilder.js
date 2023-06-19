@@ -98,8 +98,71 @@ function calculateTotal() {
   document.getElementById("TOTAL").textContent =  prezzototale.toFixed(2);
   console.log(priceCPU + priceGPU + priceSM + priceCPC + priceRAM + priceHD)
   console.log(document.getElementById("TOTAL").textContent);
+  let prompt = getFormChatGptPrompt();
+  if(prompt != null) {
+                const text = 'ChatGPT ha ricevuto la tua richiesta e sta elaborando una risposta...';
+
+                const typewriter = document.getElementById('chatgpt-loading');
+            let index = 0;
+            function type() {
+              if (index < text.length) {
+                typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+                index++;
+                setTimeout(type, Math.random() * 50 + 10);
+                } else {
+                  typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+                }
+            }
+            type();
+
+
+    fetch('/chat?prompt=' + 'Fammi un analisi di questa build di PC: ' + prompt)
+      .then(response => {
+        if (!response.ok) {
+          console.log('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+            const text = data.replace('. ', '\n');
+
+            const typewriter = document.getElementById('chatgpt-prompt-answer');
+        let index = 0;
+        function type() {
+          if (index < text.length) {
+            typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+            index++;
+            setTimeout(type, Math.random() * 50 + 10);
+            } else {
+              typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+            }
+        }
+        type();
+    })
+  }
 }
 
+function getFormChatGptPrompt() {
+  const computerParts = ['CPU', 'GPU', 'CASE', 'RAM', 'HD', 'SM']; // List of computer parts
+  let prompt = '';
+  let partCount = 0;
+
+  computerParts.forEach(part => {
+    const element = document.getElementById(`n${part}`);
+    if(element.textContent != '---') {
+        partCount++;
+        prompt += element.textContent + ', ';
+    }
+  });
+
+  console.log(partCount)
+  console.log(computerParts.length)
+
+  if(partCount === computerParts.length)
+    return prompt;
+  else
+    return null;
+}
 
 function rimuoviComponente(element, componente)
 {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Carrello</title>
   <link href="css/carrello.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
   <!-- Font Awesome
   <link
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -84,6 +85,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/carrello">
             <i class="fa-sharp fa-solid fa-cart-shopping nav-icon"></i>Carrello
+            <span class="item-count" th:if="${elementiCarrello > 0}" th:text="${elementiCarrello}"></span>
           </a>
         </li>
 
@@ -265,17 +267,12 @@
 
               <div class="col-lg-7">
                 <h5 class="mb-3"><a href="/pc" class="text-body"><i
-                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                        class="fas fa-long-arrow-alt-left me-2"></i>Continua i tuoi acquisti</a></h5>
                 <hr>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
-                    <p class="mb-1">Shopping cart</p>
-                    <p class="mb-0">You have <span th:text="${carrello != null ? #lists.size(carrello) : 0}"></span> items in your cart</p>
-                  </div>
-                  <div>
-                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
-                                                                                class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
+                    <p class="mb-0">Hai <span th:text="${carrello != null ? #lists.size(carrello) : 0}"></span> prodotti nel tuo carrello</p>
                   </div>
                 </div>
 
@@ -298,7 +295,7 @@
                           <form action="/modQuantita" class="myForm" method="POST" >
                             <input th:value="${entry.id}" name="pc_id" hidden>
                             <button type="submit" style="opacity: 1; border: none; outline: none; background: transparent; padding: 0;">
-                              <input type="number" name="quantitaPc" class="quantity" th:value="${quantitaPc[iterStat.index]}" min="1" max="9" style="width: 40px; margin-bottom:5px;text-align: center; border: 1px solid #ccc; padding: 5px;">
+                              <input type="number" name="quantitaPc" class="quantity" th:value="${quantitaPc[iterStat.index]}" min="1" max="9" style="width: 40px; margin-bottom:5px;text-align: center; border: 1px solid #ccc; padding: 5px; border-radius: 6px;">
                             </button>
 
 
@@ -335,7 +332,7 @@
                 .then(function(response) {
                     if (response.ok) {
                         console.log('Form submitted successfully');
-                        // Additional actions or UI updates
+                        refreshCartInfo();
                     } else {
                         throw new Error('Error submitting form');
                     }
@@ -346,6 +343,21 @@
             });
         });
     });
+
+    function refreshCartInfo() {
+      fetch('/cartInfo')
+        .then(response => {
+          if (!response.ok) {
+            console.log('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementsByClassName("item-count")[0].textContent = data.quantitaElementiCarrello.reduce((sub, current) => sub + current);
+          document.getElementById("cart-subtotal").textContent = data.subTotale;
+          document.getElementById("cart-total").textContent = data.subTotale + data.prezzoSpedizione;
+      })
+    }
 </script>
 
 
@@ -386,7 +398,7 @@
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Subtotale</p>
-                      <p class="mb-2 currency" th:text="${subTotale}"></p>
+                      <p class="mb-2 currency" id="cart-subtotal" th:text="${subTotale}"></p>
                     </div>
 
                     <div class="d-flex justify-content-between">
@@ -396,7 +408,7 @@
 
                     <div class="d-flex justify-content-between mb-4">
                       <p class="mb-2">Totale</p>
-                      <p class="mb-2 currency" th:text="${prezzoTotale}"></p>
+                      <p class="mb-2 currency" id="cart-total" th:text="${prezzoTotale}"></p>
                     </div>
 
                     <div class="paypal-buttons-container">
@@ -424,7 +436,6 @@
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
       <!-- Left -->
       <div class="me-5 d-none d-lg-block">
-        <span>Connettiti ai nostri social network:</span>
       </div>
       <!-- Left -->
 
@@ -538,7 +549,7 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
       PC© 2023 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">motech.com</a>
+      <a class="text-reset fw-bold" href="https://motech.com/">motech.com</a>
     </div>
     <!-- Copyright -->
   </footer>

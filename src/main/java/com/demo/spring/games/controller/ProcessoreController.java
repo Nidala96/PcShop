@@ -30,6 +30,8 @@ public class ProcessoreController {
 
     @Autowired
     private HardDiskService hardDiskService;
+    @Autowired
+    private CarrelloService carrelloService;
 
     @Autowired RamService ramService;
 
@@ -38,8 +40,9 @@ public class ProcessoreController {
         System.out.println(processoreService.getProcessori());
 
         // Verifica il ruolo dell'utente
-        Utente utente = (Utente)session.getAttribute("utente");
-        String ruolo = (utente != null) ? utente.getRuolo() : "";
+        Object utenteObj = session.getAttribute("utente");
+        Utente utenteOne = (Utente) utenteObj;
+        String ruolo = (utenteOne != null) ? utenteOne.getRuolo() : "";
         String username = "";
         model.addAttribute("ruolo", ruolo);
 
@@ -51,9 +54,9 @@ public class ProcessoreController {
         model.addAttribute("listHardDisk", hardDiskService.getHardDisk());
         System.out.println(ramService.getRams());
 
-        if (utente != null)
+        if (utenteOne != null)
         {
-            username = utente.getUsername();
+            username = utenteOne.getUsername();
 
             model.addAttribute("username", username);
         }
@@ -61,6 +64,7 @@ public class ProcessoreController {
         {
             model.addAttribute("username", null);
         }
+        model.addAttribute("elementiCarrello", carrelloService.getCartElementCount(utenteOne != null ? utenteOne.getId() : null));
         return "pcbuilder.html";
     }
 

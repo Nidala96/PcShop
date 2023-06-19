@@ -156,4 +156,13 @@ public class CarrelloService {
     public void deleteAll(int utenteId) {
         carrelloDao.deleteAll(utenteId);
     }
+
+    public Integer getCartElementCount(Integer utente_id) {
+        if(utente_id == null)
+            return 0;
+        if(carrelloDao.count(utente_id) != 0)
+        return carrelloDao.count(utente_id);
+
+        return 0;
+    }
 }

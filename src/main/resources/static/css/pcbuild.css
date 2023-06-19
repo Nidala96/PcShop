@@ -191,6 +191,7 @@ body.dark-mode
   padding: 30px;
   color: white;
   font-family: 'Montserrat', sans-serif;
+  margin-top: 60px;
 }
 
 /* Stile generale per le tabelle */
@@ -306,7 +307,7 @@ color: white !important;
 padding-top: 1rem;
 display: flex;
 justify-content: flex-end;
-padding-right: 24rem;
+padding-right: 27rem;
 }
 
 .table th {
@@ -421,6 +422,9 @@ font-size: 20px
 
 .table {
     border-collapse: collapse;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 .table th,
@@ -429,3 +433,42 @@ font-size: 20px
     border-right: none;
 }
 
+.chatgpt-text {
+    width: fit-content;
+    padding: 1.4rem;
+    word-spacing: 0.5em
+}
+
+.chatgpt-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.chatgpt-container-2 {
+    width: 70%;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.chatgpt-text {
+    letter-spacing: 0.15rem;
+}
+
+.blinking-cursor {
+  margin-left: 5px;
+  background-color: #fff;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}

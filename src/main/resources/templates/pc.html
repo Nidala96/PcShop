@@ -17,6 +17,7 @@
 	<meta property="og:image:width" content="400" />
 	<meta property="og:image:height" content="300" /> <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="css/pc.css">
+    <link rel="stylesheet" href="css/global.css">
     <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
             rel="stylesheet"
@@ -97,8 +98,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/carrello">
+                    <a class="nav-link active cart-container" aria-current="page" href="/carrello">
                         <i class="fa-sharp fa-solid fa-cart-shopping nav-icon"></i>Carrello
+                        <span class="item-count" th:if="${elementiCarrello > 0}" th:text="${elementiCarrello}"></span>
                     </a>
                 </li>
             </ul>
@@ -746,19 +748,6 @@ function darkTheme()
     <button  class="btn btn-primary d-inline p-2 mr-2 ">PROCEDI ALL' ACQUISTO </button>
 </div>
 
-<!-- Bottone per aprire/chiudere il carrello -->
-<a href="#titolo-1"><button class="cart-toggle fa-solid fa-cart-shopping" onclick="toggleCart()" ></button></a>
-
-<!-- JavaScript per gestire l'apertura/chiusura del carrello -->
-<script>
-    function toggleCart() {
-        const cart = document.querySelector('.shopping-cart');
-        const cartToggle = document.querySelector('.cart-toggle');
-        cart.classList.toggle('open');
-        cartToggle.classList.toggle('open');
-    }
-</script>
-
 
 
 
@@ -789,7 +778,6 @@ function darkTheme()
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
             <div class="me-5 d-none d-lg-block">
-                <span>Connettiti ai nostri social network:</span>
             </div>
             <!-- Left -->
 
@@ -903,7 +891,7 @@ function darkTheme()
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             PC© 2023 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">motech.com</a>
+            <a class="text-reset fw-bold" href="https://motech.com/">motech.com</a>
         </div>
         <!-- Copyright -->
     </footer>

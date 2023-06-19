@@ -2,7 +2,7 @@
 document.getElementById("modalNewItemRAM").addEventListener("click", function()
 {
     console.log(document.getElementById("modalNewItemRAM"));
-    document.getElementById("modal-addCPU").style.display = "block";
+    document.getElementById("modal-addRAM").style.display = "block";
 });
 
 document.getElementById("closeAddRAM").addEventListener("click", function()
