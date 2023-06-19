@@ -259,8 +259,8 @@
 <section class="h-100 h-custom" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card">
+      <div class="col" th:style="${carrello == null || #lists.size(carrello) == 0} ? 'display: none' : 'visibility: block'">
+        <div class="card"   th:style="${carrello == null || #lists.size(carrello) == 0} ? 'visibility: hidden' : 'visibility: visible'">
           <div class="card-body p-4">
 
             <div class="row">
@@ -272,7 +272,15 @@
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
+
                     <p class="mb-0">Hai <span th:text="${carrello != null ? #lists.size(carrello) : 0}"></span> prodotti nel tuo carrello</p>
+                    <img th:src="${carrello == null || #lists.size(carrello) == 0 ? 'https://www.alphabroder.com/img/empty-box_2.png' : ''}"
+                         th:if="${carrello == null || #lists.size(carrello) == 0}">
+                  </div>
+
+                  <div>
+                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
+                                                                                class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
                   </div>
                 </div>
 
@@ -301,6 +309,8 @@
 
                           </form>
                         </div>
+
+
                         <div style="width: 102px;">
                           <h5 th:text="${entry.prezzo}" class="mb-0 currency"></h5>
                         </div>
@@ -362,7 +372,7 @@
 
 
               </div>
-              <div class="col-lg-5">
+              <div class="col-lg-5" th:style="${carrello == null || #lists.size(carrello) == 0} ? 'display: none' : 'visibility: block'">
 
                 <div class="card bg-primary text-white rounded-3">
                   <div class="card-body">
@@ -411,7 +421,7 @@
                       <p class="mb-2 currency" id="cart-total" th:text="${prezzoTotale}"></p>
                     </div>
 
-                    <div class="paypal-buttons-container">
+                    <div class="paypal-buttons-container" >
                       <div id="paypal-button-container"></div>
                     </div>
 
@@ -427,7 +437,15 @@
       </div>
     </div>
   </div>
+  <div style="text-align: center"; th:style="${carrello == null || #lists.size(carrello) == 0} ? 'display: block;text-align: center' : 'display: none;text-align: center'">
+    <p style="font-weight: bold; margin-top: 50px; font-size: 100px; position: relative; top: 10px;">Il tuo carrello è vuoto</p>
+    <img src="https://www.alphabroder.com/img/empty-box_2.png" alt="Empty Box">
+  </div>
+
+
 </section>
+
+
 
 
 <div class="contenuto">

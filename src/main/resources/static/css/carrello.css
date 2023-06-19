@@ -147,8 +147,33 @@ xbtn-shop
 body.dark-mode
 {
   background-color: rgb(43, 47, 49) !important;
-  color: white !important;
+  color: black !important;
+
 }
+.dark-mode .h-100
+{
+background-color: rgb(43, 47, 49) !important;
+color: black !important;
+}
+
+.dark-mode .h-custom
+{
+background-color: rgb(43, 47, 49) !important;
+color: black !important;
+}
+
+.dark-mode .h-100 .h-custom
+{
+background-color: rgb(43, 47, 49) !important;
+color: black !important;
+}
+
+.container py-5 h-100
+{
+background-color: rgb(43, 47, 49) !important;
+color: black !important;
+}
+
 
 .dark-mode .wsk-cp-product
 {
@@ -249,4 +274,7 @@ background: none !important;
     content: " €";
 }
 
+.hidden {
+  visibility: hidden;
+}
 

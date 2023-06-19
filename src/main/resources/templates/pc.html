@@ -725,14 +725,14 @@ function darkTheme()
 </style>
 
 
-<div class="shopping-cart">
+<!--<div class="shopping-cart">
 
     <div class="cart-header">
-        <!--<h3>Carrello</h3>
-        <button onclick="toggleCart()">Chiudi</button>-->
+       <h3>Carrello</h3>
+        <button onclick="toggleCart()">Chiudi</button>
     </div>
     <div class="cart-items">
-        <!--CONTENUTO DEL CARRELLO-->
+        CONTENUTO DEL CARRELLO
         PC X
         <br>
         PC X
@@ -747,6 +747,19 @@ function darkTheme()
     </div>
     <button  class="btn btn-primary d-inline p-2 mr-2 ">PROCEDI ALL' ACQUISTO </button>
 </div>
+
+ Bottone per aprire/chiudere il carrello
+<a href="#titolo-1"><button class="cart-toggle fa-solid fa-cart-shopping" onclick="toggleCart()" ></button></a>
+
+ JavaScript per gestire l'apertura/chiusura del carrello
+<script>
+    function toggleCart() {
+        const cart = document.querySelector('.shopping-cart');
+        const cartToggle = document.querySelector('.cart-toggle');
+        cart.classList.toggle('open');
+        cartToggle.classList.toggle('open');
+    }
+</script>-->
 
 
 
@@ -778,6 +791,7 @@ function darkTheme()
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
             <div class="me-5 d-none d-lg-block">
+                <span>Connettiti ai nostri social network:</span>
             </div>
             <!-- Left -->
 
@@ -891,7 +905,7 @@ function darkTheme()
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             PC© 2023 Copyright:
-            <a class="text-reset fw-bold" href="https://motech.com/">motech.com</a>
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">motech.com</a>
         </div>
         <!-- Copyright -->
     </footer>
