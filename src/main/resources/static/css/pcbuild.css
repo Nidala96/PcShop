@@ -283,7 +283,7 @@ background-color: #4CAF50;
     width: 4rem;
 }
 
-tr th {
+tr .th-header {
 color: white !important;
 }
 
