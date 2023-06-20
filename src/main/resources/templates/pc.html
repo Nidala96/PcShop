@@ -7,15 +7,21 @@
     <script src="js/pc.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css%22%3E">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous" ></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
     <script src="js/main.js" defer></script>
-    <meta property="og:image" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png" />
-    <meta property="og:image:secure_url" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="300" /> <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="css/pc.css">
+    <meta property="og:image" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png"/>
+    <meta property="og:image:secure_url" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png"/>
+    <meta property="og:image:type" content="image/jpeg"/>
+    <meta property="og:image:width" content="400"/>
+    <meta property="og:image:height" content="300"/>
+    <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
+    <link rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
+    <link rel="stylesheet" href="css/pc.css">
     <link rel="stylesheet" href="css/global.css">
     <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -38,7 +44,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="height: 64px;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/pc"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -70,11 +77,13 @@
             </ul>
 
 
-
-
-
             <!--background-color: rgba(255, 255, 255, 0.8);-->
-            <div class=" nav-link active nav-icon" style="color: white; font-family: 'Montserrat','sans-serif'; padding:3px" >Traduci</div> <i  id="google_translate_element" class="fa-solid fa-globe fa-lg d-flex input-group w-auto navbar-right nav-item " style="color:white; padding:8px"></i>
+            <div class=" nav-link active nav-icon"
+                 style="color: white; font-family: 'Montserrat','sans-serif'; padding:3px">Traduci
+            </div>
+            <i id="google_translate_element"
+               class="fa-solid fa-globe fa-lg d-flex input-group w-auto navbar-right nav-item "
+               style="color:white; padding:8px"></i>
             <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             <script>
                           function googleTranslateElementInit() {
@@ -84,15 +93,15 @@
                               autoDisplay: 'true'
                             }, 'google_translate_element');
                           }
-                    </script>
 
-
+            </script>
 
 
             <input type="checkbox" onclick="darkTheme()" value=false class="toggle navbar-right" checked>
 
             <button class="buttonLogin" type="submit">
-                <a class="nav-link" aria-current="page" href="/formlogin" style="text-align: left; display: flex; align-items: center;">
+                <a class="nav-link" aria-current="page" href="/formlogin"
+                   style="text-align: left; display: flex; align-items: center;">
                     <i class="fa-solid fa-circle-user fa-xl" style="margin-right: 5px;"></i>
                     <span>
                         <th:block th:if="${username}">
@@ -110,9 +119,12 @@
             <form method="get" action="/logout">
                 <li class="nav-item">
                     <button class="buttonLogin" type="submit" style="background-color: transparent; border: none;">
-                        <a class="nav-link" aria-current="page" style="text-align: left; display: flex; align-items: center;">
+                        <a class="nav-link" aria-current="page"
+                           style="text-align: left; display: flex; align-items: center;">
 
-                            <span th:if="${username}"><i class="fa-solid fa-right-from-bracket fa-rotate-180 fa-lg icon-hover" style="margin-right: 5px;"></i>Logout</span>
+                            <span th:if="${username}"><i
+                                    class="fa-solid fa-right-from-bracket fa-rotate-180 fa-lg icon-hover"
+                                    style="margin-right: 5px;"></i>Logout</span>
                             <span th:unless="${username}"></span>
                         </a>
                     </button>
@@ -157,11 +169,13 @@
             <img src="img/ryzen_cpu.jpg" class="d-block w-100" alt="Ryzen CPU Logo"/>
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="prev">
+    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators"
+            data-mdb-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="next">
+    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators"
+            data-mdb-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
@@ -174,49 +188,57 @@
         <form action="/pc" method="GET" class="custom-form">
             <h2>Filtro PC</h2>
 
-            <label  for="filtroPrezzo" class="form-label">Seleziona Prezzo Massimo:</label>
+            <label for="filtroPrezzo" class="form-label">Seleziona Prezzo Massimo:</label>
             <div class="range">
-                <input type="range" class="form-range" th:min="${minPcPrice}" th:max="${maxPcPrice}" step="1" id="filtroPrezzo" name="filtroPrezzo" th:value="${filtroPrezzo}" />
+                <input type="range" class="form-range" th:min="${minPcPrice}" th:max="${maxPcPrice}" step="1"
+                       id="filtroPrezzo" name="filtroPrezzo" th:value="${filtroPrezzo}"/>
             </div>
 
 
             <label for="filtroCpu" class="form-label">Seleziona CPU:</label>
             <select name="filtroCpu" id="filtroCpu" class="custom-select" selected>
                 <option th:value="${null}">-----</option>
-                <option th:each="cpu, iter : ${listProcessori}" th:value="${cpu.nome}" th:text="${cpu.nome}" th:selected="${filtroCpu == cpu.nome}"></option>
+                <option th:each="cpu, iter : ${listProcessori}" th:value="${cpu.nome}" th:text="${cpu.nome}"
+                        th:selected="${filtroCpu == cpu.nome}"></option>
             </select>
 
             <label for="filtroGpu" class="form-label">Seleziona GPU:</label>
             <select name="filtroGpu" id="filtroGpu" class="custom-select" selected>
                 <option th:value="${null}">-----</option>
-                <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.nome}" th:text="${gpu.nome}" th:selected="${filtroGpu == gpu.nome}"></option>
+                <option th:each="gpu, iter : ${listGpu}" th:value="${gpu.nome}" th:text="${gpu.nome}"
+                        th:selected="${filtroGpu == gpu.nome}"></option>
             </select>
 
             <label for="filtroRam" class="form-label">Seleziona RAM:</label>
             <select name="filtroRam" id="filtroRam" class="custom-select" selected>
                 <option th:value="${null}">-----</option>
-                <option th:each="ram, iter : ${listRam}" th:value="${ram.nome}" th:text="${ram.nome}" th:selected="${filtroRam == ram.nome}"></option>
+                <option th:each="ram, iter : ${listRam}" th:value="${ram.nome}" th:text="${ram.nome}"
+                        th:selected="${filtroRam == ram.nome}"></option>
             </select>
 
             <label for="filtroHardDisk" class="form-label">Seleziona Hard Disk:</label>
             <select name="filtroHardDisk" id="filtroHardDisk" class="custom-select">
                 <option th:value="${null}" selected>-----</option>
-                <option th:each="hardDisk, iter : ${listHardDisk}" th:value="${hardDisk.nome}" th:text="${hardDisk.nome}" th:selected="${filtroHardDisk == hardDisk.nome}"></option>
+                <option th:each="hardDisk, iter : ${listHardDisk}" th:value="${hardDisk.nome}"
+                        th:text="${hardDisk.nome}" th:selected="${filtroHardDisk == hardDisk.nome}"></option>
             </select>
 
             <button class="btn btn-primary d-inline p-2 mr-2 " id="filter-button" type="submit">Filtra</button>
             <br>
-            <button type="button" id = "modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="width: 200px">Aggiungi PC</button>
+            <button type="button" id="modalNewItem" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2"
+                    style="width: 200px">Aggiungi PC
+            </button>
         </form>
 
     </div>
     <div class="shell">
         <div class="container">
             <div class="row">
-                <div th:each="pc, iterStat : ${listPc}" class="col-md-3 card-box" th:if="${iterStat.index < 30 && (pc.tipo == 'gaming' || pc.tipo == 'ufficio')}">
+                <div th:each="pc, iterStat : ${listPc}" class="col-md-3 card-box"
+                     th:if="${iterStat.index < 30 && (pc.tipo == 'gaming' || pc.tipo == 'ufficio')}">
                     <div class="wsk-cp-product">
                         <div class="wsk-cp-img">
-                            <img  th:src="${pc.casePc.immaginecase}" alt="Product" class="img-responsive"/>
+                            <img th:src="${pc.casePc.immaginecase}" alt="Product" class="img-responsive"/>
                         </div>
                         <div class="wsk-cp-text">
                             <!--  <div class="category">
@@ -226,7 +248,8 @@
                                 <h3 th:text="${pc.nome}"></h3>
                             </div>
                             <div class="description-prod">
-                                <p th:text="'Processore: ' + ${pc.processore.nome}" class="card-text"><small class="text-muted"></small></p>
+                                <p th:text="'Processore: ' + ${pc.processore.nome}" class="card-text"><small
+                                        class="text-muted"></small></p>
                                 <p th:text="'Scheda Video: ' + ${pc.gpu.nome}" class="card-text"></p>
                                 <p th:text="'Scheda Madre: ' + ${pc.schedaMadre.nome}" class="card-text"></p>
                                 <p th:text="'Case: ' + ${pc.casePc.nome}" class="card-text"></p>
@@ -235,23 +258,25 @@
 
 
                                 <div style="display: flex; justify-content: center;">
-                                    <button  th:data-id="${pc.id}"
-                                             th:data-nome="${pc.nome}"
-                                             th:data-tipo="${pc.tipo}"
-                                             th:data-processore="${pc.processore.id}"
-                                             th:data-gpu="${pc.gpu.id}"
-                                             th:data-schedaMadre="${pc.schedaMadre.id}"
-                                             th:data-casePc="${pc.casePc.id}"
-                                             th:data-percentualeSconto="${pc.percentualeSconto}"
-                                             th:data-ram="${pc.ram.id}"
-                                             th:data-hardDisk="${pc.hardDisk.id}"
-                                             th:onclick="modifyPc(this)"
-                                             type="button" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2" style="margin-right: 10px; width: 150px; margin-bottom: 10px ">Modifica
+                                    <button th:data-id="${pc.id}"
+                                            th:data-nome="${pc.nome}"
+                                            th:data-tipo="${pc.tipo}"
+                                            th:data-processore="${pc.processore.id}"
+                                            th:data-gpu="${pc.gpu.id}"
+                                            th:data-schedaMadre="${pc.schedaMadre.id}"
+                                            th:data-casePc="${pc.casePc.id}"
+                                            th:data-percentualeSconto="${pc.percentualeSconto}"
+                                            th:data-ram="${pc.ram.id}"
+                                            th:data-hardDisk="${pc.hardDisk.id}"
+                                            th:onclick="modifyPc(this)"
+                                            type="button" th:if="${isAdmin}" class="btn btn-primary d-inline p-2 mr-2"
+                                            style="margin-right: 10px; width: 150px; margin-bottom: 10px ">Modifica
                                     </button>
 
-                                    <form action="/delPc" th:if="${isAdmin}"method="get" class="d-inline">
+                                    <form action="/delPc" th:if="${isAdmin}" method="get" class="d-inline">
                                         <input type="hidden" name="id" th:value="${pc.id}">
-                                        <input  type="submit" value="ELIMINA" class="btn btn-danger p-2 ml-2" style="margin-left: 10px;">
+                                        <input type="submit" value="ELIMINA" class="btn btn-danger p-2 ml-2"
+                                               style="margin-left: 10px;">
                                     </form>
                                 </div>
                             </div>
@@ -259,8 +284,10 @@
                                 <div class="wcf-left" style="margin-top: 10px; margin-bottom: 5px">
 				    <span class="price">
 				      <p>
-				        <span style="margin-left: 15px" id="prezzoriginale" th:if="${pc.percentualeSconto != 1}"><s th:text="${pc.prezzo} + ' €'"></s></span><br>
-				        <span th:text="${pc.prezzo * pc.percentualeSconto} + ' €'" id="prezzoscontato" th:if="${pc.percentualeSconto != 1}"></span>
+				        <span style="margin-left: 15px" id="prezzoriginale" th:if="${pc.percentualeSconto != 1}"><s
+                                th:text="${pc.prezzo} + ' €'"></s></span><br>
+				        <span th:text="${pc.prezzo * pc.percentualeSconto} + ' €'" id="prezzoscontato"
+                              th:if="${pc.percentualeSconto != 1}"></span>
 				        <span th:text="${pc.prezzo} + ' €'" th:if="${pc.percentualeSconto == 1}"></span>
 				      </p>
 				    </span>
@@ -269,17 +296,21 @@
                                 <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 10px;">
 
 
-
-
                                     <div style="display: flex; justify-content: center; align-items: center; margin-top:15px">
 
                                         <form action="/addCarrello" method="GET">
                                             <div class="quantity-wrapper" style="margin-right: 10px;">
-                                                <input type="number" name="quantitaPc" class="quantity" value="1" min="1" max="9" style="width: 40px; margin-bottom:5px;text-align: center;" />
+                                                <input type="number" name="quantitaPc" class="quantity" value="1"
+                                                       min="1" max="9"
+                                                       style="width: 40px; margin-bottom:5px;text-align: center;"/>
                                             </div>
-                                            <input th:value="${pc.id}" name="pc_id"hidden>
+                                            <input th:value="${pc.id}" name="pc_id" hidden>
 
-                                            <button type="submit" th:data-id="${pc.id}" class="btn btn-primary d-inline p-2 mr-2" style="width: 50px; height:45px; margin-bottom: 10px; font-size: 14px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;" onclick="addToCart(this)"> <i class="fa-sharp fa-solid fa-cart-plus fa-2xl" ></i></button>
+                                            <button type="submit" th:data-id="${pc.id}"
+                                                    class="btn btn-primary d-inline p-2 mr-2"
+                                                    style="width: 50px; height:45px; margin-bottom: 10px; font-size: 14px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;"
+                                                    onclick="addToCart(this)"><i
+                                                    class="fa-sharp fa-solid fa-cart-plus fa-2xl"></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -302,7 +333,7 @@
             <div id="modalNew" class="modal-content">
                 <span id="closeAdd" class="close">&times;</span>
                 <h1>Aggiungi PC</h1>
-                <form method="get" action="/addPC" >
+                <form method="get" action="/addPC">
 
                     <label for="addNome">Nome:</label><br>
                     <select id="addNome" name="nome" required>
@@ -323,7 +354,8 @@
 
                     <label for="addProcessore">Processore:</label><br>
                     <select id="addProcessore" name="processore_id" required>
-                        <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}" th:text="${processori.nome}"></option>
+                        <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}"
+                                th:text="${processori.nome}"></option>
                     </select>
                     <br><br>
 
@@ -335,7 +367,8 @@
 
                     <label for="addSchedaMadre">SchedaMadre:</label><br>
                     <select id="addSchedaMadre" name="schedaMadre_id" required>
-                        <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
+                        <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}"
+                                th:text="${schedamadre.nome}"></option>
                     </select>
                     <br><br>
 
@@ -347,19 +380,22 @@
 
                     <label for="addHardDisk">Hard Disk:</label><br>
                     <select id="addHardDisk" name="hardDisk_id" required>
-                        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
+                        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}"
+                                th:text="${harddisk.nome}"></option>
                     </select>
                     <br><br>
 
                     <label for="addCasePc">Case Pc:</label><br>
                     <select id="addCasePc" name="casePc_id" required>
-                        <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}" th:text="${casepc.nome}"></option>
+                        <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}"
+                                th:text="${casepc.nome}"></option>
                     </select>
                     <br><br>
 
                     <label class="form-label" for="addScontato">Percentuale sconto</label>
                     <div class="range">
-                        <input type="range" class="form-range" min=0.1 max=1 value=1 step="0.01" id="addScontato" name="percentualeSconto" />
+                        <input type="range" class="form-range" min=0.1 max=1 value=1 step="0.01" id="addScontato"
+                               name="percentualeSconto"/>
                     </div>
                     <br><br>
                     <input class="btn btn-primary" type="submit" value="Aggiungi PC">
@@ -400,7 +436,8 @@
 
                     <label for="modProcessore">Processore:</label><br>
                     <select id="modProcessore" name="processore_id" required>
-                        <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}" th:text="${processori.nome}"></option>
+                        <option th:each="processori, iter : ${listProcessori}" th:value="${processori.id}"
+                                th:text="${processori.nome}"></option>
                     </select>
                     <br><br>
 
@@ -412,7 +449,8 @@
 
                     <label for="modSchedaMadre">SchedaMadre:</label><br>
                     <select id="modSchedaMadre" name="schedaMadre_id" required>
-                        <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}" th:text="${schedamadre.nome}"></option>
+                        <option th:each="schedamadre, iter : ${listSchedeMadre}" th:value="${schedamadre.id}"
+                                th:text="${schedamadre.nome}"></option>
                     </select>
                     <br><br>
 
@@ -424,19 +462,22 @@
 
                     <label for="modHardDisk">Hard Disk:</label><br>
                     <select id="modHardDisk" name="hardDisk_id" required>
-                        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}" th:text="${harddisk.nome}"></option>
+                        <option th:each="harddisk, iter : ${listHardDisk}" th:value="${harddisk.id}"
+                                th:text="${harddisk.nome}"></option>
                     </select>
                     <br><br>
 
                     <label for="modCasePc">Case Pc:</label><br>
                     <select id="modCasePc" name="casePc_id" required>
-                        <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}" th:text="${casepc.nome}"></option>
+                        <option th:each="casepc, iter : ${listCasePc}" th:value="${casepc.id}"
+                                th:text="${casepc.nome}"></option>
                     </select>
                     <br>
 
                     <label class="form-label" for="modScontato">Percentuale Sconto</label>
                     <div class="range">
-                        <input type="range" class="form-range" min=1 max=100 step="1" id="modScontato" name="percentualeSconto" />
+                        <input type="range" class="form-range" min=1 max=100 step="1" id="modScontato"
+                               name="percentualeSconto"/>
                     </div>
                     <br><br>
 

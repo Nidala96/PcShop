@@ -15,15 +15,20 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css%22%3E">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous" ></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
 
-    <meta property="og:image" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png" />
-    <meta property="og:image:secure_url" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="300" /> <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
+    <meta property="og:image" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png"/>
+    <meta property="og:image:secure_url" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png"/>
+    <meta property="og:image:type" content="image/jpeg"/>
+    <meta property="og:image:width" content="400"/>
+    <meta property="og:image:height" content="300"/>
+    <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
+    <link rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
     <link rel="stylesheet" href="css/pc.css">
     <link rel="stylesheet" href="css/global.css">
     <link
@@ -49,7 +54,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="height: 64px;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/pc"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -81,9 +87,14 @@
 
             </ul>
 
-                   <div class=" nav-link active nav-icon" style="color: white; font-family: 'Montserrat','sans-serif'; padding:3px" >Traduci</div> <i  id="google_translate_element" class="fa-solid fa-globe fa-lg d-flex input-group w-auto navbar-right nav-item " style="color:white; padding:8px"></i>
-                    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                    <script>
+            <div class=" nav-link active nav-icon"
+                 style="color: white; font-family: 'Montserrat','sans-serif'; padding:3px">Traduci
+            </div>
+            <i id="google_translate_element"
+               class="fa-solid fa-globe fa-lg d-flex input-group w-auto navbar-right nav-item "
+               style="color:white; padding:8px"></i>
+            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <script>
                           function googleTranslateElementInit() {
                             new google.translate.TranslateElement({
                               pageLanguage: 'it',
@@ -91,12 +102,14 @@
                               autoDisplay: 'true'
                             }, 'google_translate_element');
                           }
-                    </script>
 
-            <input type="checkbox" onclick="darkTheme()"  value=false class="toggle navbar-right" checked>
+            </script>
+
+            <input type="checkbox" onclick="darkTheme()" value=false class="toggle navbar-right" checked>
 
             <button class="buttonLogin" type="submit">
-                <a class="nav-link" aria-current="page" href="/formlogin" style="text-align: left; display: flex; align-items: center;">
+                <a class="nav-link" aria-current="page" href="/formlogin"
+                   style="text-align: left; display: flex; align-items: center;">
                     <i class="fa-solid fa-circle-user fa-xl" style="margin-right: 5px;"></i>
                     <span>
                         <th:block th:if="${username}">
@@ -115,15 +128,17 @@
             <form method="get" action="/logout">
                 <li class="nav-item">
                     <button class="buttonLogin" type="submit" style="background-color: transparent; border: none;">
-                        <a class="nav-link" aria-current="page" style="text-align: left; display: flex; align-items: center;">
+                        <a class="nav-link" aria-current="page"
+                           style="text-align: left; display: flex; align-items: center;">
 
-                            <span th:if="${username}"><i class="fa-solid fa-right-from-bracket fa-rotate-180 fa-lg icon-hover" style="margin-right: 5px;"></i>Logout</span>
+                            <span th:if="${username}"><i
+                                    class="fa-solid fa-right-from-bracket fa-rotate-180 fa-lg icon-hover"
+                                    style="margin-right: 5px;"></i>Logout</span>
                             <span th:unless="${username}"></span>
                         </a>
                     </button>
                 </li>
             </form>
-
 
 
         </div>
@@ -132,25 +147,27 @@
 <h1 id="titolo-1">Scegli i tuoi componenti</h1>
 
 
-
 <div class="table-container">
     <table class="table">
         <thead id="headertabella" style="color: white">
         <tr>
             <th class="th-header">Componente</th>
-            <th class="th-header" >Nome Componente</th>
-            <th class="th-header" >Prezzo</th>
-            <th class="th-header"  id="opzione-th">Opzione</th> <!-- Bottone "AGGIUNGI" -->
+            <th class="th-header">Nome Componente</th>
+            <th class="th-header">Prezzo</th>
+            <th class="th-header" id="opzione-th">Opzione</th> <!-- Bottone "AGGIUNGI" -->
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>
-                <button class="button-style" id = "modalNewItemCPU">CHOOSE CPU</button> <!--onclick="toggleTable('cpu-table')"-->
+                <button class="button-style" id="modalNewItemCPU">CHOOSE CPU</button>
+                <!--onclick="toggleTable('cpu-table')"-->
             </td>
             <td class="td-element" id="nCPU">---</td>
             <td class="td-element" id="pCPU">---</td>
-            <td><button class="button-delete" onclick="rimuoviComponente(this, 'CPU')">ELIMINA</button></td>
+            <td>
+                <button class="button-delete" onclick="rimuoviComponente(this, 'CPU')">ELIMINA</button>
+            </td>
         </tr>
         <tr>
             <td colspan="4" class="table-row">
@@ -179,7 +196,10 @@
                                 <td th:text="${processore.prezzo}"></td>
                                 <td th:text="${processore.descrizione}"></td>
                                 <td>
-                                    <button class="button-add-element" th:data-pid="${processore.id}"  th:data-pnome="${processore.nome}" th:data-pprezzo="${processore.prezzo}" th:onclick="addCPU(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-pid="${processore.id}"
+                                            th:data-pnome="${processore.nome}" th:data-pprezzo="${processore.prezzo}"
+                                            th:onclick="addCPU(this)" type="button">AGGIUNGI
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -188,17 +208,18 @@
                 </div>
             </td>
         </tr>
-        <script src="js/pcbuilderCPU.js"defer></script>
-
+        <script src="js/pcbuilderCPU.js" defer></script>
 
 
         <tr>
             <td>
-                <button class="button-style" id ="modalNewItemGPU" >CHOOSE GPU</button>
+                <button class="button-style" id="modalNewItemGPU">CHOOSE GPU</button>
             </td>
             <td class="td-element" id="nGPU">---</td>
             <td class="td-element" id="pGPU">---</td>
-            <td><button class="button-delete" onclick="rimuoviComponente(this, 'GPU')">ELIMINA</button></td>
+            <td>
+                <button class="button-delete" onclick="rimuoviComponente(this, 'GPU')">ELIMINA</button>
+            </td>
         </tr>
         <tr>
             <td colspan="4" class="table-row">
@@ -223,7 +244,10 @@
                                 <td th:text="${gpu.prezzo}"></td>
                                 <td th:text="${gpu.descrizione}"></td>
                                 <td>
-                                    <button class="button-add-element" th:data-gid="${gpu.id}"  th:data-gnome="${gpu.nome}" th:data-gprezzo="${gpu.prezzo}" th:onclick="addGPU(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-gid="${gpu.id}"
+                                            th:data-gnome="${gpu.nome}" th:data-gprezzo="${gpu.prezzo}"
+                                            th:onclick="addGPU(this)" type="button">AGGIUNGI
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -235,15 +259,15 @@
         <script src="js/pcbuilderGPU.js"></script>
 
 
-
-
         <tr>
             <td>
                 <button class="button-style" id="modalNewItemSM">CHOOSE MOTHERBOARD</button>
             </td>
             <td class="td-element" id="nSM">---</td>
             <td class="td-element" id="pSM">---</td>
-            <td><button class="button-delete" onclick="rimuoviComponente(this, 'SM')">ELIMINA</button></td>
+            <td>
+                <button class="button-delete" onclick="rimuoviComponente(this, 'SM')">ELIMINA</button>
+            </td>
         </tr>
         <tr>
             <td colspan="4" class="table-row">
@@ -269,7 +293,11 @@
                                 <td th:text="${schedamadre.prezzo}"></td>
                                 <td th:text="${schedamadre.descrizione}"></td>
                                 <td>
-                                    <button class="button-add-element" th:data-smid="${schedamadre.id}"  th:data-smnome="${schedamadre.nome}" th:data-smprezzo="${schedamadre.prezzo}" th:onclick="addSCHEDAMADRE(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-smid="${schedamadre.id}"
+                                            th:data-smnome="${schedamadre.nome}"
+                                            th:data-smprezzo="${schedamadre.prezzo}" th:onclick="addSCHEDAMADRE(this)"
+                                            type="button">AGGIUNGI
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -287,7 +315,9 @@
             </td>
             <td class="td-element" id="nCASE">---</td>
             <td class="td-element" id="pCASE">---</td>
-            <td><button class="button-delete" onclick="rimuoviComponente(this, 'CASE')">ELIMINA</button></td>
+            <td>
+                <button class="button-delete" onclick="rimuoviComponente(this, 'CASE')">ELIMINA</button>
+            </td>
         </tr>
         <tr>
             <td colspan="4" class="table-row">
@@ -311,7 +341,10 @@
                                 <td th:text="${casepc.prezzo}"></td>
                                 <td th:text="${casepc.descrizione}"></td>
                                 <td>
-                                    <button class="button-add-element" th:data-cpcid="${casepc.id}"  th:data-cpcnome="${casepc.nome}" th:data-cpcprezzo="${casepc.prezzo}" th:onclick="addCASEPC(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-cpcid="${casepc.id}"
+                                            th:data-cpcnome="${casepc.nome}" th:data-cpcprezzo="${casepc.prezzo}"
+                                            th:onclick="addCASEPC(this)" type="button">AGGIUNGI
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -328,7 +361,9 @@
             </td>
             <td class="td-element" id="nRAM">---</td>
             <td class="td-element" id="pRAM">---</td>
-            <td><button class="button-delete" onclick="rimuoviComponente(this, 'RAM')">ELIMINA</button></td>
+            <td>
+                <button class="button-delete" onclick="rimuoviComponente(this, 'RAM')">ELIMINA</button>
+            </td>
         </tr>
         <tr>
             <td colspan="4" class="table-row">
@@ -358,7 +393,10 @@
                                 <td th:text="${ram.frequenza}"></td>
                                 <td th:text="${ram.descrizione}"></td>
                                 <td>
-                                    <button class="button-add-element" th:data-ramid="${ram.id}"  th:data-ramnome="${ram.nome}" th:data-ramprezzo="${ram.prezzo}" th:onclick="addRAM(this)" type="button">AGGIUNGI</button>
+                                    <button class="button-add-element" th:data-ramid="${ram.id}"
+                                            th:data-ramnome="${ram.nome}" th:data-ramprezzo="${ram.prezzo}"
+                                            th:onclick="addRAM(this)" type="button">AGGIUNGI
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -376,7 +414,9 @@
             </td>
             <td class="td-element" id="nHD">---</td>
             <td class="td-element" id="pHD">---</td>
-            <td><button class="button-delete" onclick="rimuoviComponente(this, 'HDD')">ELIMINA</button></td>
+            <td>
+                <button class="button-delete" onclick="rimuoviComponente(this, 'HDD')">ELIMINA</button>
+            </td>
         </tr>
         <tr>
             <td colspan="4" class="table-row">
@@ -404,7 +444,10 @@
                                 <td th:text="${hardDisk.prezzo}"></td>
                                 <td th:text="${hardDisk.descrizione}"></td>
                                 <td>
-                                    <button th:data-hdid="${hardDisk.id}"  th:data-hdnome="${hardDisk.nome}" th:data-hdprezzo="${hardDisk.prezzo}" th:onclick="addHARDDISK(this)" type="button" class="button-add-element">AGGIUNGI</button>
+                                    <button th:data-hdid="${hardDisk.id}" th:data-hdnome="${hardDisk.nome}"
+                                            th:data-hdprezzo="${hardDisk.prezzo}" th:onclick="addHARDDISK(this)"
+                                            type="button" class="button-add-element">AGGIUNGI
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -421,12 +464,9 @@
 </div>
 
 
-
-
-
 <div>
     <form id="selectedComponentsForm" action="/addBuild" method="GET">
-        <input type="hidden" value="1" name="percentualeSconto" />
+        <input type="hidden" value="1" name="percentualeSconto"/>
         <input type="hidden" name="nome" value="custom" required>
         <input type="hidden" name="tipo" value="custom">
         <input type="hidden" id="selectedCpuId" name="processore_id" required>
@@ -436,11 +476,11 @@
         <input type="hidden" id="selectedCasepcId" name="casePc_id" required>
         <input type="hidden" id="selectedHarddisk" name="hardDisk_id" required>
         <div class="container-input">
-        <h3 id="prezzo-totale">Totale: <span id="TOTAL">0.00</span>€</h3>
+            <h3 id="prezzo-totale">Totale: <span id="TOTAL">0.00</span>€</h3>
         </div>
-            <div class="container-input">
+        <div class="container-input">
             <button type="submit" class="add-to-cart-button">Aggiungi al carrello</button>
-            </div>
+        </div>
 
 
     </form>
@@ -456,31 +496,10 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
 
 
- </style>
-
-
-
-
+</style>
 
 
 <div class="contenuto">
@@ -597,12 +616,13 @@
             PC© 2023 Copyright:
             <a class="text-reset fw-bold" href="https://motech.com/">motech.com</a>
         </div>
-    </footer></div>
+    </footer>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
 
-               </body>
+</body>
 </html>
