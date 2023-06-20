@@ -16,8 +16,8 @@ the integration of PayPal enables secure and convenient transactions. The system
 
 # Images 
 
-![image](https://github.com/Nidala96/PcShop/assets/121960989/2628b201-28fe-4294-b60a-e59c481dcc12)
-![image](https://github.com/Nidala96/PcShop/assets/121960989/fb7a6067-e9fd-4499-b74f-790eeff8c864)
-![image](https://github.com/Nidala96/PcShop/assets/121960989/e85de763-9163-4f7d-b2bd-24525050c2d2)
+![image](https://github.com/Nidala96/PcShop/assets/121960989/b2fd33c8-8437-4e1f-b214-7edb35cdbcd2)
+![image](https://github.com/Nidala96/PcShop/assets/121960989/46a85cd5-2226-4ded-9356-d1d4b8fa849a)
+![image](https://github.com/Nidala96/PcShop/assets/121960989/3a5b6ba3-edda-4bf8-a09c-897cd33d81f9)
 
 
