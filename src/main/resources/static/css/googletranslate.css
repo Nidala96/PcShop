@@ -1,0 +1,99 @@
+#google_translate_element {
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+.fa-solid {
+    display: inline-block !important;
+    font-size: 1.5rem !important;
+    vertical-align: middle !important;
+    margin-right: 0.5rem !important;
+}
+
+.fa-lg {
+    line-height: 1 !important;
+}
+
+.goog-te-combo {
+    border: 1px solid black !important;
+    padding: 5px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    color: #333 !important;
+}
+
+.goog-te-combo option {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+    visibility: hidden !important;
+}
+
+.fixed-con {
+    z-index: 9724790009779558 !important;
+    background-color: #f7f8fc !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    overflow-y: auto !important;
+}
+
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+    z-index: 9724790009779 !important;
+    top: 0 !important;
+    left: unset !important;
+    right: -5px !important;
+    display: none !important;
+    border-radius: 50% !important;
+    border: 2px solid gold !important;
+}
+
+.VIpgJd-ZVi9od-aZ2wEe-OiiCO {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+/* Hide google translate link, logo, banner-frame */
+.goog-logo-link,
+.gskiptranslate,
+.goog-te-gadget span,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+div#goog-gt- {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+    font-size: 0px !important;
+}
+
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* Google Translate Dropdown */
+#google_translate_element select {
+    position: absolute !important;
+    left: -100px !important;
+    top: -5px !important;
+    background-color: transparent !important;
+    opacity: 0.0 !important;
+    z-index: 0 !important;
+    color: #383ffa !important;
+    border: none !important;
+    border-radius: 3px !important;
+    width: 140px !important;
+    height: 40px !important;
+    cursor: pointer !important;
+}

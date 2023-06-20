@@ -1,5 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i');
+   .nav-item
+                {
+                    list-style: none;
+                }
 
+                .icon-hover:hover
+                {
+                    color: 86E825;
+                }
+
+                 .nav-link:hover .fa-right-from-bracket
+                 {
+                    color: #dc4c64;
+                 }
+
+
+    #titolo-1 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+
+    .navbar-nav .nav-link {
+        color: white !important;
+        border: none !important;
+    }
+
+    .navbar-nav .nav-link i {
+    padding: 4px;
+    }
+
+
+
+    .nav-icon {
+        color: inherit;
+    }
+
+    .nav-item:hover .nav-icon {
+        color: #86E825;
+    }
 
 body {
   font-family: 'Roboto', sans-serif;

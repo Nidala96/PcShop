@@ -1,4 +1,5 @@
 
+
 function modifyPc(element)
 {
 	document.getElementById("modal-mod").style.display = "block",
@@ -24,7 +25,20 @@ function modifyPc(element)
  	
 }
 
+function darkTheme()
+{
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  console.log("Test dark-mode");
+}
 
+  function addToCart(button) {
+    var quantityInput = button.parentNode.querySelector(".quantity");
+    var quantity = parseInt(quantityInput.value);
+    var pcId = button.getAttribute("data-id");
+    // Effettua qui l'azione per aggiungere al carrello il PC con l'ID specificato e la quantità selezionata
+    console.log("Aggiungi al carrello: PC ID=" + pcId + ", Quantità=" + quantity);
+  }
 
 
 

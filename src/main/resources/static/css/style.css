@@ -149,9 +149,7 @@ border-bottom-right-radius: .3rem;
            font-family: 'Montserrat', sans-serif;
           background-color: linear-gradient(to right, #297304, #000000) !important;
          }
-       </style>
 
-       <style>
          .navbar-nav .nav-link {
              color: white !important;
              border: none !important;
