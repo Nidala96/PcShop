@@ -227,9 +227,48 @@ function rimuoviComponente(element, componente)
 
 
 
+   const text = 'Completa la tua build per scoprire cosa ne pensa ChatGPT.';
 
+    const typewriter = document.getElementById('chatgpt-preloading');
+let index = 0;
+function type() {
+  if (index < text.length) {
+    typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+    index++;
+    setTimeout(type, Math.random() * 50 + 10);
+    } else {
+      typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+    }
+}
+type();
 
+function toggleTable(tableId)
+{
+  var table = document.getElementById(tableId);
+  if (table.style.display === "none")
+  {
+    table.style.display = "table";
+  }
+  else
+  {
+    table.style.display = "none";
+  }
+}
 
+function addComponent(componentType, componentId)
+ {
+    // Esegui l'azione desiderata quando si aggiunge un componente.
+    // Puoi implementare questa funzione per eseguire l'aggiunta effettiva del componente nel tuo sistema.
+    console.log("Aggiunto componente di tipo: " + componentType + ", ID: " + componentId);
+
+ }
+
+ function darkTheme()
+ {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+   console.log("Test dark-mode");
+ }
 
 
 

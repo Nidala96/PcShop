@@ -391,7 +391,7 @@ function darkTheme()
     <div class="shell">
         <div class="container">
             <div class="row">
-                <div th:each="pc, iterStat : ${listPc}" class="col-md-3 card-box" th:if="${iterStat.index < 30}">
+                <div th:each="pc, iterStat : ${listPc}" class="col-md-3 card-box" th:if="${iterStat.index < 30 && (pc.tipo == 'gaming' || pc.tipo == 'ufficio')}">
                     <div class="wsk-cp-product">
                         <div class="wsk-cp-img">
                             <img  th:src="${pc.casePc.immaginecase}" alt="Product" class="img-responsive"/>

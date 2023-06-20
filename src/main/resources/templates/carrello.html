@@ -5,6 +5,7 @@
     <title>Carrello</title>
   <link href="css/carrello.css" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
+  <script src="js/carrello.js" defer></script>
   <!-- Font Awesome
   <link
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -30,30 +31,7 @@
   <script src="https://www.paypal.com/sdk/js?client-id=AeEEwIoc6uv2_dR2u1xRt20Ga3AWVToQ7BNrx6UlvL8pLEcZBhzO4FAZPO5VCvlFBJBL8clb11vrpe2_&components=buttons&disable-funding=credit,mybank&currency=EUR"></script>
 
   <!--FONT TITOLO-->
-  <style>
-    #titolo-1 {
-      font-family: 'Montserrat', sans-serif;
-    }
-  </style>
 
-  <style>
-    .navbar-nav .nav-link {
-        color: white !important;
-        border: none !important;
-    }
-
-    .navbar-nav .nav-link i {
-    padding: 4px;
-    }
-
-    .nav-icon {
-        color: inherit;
-    }
-
-    .nav-item:hover .nav-icon {
-        color: #86E825;
-    }
-    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="height: 64px;">
@@ -236,22 +214,7 @@
         </li>
       </form>
 
-      <style>
-                .nav-item
-                {
-                    list-style: none;
-                }
 
-                .icon-hover:hover
-                {
-                    color: 86E825;
-                }
-
-                 .nav-link:hover .fa-right-from-bracket
-                 {
-                    color: #dc4c64;
-                 }
-            </style>
     </div>
   </div>
 </nav>
@@ -325,50 +288,7 @@
                     </div>
                   </div>
                 </div>
-                <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var forms = document.getElementsByClassName('myForm');
 
-        Array.from(forms).forEach(function(form) {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                var formData = new FormData(form);
-
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(function(response) {
-                    if (response.ok) {
-                        console.log('Form submitted successfully');
-                        refreshCartInfo();
-                    } else {
-                        throw new Error('Error submitting form');
-                    }
-                })
-                .catch(function(error) {
-                    console.log('Error submitting form: ' + error);
-                });
-            });
-        });
-    });
-
-    function refreshCartInfo() {
-      fetch('/cartInfo')
-        .then(response => {
-          if (!response.ok) {
-            console.log('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          document.getElementsByClassName("item-count")[0].textContent = data.quantitaElementiCarrello.reduce((sub, current) => sub + current);
-          document.getElementById("cart-subtotal").textContent = data.subTotale;
-          document.getElementById("cart-total").textContent = data.subTotale + data.prezzoSpedizione;
-      })
-    }
-</script>
 
 
               </div>

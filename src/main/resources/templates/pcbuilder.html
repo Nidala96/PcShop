@@ -51,33 +51,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
     <!-- Font titolo -->
-    <style>
-    #titolo-1 {
-      font-family: 'Montserrat', sans-serif;
-    }
-  </style>
 
-    <!-- Vari stili della navbar-->
-    <style>
-    .navbar-nav .nav-link {
-        color: white !important;
-        border: none !important;
-    }
-
-    .navbar-nav .nav-link i {
-    padding: 4px;
-    }
-    </style>
-
-    <style>
-    .nav-icon {
-        color: inherit;
-    }
-
-    .nav-item:hover .nav-icon {
-        color: #86E825;
-    }
-    </style>
 
 </head>
 <body>
@@ -261,22 +235,7 @@
                 </li>
             </form>
 
-            <style>
-                .nav-item
-                {
-                    list-style: none;
-                }
 
-                .icon-hover:hover
-                {
-                    color: 86E825;
-                }
-
-                 .nav-link:hover .fa-right-from-bracket
-                 {
-                    color: #dc4c64;
-                 }
-            </style>
 
         </div>
     </div>
@@ -574,39 +533,7 @@
 
 
 
-<style>
 
-
-  .price-container {
-
-  }
-
-  /* Resto degli stili come prima */
-  #prezzo-totale {
-    margin-bottom: 5px;
-    text-align: center;
-  }
-
-  #TOTAL {
-    font-weight: bold;
-    color: green;
-  }
-
-  .add-to-cart-button {
-   background-color: #4CAF50;
-    color: #ffffff;
-    padding: 0.125rem 0.375rem;
-    font-size: 1rem!important;
-    border-radius: 0.25rem;
-    text-decoration: none!important;
-    border-color: #4CAF50;
-    font-weight: 700;
-
-
-}
-
-
-</style>
 
 <div>
     <form id="selectedComponentsForm" action="/addBuild" method="GET">
@@ -639,23 +566,6 @@
     </div>
 </div>
 
-<script>
-
-    const text = 'Completa la tua build per scoprire cosa ne pensa ChatGPT.';
-
-    const typewriter = document.getElementById('chatgpt-preloading');
-let index = 0;
-function type() {
-  if (index < text.length) {
-    typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
-    index++;
-    setTimeout(type, Math.random() * 50 + 10);
-    } else {
-      typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
-    }
-}
-type();
-</script>
 
 
 
@@ -669,26 +579,8 @@ type();
 
 
 
-<!--<ul class="nav navbar-nav navbar-border-bottom navbar-right">
-    <li class="">
 
-        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="search fa fa-language"></i> Translate
-        </a>
-    </li>
-</ul>
 
-<div style="position: relative;">
-    <div id="google_translate_element" style="position: relative; opacity: 0;"></div>
-    <button style="position: absolute; left: 0; top: 0; z-index: -1;">Translate</button>
-</div>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
 
 
 
@@ -818,39 +710,6 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
         </div>
     </footer></div>
 
-<script>
-function toggleTable(tableId)
-{
-  var table = document.getElementById(tableId);
-  if (table.style.display === "none")
-  {
-    table.style.display = "table";
-  }
-  else
-  {
-    table.style.display = "none";
-  }
-}
-</script>
-
-<script>
-function addComponent(componentType, componentId)
- {
-    // Esegui l'azione desiderata quando si aggiunge un componente.
-    // Puoi implementare questa funzione per eseguire l'aggiunta effettiva del componente nel tuo sistema.
-    console.log("Aggiunto componente di tipo: " + componentType + ", ID: " + componentId);
-
-    }
-
-</script>
-<script>
-function darkTheme()
-{
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-  console.log("Test dark-mode");
-}
-</script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

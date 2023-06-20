@@ -72,3 +72,100 @@ border-bottom-right-radius: .3rem;
 }
 }
 
+
+#titolo-1
+{
+      font-family: 'Montserrat', sans-serif;
+    }
+
+
+
+    .navbar-nav .nav-link {
+        color: white !important;
+        border: none !important;
+    }
+
+    .navbar-nav .nav-link i {
+    padding: 4px;
+    }
+
+
+
+    .nav-icon {
+        color: inherit;
+    }
+
+    .nav-item:hover .nav-icon {
+        color: #86E825;
+    }
+
+ .nav-item
+                {
+                    list-style: none;
+                }
+
+                .icon-hover:hover
+                {
+                    color: 86E825;
+                }
+
+                 .nav-link:hover .fa-right-from-bracket
+                 {
+                    color: #dc4c64;
+                 }
+
+
+ .price-container {
+
+   }
+
+   /* Resto degli stili come prima */
+   #prezzo-totale {
+     margin-bottom: 5px;
+     text-align: center;
+   }
+
+   #TOTAL {
+     font-weight: bold;
+     color: green;
+   }
+
+   .add-to-cart-button {
+    background-color: #4CAF50;
+     color: #ffffff;
+     padding: 0.125rem 0.375rem;
+     font-size: 1rem!important;
+     border-radius: 0.25rem;
+     text-decoration: none!important;
+     border-color: #4CAF50;
+     font-weight: 700;
+
+
+
+
+
+
+         #titolo-1 {
+           font-family: 'Montserrat', sans-serif;
+          background-color: linear-gradient(to right, #297304, #000000) !important;
+         }
+       </style>
+
+       <style>
+         .navbar-nav .nav-link {
+             color: white !important;
+             border: none !important;
+         }
+
+         .navbar-nav .nav-link i {
+         padding: 4px;
+         }
+
+         .nav-icon {
+             color: inherit;
+         }
+
+         .nav-item:hover .nav-icon {
+             color: #86E825;
+         }
+
